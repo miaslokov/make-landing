@@ -337,6 +337,18 @@
       position: relative;
       overflow: hidden;
       min-height: 70px;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .flow-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(126,240,255,.58);
+      box-shadow: 0 12px 28px rgba(92,226,255,.18);
+    }
+
+    .flow-item:active {
+      transform: translateY(0);
     }
 
     .flow-item::before {
@@ -383,6 +395,78 @@
       min-width: 78px;
       text-align: center;
       box-shadow: 0 0 12px rgba(72,229,169,.22);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .proof-card {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
+      padding: 14px;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .proof-shot {
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 10px;
+      background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
+      height: 84px;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proof-shot::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 120%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(126,240,255,.24), transparent);
+      animation: proofScan 2.6s infinite;
+    }
+
+    @keyframes proofScan {
+      0% { left: -120%; }
+      100% { left: 120%; }
+    }
+
+    .proof-line {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(143,92,255,.9), rgba(92,226,255,.9));
+      margin-bottom: 8px;
+      opacity: .9;
+    }
+
+    .proof-line.small {
+      width: 62%;
+      opacity: .75;
+    }
+
+    .proof-label {
+      font-size: 12px;
+      color: #c8c2e4;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-weight: 700;
+    }
+
+    .proof-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #f6f2ff;
+      line-height: 1.35;
     }
 
     .trust {
@@ -844,13 +928,15 @@
       .hero h1 { max-width: 18ch; }
       .comparison-two-col,
       .features-grid,
-      .audience-grid { grid-template-columns: 1fr; }
+      .audience-grid,
+      .proof-grid { grid-template-columns: 1fr; }
       .trust-list { grid-template-columns: 1fr 1fr; }
       .feature h3 { font-size: 17px; }
       .typewriter { white-space: normal; border-right: none; animation: none; }
       .hero-copy { padding: 22px 18px; }
       .hero-card { min-height: auto; padding: 22px; }
       .flow-item { min-height: 64px; font-size: 14px; }
+      .proof-card { min-height: 150px; }
     }
 
     @media (max-width: 680px) {
@@ -880,9 +966,9 @@
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="badge">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
-        <h1>DÀNH THỜI GIAN CHO VIỆC <span class="gradient-text">TẠO RA DOANH THU</span>, KHÔNG PHẢI LẶP LẠI CÔNG VIỆC</h1>
+        <h1>LÀM VIỆC THÔNG MINH HƠN VỚI <span class="gradient-text">MAKE FREE</span></h1>
         <p>
-          Make.com giúp anh em kết nối Facebook, Gmail, Google Sheets, Notion và nhiều ứng dụng khác bằng thao tác kéo thả trực quan. Không cần code, không cần team kỹ thuật riêng, vẫn xây được quy trình tự động chạy mượt.
+          Đừng chờ đủ giỏi mới làm automation. Anh em chỉ cần kéo thả vài bước là đã có một luồng chạy tự động, gọn việc và đỡ mệt ngay từ tuần đầu.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu miễn phí với Make</a>
@@ -898,11 +984,41 @@
 
       <div class="hero-card" aria-label="Giá trị chính">
         <div class="flow">
-          <div class="flow-item"><span>01 • TỐI ƯU THỜI GIAN CHO VIỆC QUAN TRỌNG HƠN</span><span class="pill">Hiệu quả</span></div>
-          <div class="flow-item"><span>02 • GIẢM LỖI THAO TÁC TAY KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
-          <div class="flow-item"><span>03 • QUY TRÌNH GỌN, DỄ CHUYỂN GIAO CHO TEAM</span><span class="pill">Rõ ràng</span></div>
-          <div class="flow-item"><span>04 • DỄ NÂNG CẤP KHI KHỐI LƯỢNG CÔNG VIỆC TĂNG</span><span class="pill">Mở rộng</span></div>
-          <div class="flow-item"><span>05 • KHÔNG CẦN CODE VẪN LÀM AUTOMATION BÀI BẢN</span><span class="pill">No-code</span></div>
+          <div class="flow-item"><span>01 • TIẾT KIỆM 5 GIỜ/TUẦN CHO VIỆC QUAN TRỌNG</span><span class="pill">Hiệu quả</span></div>
+          <div class="flow-item"><span>02 • GIẢM 90% SAI SÓT KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
+          <div class="flow-item"><span>03 • CHỈ CẦN NHÌN LÀ HIỂU LUÔNG CHẠY</span><span class="pill">Rõ ràng</span></div>
+          <div class="flow-item"><span>04 • TĂNG GẤP 3 LẦN KHỐI LƯỢNG CÔNG VIỆC</span><span class="pill">Mở rộng</span></div>
+          <div class="flow-item"><span>05 • KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</span><span class="pill">No-code</span></div>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof-card">
+            <div class="proof-shot">
+              <div class="proof-line" style="width: 100%"></div>
+              <div class="proof-line small"></div>
+              <div class="proof-line" style="width: 82%"></div>
+            </div>
+            <div class="proof-label">Kéo thả trực quan</div>
+            <div class="proof-title">Chỉ cần kéo là xong, không cần code</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-shot">
+              <div class="proof-line" style="width: 78%"></div>
+              <div class="proof-line" style="width: 100%"></div>
+              <div class="proof-line small"></div>
+            </div>
+            <div class="proof-label">Kết nối 3000+ app</div>
+            <div class="proof-title">Facebook, Gmail, Notion, Google...</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-shot">
+              <div class="proof-line" style="width: 100%"></div>
+              <div class="proof-line" style="width: 64%"></div>
+              <div class="proof-line" style="width: 100%"></div>
+            </div>
+            <div class="proof-label">Chạy tự động</div>
+            <div class="proof-title">Luồng chạy 24/7, không cần can thiệp</div>
+          </div>
         </div>
       </div>
     </div>
