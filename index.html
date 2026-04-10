@@ -170,35 +170,53 @@
     }
 
     .hero-copy {
-      border: 1px solid rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.15);
       border-radius: 22px;
-      background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
-      padding: 26px 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      padding: 28px 26px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 2px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -25%;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,226,255,.22), transparent 70%);
+      pointer-events: none;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: clamp(36px, 5.2vw, 62px);
       margin: 16px 0 16px;
       max-width: 13ch;
+      line-height: 1.18;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #d8c9ff 0%, #9acbff 40%, #7ff0ff 80%);
+      background: linear-gradient(135deg, #ffd966, #ffb76b 20%, #ff9494 40%, #a4d7ff 60%, #c9b3ff 80%, #d8c9ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(255,217,102,.28);
     }
 
     .hero p {
       color: var(--text-soft);
       max-width: 62ch;
-      font-size: 18px;
-      margin-bottom: 26px;
+      font-size: 19px;
+      margin-bottom: 24px;
+      line-height: 1.58;
     }
 
     .hero-actions {
@@ -207,10 +225,28 @@
       flex-wrap: wrap;
     }
 
+    .hero .btn-primary {
+      font-size: 17px;
+      padding: 15px 24px;
+      animation: glowCta 2.2s ease-in-out infinite;
+    }
+
+    @keyframes glowCta {
+      0%, 100% { box-shadow: 0 12px 30px rgba(92,226,255,.28); }
+      50% { box-shadow: 0 18px 44px rgba(143,92,255,.42); }
+    }
+
+    .hero .btn-ghost {
+      font-size: 15px;
+      padding: 14px 18px;
+      border-color: rgba(255,255,255,.22);
+    }
+
     .mini-note {
       margin-top: 10px;
-      color: #c4bde2;
-      font-size: 13px;
+      color: #d7d1ef;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .hero-scroll {
@@ -267,16 +303,36 @@
     }
 
     .flow-item {
-      border: 1px solid rgba(143,92,255,.30);
+      border: 1px solid rgba(143,92,255,.35);
       border-radius: 12px;
-      background: linear-gradient(120deg, rgba(16,14,30,.88), rgba(24,20,45,.78));
-      padding: 13px 14px;
+      background: linear-gradient(120deg, rgba(16,14,30,.92), rgba(24,20,45,.82));
+      padding: 14px 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
-      color: #f2efff;
+      font-size: 14.5px;
+      color: #f5f2ff;
       gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(92,226,255,.14), transparent);
+      transform: translateX(-100%);
+      animation: shimmerFlow 2.8s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmerFlow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     .pill {
@@ -793,7 +849,7 @@
           <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu miễn phí với Make</a>
           <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
-        <p class="mini-note">Không cần biết code, không cần đội kỹ thuật riêng. Anh em có thể bắt đầu với một luồng tự động đầu tiên ngay trong hôm nay.</p>
+        <p class="mini-note">Ưu tiên cho anh em mới: vào Free trước, chạy thử luồng thật, chưa cần bỏ tiền vẫn thấy kết quả.</p>
         <div class="hero-scroll">
           <span class="hero-scroll-dot"></span>
           <span>Kéo xuống để khám phá chi tiết</span>
@@ -803,11 +859,11 @@
 
       <div class="hero-card" aria-label="Giá trị chính">
         <div class="flow">
-          <div class="flow-item"><span>Tối ưu thời gian cho việc quan trọng hơn</span><span class="pill">Hiệu quả</span></div>
-          <div class="flow-item"><span>Giảm lỗi thao tác tay khi xử lý dữ liệu</span><span class="pill">Ổn định</span></div>
-          <div class="flow-item"><span>Quy trình gọn, dễ chuyển giao cho team</span><span class="pill">Rõ ràng</span></div>
-          <div class="flow-item"><span>Dễ nâng cấp khi khối lượng công việc tăng</span><span class="pill">Mở rộng</span></div>
-          <div class="flow-item"><span>Không cần code vẫn làm automation bài bản</span><span class="pill">No-code</span></div>
+          <div class="flow-item"><span>TỐI ƯU THỜI GIAN CHO VIỆC QUAN TRỌNG HƠN</span><span class="pill">Hiệu quả</span></div>
+          <div class="flow-item"><span>GIẢM LỖI THAO TÁC TAY KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
+          <div class="flow-item"><span>QUY TRÌNH GỌN, DỄ CHUYỂN GIAO CHO TEAM</span><span class="pill">Rõ ràng</span></div>
+          <div class="flow-item"><span>DỄ NÂNG CẤP KHI KHỐI LƯỢNG CÔNG VIỆC TĂNG</span><span class="pill">Mở rộng</span></div>
+          <div class="flow-item"><span>KHÔNG CẦN CODE VẪN LÀM AUTOMATION BÀI BẢN</span><span class="pill">No-code</span></div>
         </div>
       </div>
     </div>
