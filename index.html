@@ -132,6 +132,50 @@
 
     .disclosure-wrap { padding-top: 20px; }
 
+    .brand-strip {
+      width: min(980px, 100%);
+      margin: 0 auto 12px;
+      border: 1px solid rgba(143,92,255,.35);
+      background: linear-gradient(135deg, rgba(143,92,255,.15), rgba(92,226,255,.12));
+      color: #f4f1ff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-make {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .brand-logo-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #8f5cff, #5ce2ff);
+      box-shadow: 0 0 14px rgba(92,226,255,.45);
+    }
+
+    .brand-template-link {
+      font-size: 13px;
+      color: #dff5ff;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.06);
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
     .disclosure {
       width: min(980px, 100%);
       margin: 0 auto;
@@ -200,6 +244,106 @@
       margin: 16px 0 16px;
       max-width: 13ch;
       line-height: 1.18;
+    }
+
+    .templates-section {
+      padding-top: 42px;
+      padding-bottom: 28px;
+    }
+
+    .section-head.templates {
+      margin-bottom: 28px;
+    }
+
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .template-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(155deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding: 18px;
+      transition: transform .2s ease, border-color .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .template-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(143,92,255,.12), transparent);
+      animation: templateShine 2.8s infinite;
+    }
+
+    @keyframes templateShine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .template-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(143,92,255,.56);
+    }
+
+    .template-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
+      border: 1px solid rgba(255,255,255,.15);
+      font-size: 16px;
+    }
+
+    .template-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f0ecff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .template-desc {
+      font-size: 13.5px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .template-stats {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: #b9b3d4;
+    }
+
+    .template-stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .template-used {
+      color: #78e9ff;
+    }
+
+    .template-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: #8f5cff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
     .gradient-text {
@@ -929,7 +1073,8 @@
       .comparison-two-col,
       .features-grid,
       .audience-grid,
-      .proof-grid { grid-template-columns: 1fr; }
+      .proof-grid,
+      .templates-grid { grid-template-columns: 1fr; }
       .trust-list { grid-template-columns: 1fr 1fr; }
       .feature h3 { font-size: 17px; }
       .typewriter { white-space: normal; border-right: none; animation: none; }
@@ -957,6 +1102,13 @@
 </head>
 <body>
   <div class="container disclosure-wrap">
+    <div class="brand-strip">
+      <div class="brand-make">
+        <span class="brand-logo-dot"></span>
+        <span>MAKE.COM</span>
+      </div>
+      <a class="brand-template-link" href="https://www.make.com/en/templates" target="_blank" rel="noopener">XEM THƯ VIỆN 8000+ TEMPLATE</a>
+    </div>
     <div class="disclosure">
       Minh bạch affiliate: Trang này có chứa liên kết tiếp thị liên kết. Nếu anh em đăng ký qua link này, mình có thể nhận một khoản hoa hồng nhỏ và anh em không mất thêm chi phí nào. Mình chỉ giới thiệu công cụ thật sự hữu ích cho anh em muốn làm tự động hóa.
     </div>
@@ -1029,6 +1181,50 @@
         <div class="trust-item"><span>🔌 KẾT NỐI <strong class="counter" data-target="3000">0</strong>+ ỨNG DỤNG</span></div>
         <div class="trust-item"><span>🧩 GIAO DIỆN KÉO THẢ DỄ HIỂU</span></div>
         <div class="trust-item"><span>💸 GÓI FREE DỄ BẮT ĐẦU</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="templates-section">
+    <div class="container">
+      <div class="section-head templates">
+        <h2>BẮT ĐẦU NHANH VỚI TEMPLATE CÓ SẴN</h2>
+        <p>Không cần nghĩ từ đầu. Chọn mẫu, sửa nhẹ theo nhu cầu, bật chạy là có kết quả.</p>
+      </div>
+
+      <div class="templates-grid">
+        <article class="template-card">
+          <div class="template-icon">📊</div>
+          <div class="template-title">TỰ ĐỘNG ĐẨY LEAD VÀO GOOGLE SHEETS</div>
+          <div class="template-desc">Phù hợp cho anh em chạy quảng cáo và cần gom lead về một chỗ để xử lý nhanh.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 Rất phổ biến</span>
+            <span class="template-stat">⚡ Setup nhanh</span>
+          </div>
+          <a class="template-link" href="https://www.make.com/en/templates" target="_blank" rel="noopener">Xem template liên quan</a>
+        </article>
+
+        <article class="template-card">
+          <div class="template-icon">🤖</div>
+          <div class="template-title">CHATGPT + TELEGRAM TRẢ LỜI TỰ ĐỘNG</div>
+          <div class="template-desc">Dùng mẫu có sẵn để triển khai chatbot hỗ trợ khách mà không cần viết code.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">💡 Dễ viral</span>
+            <span class="template-stat">🚀 Dùng ngay</span>
+          </div>
+          <a class="template-link" href="https://www.make.com/en/templates" target="_blank" rel="noopener">Xem template liên quan</a>
+        </article>
+
+        <article class="template-card">
+          <div class="template-icon">🧾</div>
+          <div class="template-title">WEBHOOK ĐỔ DỮ LIỆU VỀ SHEET TỰ ĐỘNG</div>
+          <div class="template-desc">Rất hợp cho anh em cần thu dữ liệu form hoặc đơn hàng theo thời gian thực.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">✅ Dễ áp dụng</span>
+            <span class="template-stat">⏱ Tiết kiệm thời gian</span>
+          </div>
+          <a class="template-link" href="https://www.make.com/en/templates" target="_blank" rel="noopener">Xem template liên quan</a>
+        </article>
       </div>
     </div>
   </section>
