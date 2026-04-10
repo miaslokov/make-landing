@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Make.com cho người làm no-code: Tự động hóa kéo thả, giảm việc tay mỗi ngày</title>
-  <meta name="description" content="Make.com giúp bạn tự động hóa quy trình bằng kéo thả, không cần code. Kết nối app, giảm việc lặp lại và mở rộng vận hành với chi phí dễ bắt đầu." />
+  <title>MAKE.COM CHO ANH EM NO-CODE: TỰ ĐỘNG HÓA KÉO THẢ, GỌN VIỆC MỖI NGÀY</title>
+  <meta name="description" content="Landing page Make.com cho anh em muốn tự động hóa no-code: giao diện kéo thả, so sánh Make và Zapier rõ ràng, bảng giá nhiều gói minh bạch." />
   <style>
     :root {
       --bg: #07060d;
       --bg-soft: #100d1f;
       --surface: rgba(255, 255, 255, 0.05);
       --surface-strong: rgba(255, 255, 255, 0.09);
-      --text: #f7f6ff;
-      --text-soft: #c7c3de;
+      --text: #f8f7ff;
+      --text-soft: #cac5e6;
       --primary: #8f5cff;
       --primary-2: #5ce2ff;
       --accent: #ff5fa2;
-      --ok: #48e5a9;
-      --border: rgba(255, 255, 255, 0.14);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --ok: #47e7aa;
+      --warn: #ffd166;
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
       --radius-xl: 28px;
       --radius-lg: 18px;
       --radius-md: 14px;
@@ -28,44 +29,74 @@
 
     html, body {
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 8% -10%, rgba(143,92,255,.20), transparent 60%),
-        radial-gradient(900px 500px at 95% 10%, rgba(92,226,255,.12), transparent 60%),
-        linear-gradient(180deg, #090811 0%, #07060d 40%, #05040b 100%);
       color: var(--text);
       line-height: 1.6;
       scroll-behavior: smooth;
+      background:
+        radial-gradient(1200px 700px at 10% -20%, rgba(143,92,255,.25), transparent 62%),
+        radial-gradient(900px 560px at 100% 10%, rgba(92,226,255,.16), transparent 58%),
+        radial-gradient(700px 400px at 50% 130%, rgba(255,95,162,.12), transparent 72%),
+        linear-gradient(180deg, #090811 0%, #07060d 35%, #06040e 100%);
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1140px, 92%);
       margin: 0 auto;
     }
 
     section { padding: 84px 0; }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #f0eaff;
-      background: linear-gradient(135deg, rgba(143,92,255,0.35), rgba(92,226,255,0.25));
-      border: 1px solid rgba(143,92,255,0.45);
-      border-radius: 999px;
-      padding: 10px 20px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba(143,92,255,0.15);
-      animation: pulse 3s infinite;
+    h1, h2, h3 {
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      line-height: 1.2;
     }
 
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 4px 12px rgba(143,92,255,0.15); }
-      50% { box-shadow: 0 6px 16px rgba(143,92,255,0.25); }
+    .glass {
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 800;
+      color: #f8f4ff;
+      border: 1px solid rgba(255,255,255,.24);
+      background: linear-gradient(120deg, rgba(143,92,255,.40), rgba(92,226,255,.28), rgba(255,95,162,.26));
+      border-radius: 999px;
+      padding: 13px 24px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 12px 34px rgba(143,92,255,.30);
+      overflow: hidden;
+      isolation: isolate;
+      animation: badgePulse 2.8s ease-in-out infinite;
+    }
+
+    .badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 10%, rgba(255,255,255,.25) 50%, transparent 90%);
+      transform: translateX(-120%);
+      animation: shine 3.8s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 12px 34px rgba(143,92,255,.30); }
+      50% { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(92,226,255,.32); }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      45%, 100% { transform: translateX(120%); }
     }
 
     .btn {
@@ -75,21 +106,23 @@
       gap: 10px;
       border: 0;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 16px;
       border-radius: 12px;
       padding: 14px 22px;
       transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
       text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .02em;
     }
 
     .btn-primary {
       color: #0d0520;
       background: linear-gradient(135deg, #b697ff, #78e9ff 55%, #5ce2ff);
-      box-shadow: 0 12px 30px rgba(92,226,255,.25);
+      box-shadow: 0 12px 30px rgba(92,226,255,.28);
     }
 
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(143,92,255,.35); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(143,92,255,.38); }
 
     .btn-ghost {
       color: var(--text);
@@ -100,11 +133,11 @@
     .disclosure-wrap { padding-top: 20px; }
 
     .disclosure {
-      width: min(920px, 100%);
+      width: min(980px, 100%);
       margin: 0 auto;
       border: 1px solid rgba(143,92,255,.35);
-      background: linear-gradient(135deg, rgba(143,92,255,.12), rgba(92,226,255,.08));
-      color: #e8e5fa;
+      background: linear-gradient(135deg, rgba(143,92,255,.12), rgba(92,226,255,.10));
+      color: #eee9ff;
       border-radius: 12px;
       padding: 14px 16px;
       font-size: 13px;
@@ -118,16 +151,14 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 38px;
+      grid-template-columns: 1.07fr .93fr;
+      gap: 34px;
       align-items: center;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin: 18px 0 16px;
+      font-size: clamp(34px, 5vw, 58px);
+      margin: 16px 0 16px;
       max-width: 14ch;
     }
 
@@ -140,7 +171,7 @@
 
     .hero p {
       color: var(--text-soft);
-      max-width: 58ch;
+      max-width: 62ch;
       font-size: 18px;
       margin-bottom: 26px;
     }
@@ -153,7 +184,7 @@
 
     .mini-note {
       margin-top: 10px;
-      color: #bdb7d8;
+      color: #c4bde2;
       font-size: 13px;
     }
 
@@ -184,7 +215,7 @@
     }
 
     .flow-item {
-      border: 1px solid rgba(143,92,255,.28);
+      border: 1px solid rgba(143,92,255,.30);
       border-radius: 12px;
       background: linear-gradient(120deg, rgba(16,14,30,.88), rgba(24,20,45,.78));
       padding: 13px 14px;
@@ -193,6 +224,7 @@
       align-items: center;
       font-size: 14px;
       color: #f2efff;
+      gap: 10px;
     }
 
     .pill {
@@ -203,6 +235,8 @@
       border-radius: 999px;
       padding: 4px 9px;
       white-space: nowrap;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .trust {
@@ -214,22 +248,28 @@
     }
 
     .trust-list {
-      min-height: 84px;
+      min-height: 96px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       align-items: center;
       text-align: center;
       color: #f0eaff;
       font-size: 15px;
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
+      font-weight: 700;
+      padding: 12px 0;
     }
 
     .trust-item {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      background: rgba(8,6,16,.26);
+      min-height: 64px;
+      display: grid;
+      place-items: center;
       position: relative;
-      isolation: isolate;
+      overflow: hidden;
+      padding: 8px 10px;
     }
 
     .trust-item::before {
@@ -239,10 +279,10 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(143,92,255,.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(143,92,255,.22), transparent);
       transform: translateX(-100%);
       animation: shimmer 2.2s infinite;
-      z-index: -1;
+      z-index: 0;
     }
 
     @keyframes shimmer {
@@ -250,38 +290,30 @@
       100% { transform: translateX(100%); }
     }
 
-    .trust-item span {
+    .trust-item > span { position: relative; z-index: 1; }
+
+    .counter {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffec8b;
       display: inline-block;
-      animation: float 3s ease-in-out infinite;
+      min-width: 56px;
+      text-align: right;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid rgba(183,151,255,.8);
+      animation: typing 3.2s steps(36, end), blink-caret .75s step-end infinite;
+      max-width: 100%;
     }
 
-    .trust-item:nth-child(2n)::before {
-      animation-delay: .6s;
-    }
-
-    .trust-item:nth-child(3n)::before {
-      animation-delay: 1.2s;
-    }
-
-    .trust-item:nth-child(4n)::before {
-      animation-delay: 1.8s;
-    }
-
-    .trust-item:nth-child(2n) span {
-      animation-delay: .2s;
-    }
-
-    .trust-item:nth-child(3n) span {
-      animation-delay: .4s;
-    }
-
-    .trust-item:nth-child(4n) span {
-      animation-delay: .6s;
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: rgba(183,151,255,.9); }
     }
 
     .section-head {
@@ -291,142 +323,221 @@
 
     .section-head h2 {
       font-size: clamp(30px, 4.2vw, 48px);
-      line-height: 1.15;
       margin-bottom: 12px;
-      letter-spacing: -0.02em;
       background: linear-gradient(135deg, #b697ff, #78e9ff 40%, #5ce2ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .section-head p {
       color: var(--text-soft);
-      width: min(720px, 94%);
+      width: min(760px, 94%);
       margin: 0 auto;
     }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      width: min(980px, 100%);
+      margin: 0 auto;
     }
 
     .feature {
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      padding: 20px;
       transition: transform .2s ease, border-color .2s ease;
     }
 
     .feature:hover {
       transform: translateY(-2px);
-      border-color: rgba(143,92,255,.55);
+      border-color: rgba(143,92,255,.56);
+    }
+
+    .feature-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      min-height: 48px;
     }
 
     .feature .icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       display: grid;
       place-items: center;
-      margin-bottom: 14px;
       background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
       border: 1px solid rgba(255,255,255,.15);
       font-size: 20px;
+      flex: 0 0 auto;
     }
 
     .feature h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
+      font-size: clamp(15px, 2vw, 20px);
+      margin: 0;
+      line-height: 1.3;
     }
 
     .feature p {
       color: var(--text-soft);
       font-size: 15px;
+      margin: 0;
     }
 
-    .comparison-wrap {
-      margin-top: 30px;
+    .comparison-two-col {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .compare-card {
       border: 1px solid var(--border);
       border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255,255,255,.03);
-    }
-
-    .comparison-head,
-    .comparison-row {
-      display: grid;
-      grid-template-columns: 1.2fr .9fr .9fr;
-      gap: 10px;
-      align-items: center;
-      padding: 14px 16px;
-    }
-
-    .comparison-head {
-      background: linear-gradient(135deg, rgba(143,92,255,.3), rgba(92,226,255,.22));
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .comparison-row {
-      border-top: 1px solid rgba(255,255,255,.09);
-      font-size: 14px;
-      color: #e3e0f6;
-      background: linear-gradient(90deg, rgba(255,255,255,.01), rgba(143,92,255,.04));
-    }
-
-    .comparison-row strong { color: #d7eefe; }
-
-    .check { color: var(--ok); font-weight: 700; }
-
-    .pricing-card {
-      width: min(760px, 100%);
-      margin: 0 auto;
-      border: 1px solid var(--border);
-      background: linear-gradient(155deg, rgba(143,92,255,.16), rgba(92,226,255,.08) 50%, rgba(255,255,255,.04));
-      border-radius: 20px;
-      padding: 34px 24px;
-      text-align: center;
+      background: rgba(255,255,255,.04);
+      padding: 20px;
+      min-height: 100%;
       box-shadow: var(--shadow);
     }
 
-    .pricing-card .price {
-      font-size: clamp(46px, 7vw, 70px);
-      line-height: 1;
-      font-weight: 800;
-      margin: 16px 0 8px;
-      letter-spacing: -0.03em;
+    .compare-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
     }
 
-    .pricing-card p { color: #e1ddf7; }
+    .make-card h3 {
+      color: #d8c8ff;
+      text-shadow: 0 0 14px rgba(143,92,255,.35);
+    }
 
-    .pricing-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .zapier-card h3 {
+      color: #ffd9c7;
+      text-shadow: 0 0 14px rgba(255,132,90,.30);
+    }
+
+    .compare-list {
+      list-style: none;
+      display: grid;
       gap: 10px;
-      margin: 18px 0 26px;
     }
 
-    .pricing-list span {
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(255,255,255,.05);
-      border-radius: 999px;
-      padding: 7px 12px;
+    .compare-list li {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: #ece9ff;
+      font-size: 14px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .compare-list li strong { color: #fff; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .plan {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.06), transparent);
+      transform: translateX(-120%);
+      animation: shimmer 3s infinite;
+      pointer-events: none;
+    }
+
+    .plan-name {
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #efe9ff;
+    }
+
+    .plan-price {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .plan-sub {
+      font-size: 12px;
+      color: #c9c3e4;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .plan ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 2px;
       font-size: 13px;
-      color: #efeefe;
+      color: #dfdaf3;
+    }
+
+    .plan ul li {
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 9px;
+      padding: 7px 8px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .plan-free {
+      border: 2px solid rgba(255, 209, 102, .86);
+      background: linear-gradient(165deg, rgba(255,209,102,.20), rgba(143,92,255,.14), rgba(92,226,255,.10));
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(255,209,102,.20);
+    }
+
+    .plan-tag {
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.08);
+      letter-spacing: .04em;
+    }
+
+    .pricing-note {
+      margin-top: 14px;
+      color: #cfc9eb;
+      font-size: 13px;
+      text-align: center;
     }
 
     .testimonial {
-      width: min(860px, 100%);
+      width: min(920px, 100%);
       margin: 0 auto;
       border: 1px solid var(--border);
       border-radius: 20px;
       background: rgba(255,255,255,.04);
-      padding: 28px 24px;
+      padding: 30px 24px;
       box-shadow: var(--shadow);
       position: relative;
     }
@@ -455,26 +566,43 @@
       font-style: normal;
       font-size: 14px;
       padding-left: 12px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
     }
 
     .audience-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      width: min(840px, 100%);
+      width: min(900px, 100%);
       margin: 0 auto;
     }
 
     .audience-item {
       border: 1px solid var(--border);
       border-radius: 14px;
-      background: rgba(255,255,255,.03);
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
       padding: 14px 15px;
       color: #ece9ff;
       font-size: 15px;
       display: flex;
       gap: 10px;
       align-items: flex-start;
+      position: relative;
+    }
+
+    .audience-item::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(92,226,255,.8), transparent);
+      animation: pulseLine 2.8s infinite;
+    }
+
+    @keyframes pulseLine {
+      0%, 100% { opacity: .35; }
+      50% { opacity: 1; }
     }
 
     .audience-item .dot {
@@ -488,7 +616,7 @@
     }
 
     .faq-wrap {
-      width: min(860px, 100%);
+      width: min(900px, 100%);
       margin: 0 auto;
       display: grid;
       gap: 12px;
@@ -498,19 +626,21 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 12px;
-      padding: 16px 16px;
+      padding: 16px;
     }
 
     .faq-item summary {
       list-style: none;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
       color: #f1efff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      font-size: 16px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: .02em;
     }
 
     .faq-item summary::-webkit-details-marker { display: none; }
@@ -534,21 +664,17 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       text-align: center;
-      background:
-        radial-gradient(500px 220px at 50% 0%, rgba(143,92,255,.2), transparent 70%),
-        rgba(255,255,255,.02);
+      background: radial-gradient(500px 220px at 50% 0%, rgba(143,92,255,.2), transparent 70%), rgba(255,255,255,.02);
     }
 
     .final-cta h2 {
       font-size: clamp(30px, 4.5vw, 50px);
-      line-height: 1.14;
-      letter-spacing: -0.02em;
       margin-bottom: 14px;
     }
 
     .final-cta p {
       color: #d5d0ec;
-      width: min(700px, 94%);
+      width: min(760px, 94%);
       margin: 0 auto 22px;
       font-size: 18px;
     }
@@ -562,18 +688,20 @@
 
     .footer a { color: #c9bcff; }
 
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 980px) {
       section { padding: 68px 0; }
       .hero-grid { grid-template-columns: 1fr; }
       .hero h1 { max-width: 18ch; }
-      .trust-list { grid-template-columns: repeat(2, 1fr); row-gap: 14px; padding: 14px 0; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .comparison-head,
-      .comparison-row { grid-template-columns: 1fr; gap: 4px; }
-      .comparison-head div:not(:first-child),
-      .comparison-row div:not(:first-child) { color: #d2d1ea; font-size: 13px; }
-      .comparison-head div:first-child,
-      .comparison-row div:first-child { font-weight: 700; }
+      .comparison-two-col,
+      .features-grid,
+      .audience-grid { grid-template-columns: 1fr; }
+      .trust-list { grid-template-columns: 1fr 1fr; }
+      .feature h3 { font-size: 17px; }
+      .typewriter { white-space: normal; border-right: none; animation: none; }
     }
 
     @media (max-width: 680px) {
@@ -582,10 +710,10 @@
       .hero p { font-size: 16px; }
       .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
-      .features-grid,
-      .audience-grid { grid-template-columns: 1fr; }
       .trust-list { grid-template-columns: 1fr; }
-      .feature, .hero-card, .pricing-card, .testimonial, .faq-item { border-radius: 14px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .plan-free { transform: none; }
+      .feature, .hero-card, .testimonial, .faq-item, .compare-card { border-radius: 14px; }
       .testimonial blockquote { font-size: 18px; }
       .final-cta p { font-size: 16px; }
     }
@@ -602,15 +730,13 @@
     <div class="container hero-grid">
       <div>
         <span class="badge">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
-        <h1>
-          Dành thời gian cho việc <span class="gradient-text">tạo ra doanh thu</span>, không phải lặp lại công việc
-        </h1>
+        <h1>DÀNH THỜI GIAN CHO VIỆC <span class="gradient-text">TẠO RA DOANH THU</span>, KHÔNG PHẢI LẶP LẠI CÔNG VIỆC</h1>
         <p>
           Make.com giúp anh em kết nối Facebook, Gmail, Google Sheets, Notion và nhiều ứng dụng khác bằng thao tác kéo thả trực quan. Không cần code, không cần team kỹ thuật riêng, vẫn xây được quy trình tự động chạy mượt.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu miễn phí với Make 🚀</a>
-          <a class="btn btn-ghost" href="#faq">Xem nhanh trước khi đăng ký</a>
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu miễn phí với Make</a>
+          <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
         <p class="mini-note">Không cần biết code, không cần đội kỹ thuật riêng. Anh em có thể bắt đầu với một luồng tự động đầu tiên ngay trong hôm nay.</p>
       </div>
@@ -628,10 +754,10 @@
 
     <div class="trust">
       <div class="container trust-list">
-        <div class="trust-item"><span>⭐ Được anh em tin dùng toàn cầu</span></div>
-        <div class="trust-item"><span>🔌 Kết nối 1,000+ ứng dụng phổ biến</span></div>
-        <div class="trust-item"><span>🧩 Giao diện kéo thả dễ hiểu</span></div>
-        <div class="trust-item"><span>💸 Dễ bắt đầu với gói Free</span></div>
+        <div class="trust-item"><span class="typewriter">⭐ Được anh em tin dùng toàn cầu</span></div>
+        <div class="trust-item"><span>🔌 KẾT NỐI <strong class="counter" data-target="3000">0</strong>+ ỨNG DỤNG</span></div>
+        <div class="trust-item"><span>🧩 GIAO DIỆN KÉO THẢ DỄ HIỂU</span></div>
+        <div class="trust-item"><span>💸 GÓI FREE DỄ BẮT ĐẦU</span></div>
       </div>
     </div>
   </section>
@@ -639,95 +765,140 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Make.com khác biệt như thế nào?</h2>
+        <h2>SỰ KHÁC BIỆT CỦA MAKE.COM</h2>
         <p>Không chỉ là công cụ automation, Make còn là cách anh em giải phóng thời gian khỏi việc lặp lại để tập trung vào việc tạo ra giá trị thật sự.</p>
       </div>
 
       <div class="features-grid">
         <article class="feature">
-          <div class="icon">🎯</div>
-          <h3>Nhìn toàn cảnh luồng xử lý</h3>
-          <p>Make cho anh em nhìn rõ từng bước trong một sơ đồ trực quan. Dễ debug, dễ sửa, dễ bàn giao lại cho người khác trong team.</p>
+          <div class="feature-head">
+            <div class="icon">🎯</div>
+            <h3>NHÌN TOÀN CẢNH LUỒNG XỬ LÝ</h3>
+          </div>
+          <p>Make cho anh em nhìn rõ từng bước trong một sơ đồ trực quan. Dễ debug, dễ sửa và dễ bàn giao lại cho người khác trong team.</p>
         </article>
 
         <article class="feature">
-          <div class="icon">🧠</div>
-          <h3>Logic sâu nhưng vẫn dễ dùng</h3>
+          <div class="feature-head">
+            <div class="icon">🧠</div>
+            <h3>LOGIC SÂU NHƯNG VẪN DỄ DÙNG</h3>
+          </div>
           <p>Từ nhánh điều kiện, map dữ liệu, lặp batch đến lọc dữ liệu đều làm ngay trong giao diện kéo thả, không cần chạm code.</p>
         </article>
 
         <article class="feature">
-          <div class="icon">🔗</div>
-          <h3>Kết nối thật sự rộng</h3>
-          <p>Không chỉ nối app cơ bản, Make còn xử lý tốt các luồng nhiều hệ thống: CRM, marketing, vận hành, chăm khách hàng.</p>
+          <div class="feature-head">
+            <div class="icon">🔗</div>
+            <h3>KẾT NỐI THẬT SỰ RỘNG</h3>
+          </div>
+          <p>Không chỉ nối app cơ bản, Make còn xử lý tốt các luồng nhiều hệ thống từ CRM, marketing, vận hành đến chăm khách hàng.</p>
         </article>
 
         <article class="feature">
-          <div class="icon">⚡</div>
-          <h3>Tốc độ xử lý thực chiến</h3>
-          <p>Khi có dữ liệu mới, workflow có thể chạy ngay để giảm độ trễ xử lý và giúp anh em phản hồi khách nhanh hơn đáng kể.</p>
-        </article>
-
-        <article class="feature">
-          <div class="icon">💼</div>
-          <h3>Scale theo nhịp tăng trưởng</h3>
-          <p>Bắt đầu nhỏ để kiểm chứng, sau đó mở rộng dần theo nhu cầu thực tế mà không phải thay nền tảng ngay từ đầu.</p>
-        </article>
-
-        <article class="feature">
-          <div class="icon">🔐</div>
-          <h3>Kiểm soát và minh bạch</h3>
+          <div class="feature-head">
+            <div class="icon">🔐</div>
+            <h3>KIỂM SOÁT VÀ MINH BẠCH</h3>
+          </div>
           <p>Mỗi bước chạy đều có log rõ ràng, giúp anh em biết chính xác luồng nào ổn, luồng nào lỗi để xử lý nhanh và an toàn.</p>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="comparison-wrap" aria-label="So sánh rõ ràng Make với Zapier">
-        <div class="comparison-head">
-          <div>Tiêu chí quan trọng</div>
-          <div>Make.com</div>
-          <div>Zapier</div>
-        </div>
-        <div class="comparison-row">
-          <div>Khả năng nhìn toàn bộ quy trình</div>
-          <div><span class="check">✅ Hiển thị dạng sơ đồ trực quan, dễ nắm toàn cục</span></div>
-          <div>⚪ Chủ yếu theo danh sách step, khó thấy tổng thể khi flow lớn</div>
-        </div>
-        <div class="comparison-row">
-          <div>Xử lý logic nâng cao</div>
-          <div><span class="check">✅ Mạnh về router, filter, mapping dữ liệu phức tạp</span></div>
-          <div>⚪ Làm được, nhưng càng nhiều nhánh càng dễ đội chi phí</div>
-        </div>
-        <div class="comparison-row">
-          <div>Tối ưu cho người làm no-code</div>
-          <div><span class="check">✅ Dễ thiết kế, dễ debug, dễ tối ưu</span></div>
-          <div>⚪ Dễ bắt đầu nhanh, nhưng khó quản trị khi quy trình dài</div>
-        </div>
-        <div class="comparison-row">
-          <div>Chi phí khởi động</div>
-          <div><span class="check">✅ Có gói Free đủ dùng để test bài toán thật</span></div>
-          <div>⚪ Có free nhưng hạn mức thấp hơn cho nhiều trường hợp</div>
-        </div>
+  <section id="comparison">
+    <div class="container">
+      <div class="section-head">
+        <h2>MAKE.COM VÀ ZAPIER: VÌ SAO NÊN CHỌN MAKE</h2>
+        <p>So sánh dạng 2 cột để anh em nhìn nhanh điểm mạnh thật sự khi bắt đầu và khi scale quy trình tự động hóa.</p>
+      </div>
+
+      <div class="comparison-two-col">
+        <article class="compare-card make-card">
+          <h3>MAKE.COM</h3>
+          <ul class="compare-list">
+            <li><strong>Giao diện:</strong> Dạng sơ đồ trực quan, nhìn được toàn bộ quy trình trong một màn hình.</li>
+            <li><strong>Logic:</strong> Mạnh ở router, filter, mapping dữ liệu phức tạp.</li>
+            <li><strong>No-code:</strong> Dễ debug và tối ưu luồng khi quy trình dài.</li>
+            <li><strong>Chi phí:</strong> Có gói Free đủ test bài toán thật trước khi nâng cấp.</li>
+          </ul>
+        </article>
+
+        <article class="compare-card zapier-card">
+          <h3>ZAPIER</h3>
+          <ul class="compare-list">
+            <li><strong>Giao diện:</strong> Dạng step tuyến tính, dễ bắt đầu nhưng khó nhìn tổng thể khi flow lớn.</li>
+            <li><strong>Logic:</strong> Làm được, nhưng nhiều nhánh có thể tăng chi phí nhanh.</li>
+            <li><strong>No-code:</strong> Phù hợp task đơn giản, quy trình phức tạp cần tổ chức kỹ hơn.</li>
+            <li><strong>Chi phí:</strong> Có free, nhưng hạn mức thấp hơn ở nhiều trường hợp phổ biến.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <div class="pricing-card">
-        <span class="badge">🎯 Gói Free: Dành cho anh em mới bắt đầu</span>
-        <div class="price">$0</div>
-        <p>Khởi động với 1,000 operations/tháng, đủ để anh em test nhiều quy trình tự động thực tế. Dùng thoải mái mà không cần thẻ.</p>
-
-        <div class="pricing-list">
-          <span>✅ 1,000 operations/tháng</span>
-          <span>✅ Full tính năng kéo thả</span>
-          <span>✅ Kết nối 1,000+ ứng dụng</span>
-          <span>✅ Dùng thử không giới hạn thời gian</span>
-        </div>
-
-        <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Dùng thử miễn phí ngay 🎁</a>
-        <p class="mini-note">Gợi ý: Bắt đầu với flow Form → Sheet → Email để thấy kết quả trong ngày.</p>
+      <div class="section-head">
+        <h2>BẢNG GIÁ MINH BẠCH THEO GÓI</h2>
+        <p>Thông tin dưới đây theo hướng tham chiếu để anh em dễ chọn gói phù hợp. Giá và credit có thể thay đổi theo thời điểm và cấu hình trên Make.</p>
       </div>
+
+      <div class="pricing-grid">
+        <article class="plan plan-free">
+          <span class="plan-tag">ƯU TIÊN CHO NGƯỜI MỚI</span>
+          <div class="plan-name">FREE</div>
+          <div class="plan-price">$0</div>
+          <div class="plan-sub">MỖI THÁNG</div>
+          <ul>
+            <li>1,000 credits/tháng</li>
+            <li>No-code visual workflow builder</li>
+            <li>3000+ apps</li>
+            <li>Routers và filters</li>
+          </ul>
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">DÙNG THỬ FREE</a>
+        </article>
+
+        <article class="plan">
+          <span class="plan-tag">PHỔ BIẾN</span>
+          <div class="plan-name">CORE</div>
+          <div class="plan-price">TỪ $9</div>
+          <div class="plan-sub">MỖI THÁNG, TÙY CREDITS</div>
+          <ul>
+            <li>Dành cho cá nhân hoặc team nhỏ đang vận hành ổn định</li>
+            <li>Credits cao hơn gói Free</li>
+            <li>Phù hợp tự động hóa nhiều luồng hơn</li>
+            <li>Tối ưu cho hoạt động mỗi ngày</li>
+          </ul>
+        </article>
+
+        <article class="plan">
+          <span class="plan-tag">NÂNG CAO</span>
+          <div class="plan-name">PRO</div>
+          <div class="plan-price">TỪ $16</div>
+          <div class="plan-sub">MỖI THÁNG, TÙY CREDITS</div>
+          <ul>
+            <li>Phù hợp khi anh em cần scale mạnh hơn</li>
+            <li>Xử lý khối lượng dữ liệu lớn hơn</li>
+            <li>Tổ chức và kiểm soát workflow tốt hơn</li>
+            <li>Phù hợp team vận hành chuyên nghiệp</li>
+          </ul>
+        </article>
+
+        <article class="plan">
+          <span class="plan-tag">DOANH NGHIỆP</span>
+          <div class="plan-name">TEAMS / ENTERPRISE</div>
+          <div class="plan-price">LIÊN HỆ</div>
+          <div class="plan-sub">BÁO GIÁ THEO NHU CẦU</div>
+          <ul>
+            <li>Quản trị team và phân quyền sâu</li>
+            <li>Bảo mật và compliance ở mức cao</li>
+            <li>Hỗ trợ triển khai quy mô lớn</li>
+            <li>Phù hợp tổ chức có yêu cầu đặc thù</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="pricing-note">Mẹo chọn nhanh: bắt đầu bằng Free để test luồng thật, khi thấy hiệu quả rõ thì nâng lên Core hoặc Pro theo nhu cầu credit.</p>
     </div>
   </section>
 
@@ -735,9 +906,9 @@
     <div class="container">
       <div class="testimonial">
         <blockquote>
-          Trước đây tui mất 3-4 tiếng mỗi tuần để copy dữ liệu khách từ form về sheet, rồi thủ công gửi link cho team xử lý. Sau khi chuyển sang Make, toàn bộ quy trình này chạy tự động. Team phản hồi nhanh hơn, ít sót việc, và tui có thêm thời gian để tập trung vào việc tạo ra sản phẩm mới.
+          Trước đây mình mất 3-4 tiếng mỗi tuần để copy dữ liệu khách từ form về sheet rồi nhắn team xử lý. Sau khi chuyển sang Make, toàn bộ quy trình chạy tự động, phản hồi nhanh hơn và ít sót việc hơn rất nhiều.
         </blockquote>
-        <cite>— Founder hệ no-code automation</cite>
+        <cite>FOUNDER HỆ NO-CODE AUTOMATION</cite>
       </div>
     </div>
   </section>
@@ -745,8 +916,8 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Ai nên bắt đầu với Make ngay hôm nay</h2>
-        <p>Nếu bạn muốn làm automation bài bản nhưng không muốn phụ thuộc kỹ thuật, đây là nhóm dùng Make hiệu quả nhất.</p>
+        <h2>AI NÊN BẮT ĐẦU VỚI MAKE NGAY HÔM NAY</h2>
+        <p>Nếu muốn làm automation bài bản mà không phụ thuộc kỹ thuật, đây là nhóm dùng Make hiệu quả nhất.</p>
       </div>
 
       <div class="audience-grid">
@@ -761,34 +932,29 @@
   <section id="faq">
     <div class="container">
       <div class="section-head">
-        <h2>Câu hỏi thường gặp trước khi bắt đầu</h2>
+        <h2>CÂU HỎI THƯỜNG GẶP</h2>
         <p>Mình gom lại các câu hỏi thực tế của anh em mới làm no-code automation để đỡ mất thời gian tìm hiểu.</p>
       </div>
 
       <div class="faq-wrap">
         <details class="faq-item">
-          <summary>Tui không biết code, có dùng Make được thật không</summary>
-          <p>Có. Bạn xây workflow bằng giao diện visual kéo thả. Chỉ cần hiểu tư duy logic đầu vào, điều kiện và đầu ra là triển khai được nhiều bài toán vận hành thực tế.</p>
+          <summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG</summary>
+          <p>Có. Anh em xây workflow bằng giao diện visual kéo thả. Chỉ cần hiểu logic đầu vào, điều kiện và đầu ra là triển khai được nhiều bài toán vận hành thực tế.</p>
         </details>
 
         <details class="faq-item">
-          <summary>Gói Free có đủ để bắt đầu làm việc thật không</summary>
-          <p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case thật và đo hiệu quả. Khi workflow ổn định và cần công suất cao hơn, bạn mới nâng cấp.</p>
+          <summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG</summary>
+          <p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case thật. Khi workflow ổn định và cần công suất cao hơn thì nâng cấp sau.</p>
         </details>
 
         <details class="faq-item">
-          <summary>Make có khó hơn Zapier không</summary>
-          <p>Không hẳn khó hơn, mà chi tiết hơn. Make cho bạn nhìn toàn cảnh workflow trực quan hơn nên khi flow lớn sẽ dễ kiểm soát và debug hơn.</p>
+          <summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG</summary>
+          <p>Không hẳn khó hơn, mà chi tiết hơn. Make cho anh em nhìn toàn cảnh workflow rõ nên khi flow lớn sẽ dễ kiểm soát và debug hơn.</p>
         </details>
 
         <details class="faq-item">
-          <summary>Nên bắt đầu với workflow nào để ra kết quả nhanh nhất</summary>
-          <p>Hãy bắt đầu bằng flow lặp lại mỗi ngày: Form nhận lead → lưu Sheet/CRM → gửi thông báo email hoặc Telegram cho team. Đây là flow đơn giản và thấy hiệu quả gần như ngay lập tức.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Làm sao biết automation đang chạy ổn hay bị lỗi</summary>
-          <p>Make có log theo từng lần chạy scenario, bạn xem được bước nào thành công hoặc lỗi, dữ liệu nào bị thiếu để chỉnh nhanh và tránh thất thoát lead.</p>
+          <summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM</summary>
+          <p>Bắt đầu từ quy trình lặp mỗi ngày: Form nhận lead → lưu Sheet/CRM → gửi thông báo cho team. Đây là flow đơn giản, dễ thấy hiệu quả ngay.</p>
         </details>
       </div>
     </div>
@@ -796,15 +962,48 @@
 
   <section class="final-cta">
     <div class="container">
-      <h2>Giữ năng lượng cho việc tạo ra giá trị,<br>để Make lo phần việc lặp lại</h2>
+      <h2>GIỮ NĂNG LƯỢNG CHO VIỆC TẠO GIÁ TRỊ, ĐỂ MAKE LO PHẦN VIỆC LẶP LẠI</h2>
       <p>Không cần chờ hoàn hảo. Một luồng tự động đầu tiên thành công sẽ mở ra cả hệ thống tự động sau này. Anh em có thể bắt đầu miễn phí ngay hôm nay.</p>
-      <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu với Make ngay ⚡</a>
-      <p class="mini-note">Chỉ mất vài phút để tạo tài khoản và chạy flow đầu tiên. Bạn có thể bắt đầu từ Form → Sheet → Email ngay hôm nay.</p>
+      <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">BẮT ĐẦU VỚI MAKE NGAY</a>
+      <p class="mini-note">Mất vài phút để tạo tài khoản và chạy flow đầu tiên. Bắt đầu từ quy trình nhỏ rồi scale dần.</p>
     </div>
   </section>
 
   <footer class="footer">
     Built with <a href="https://list.affitor.com" target="_blank" rel="noopener">Affiliate Skills by Affitor</a>
   </footer>
+
+  <script>
+    (function () {
+      const counters = document.querySelectorAll('.counter');
+      if (!counters.length) return;
+
+      const animateCounter = (el) => {
+        const target = Number(el.getAttribute('data-target')) || 0;
+        const duration = 1700;
+        const start = performance.now();
+
+        const update = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(target * ease).toLocaleString('en-US');
+          if (progress < 1) requestAnimationFrame(update);
+        };
+
+        requestAnimationFrame(update);
+      };
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach((counter) => observer.observe(counter));
+    })();
+  </script>
 </body>
 </html>
