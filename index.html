@@ -149,17 +149,42 @@
       overflow: hidden;
     }
 
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      height: 110px;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(7,6,13,.95) 100%);
+    }
+
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.07fr .93fr;
-      gap: 34px;
-      align-items: center;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 28px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      box-shadow: var(--shadow);
     }
 
     .hero h1 {
       font-size: clamp(34px, 5vw, 58px);
       margin: 16px 0 16px;
-      max-width: 14ch;
+      max-width: 13ch;
     }
 
     .gradient-text {
@@ -186,6 +211,33 @@
       margin-top: 10px;
       color: #c4bde2;
       font-size: 13px;
+    }
+
+    .hero-scroll {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ddd7f5;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .92;
+      animation: bounceY 1.8s ease-in-out infinite;
+      width: fit-content;
+    }
+
+    .hero-scroll-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #78e9ff, #8f5cff);
+      box-shadow: 0 0 0 7px rgba(120,233,255,.12);
+    }
+
+    @keyframes bounceY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
     }
 
     .hero-card {
@@ -702,6 +754,8 @@
       .trust-list { grid-template-columns: 1fr 1fr; }
       .feature h3 { font-size: 17px; }
       .typewriter { white-space: normal; border-right: none; animation: none; }
+      .hero-copy { padding: 22px 18px; }
+      .hero-card { min-height: auto; }
     }
 
     @media (max-width: 680px) {
@@ -713,9 +767,10 @@
       .trust-list { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
       .plan-free { transform: none; }
-      .feature, .hero-card, .testimonial, .faq-item, .compare-card { border-radius: 14px; }
+      .feature, .hero-card, .hero-copy, .testimonial, .faq-item, .compare-card { border-radius: 14px; }
       .testimonial blockquote { font-size: 18px; }
       .final-cta p { font-size: 16px; }
+      .hero-scroll { font-size: 11px; }
     }
   </style>
 </head>
@@ -728,7 +783,7 @@
 
   <section class="hero">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="badge">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
         <h1>DÀNH THỜI GIAN CHO VIỆC <span class="gradient-text">TẠO RA DOANH THU</span>, KHÔNG PHẢI LẶP LẠI CÔNG VIỆC</h1>
         <p>
@@ -739,6 +794,11 @@
           <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
         <p class="mini-note">Không cần biết code, không cần đội kỹ thuật riêng. Anh em có thể bắt đầu với một luồng tự động đầu tiên ngay trong hôm nay.</p>
+        <div class="hero-scroll">
+          <span class="hero-scroll-dot"></span>
+          <span>Kéo xuống để khám phá chi tiết</span>
+          <span class="hero-scroll-dot"></span>
+        </div>
       </div>
 
       <div class="hero-card" aria-label="Giá trị chính">
