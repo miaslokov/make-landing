@@ -207,20 +207,81 @@
 
     .trust {
       margin-top: 38px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,.02);
+      border-top: 1px solid rgba(143,92,255,.35);
+      border-bottom: 1px solid rgba(92,226,255,.28);
+      background: linear-gradient(90deg, rgba(143,92,255,.12), rgba(92,226,255,.10), rgba(255,95,162,.10));
+      box-shadow: 0 8px 30px rgba(143,92,255,.18) inset;
     }
 
     .trust-list {
-      min-height: 78px;
+      min-height: 84px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       align-items: center;
       text-align: center;
-      color: #ded8ff;
-      font-size: 14px;
+      color: #f0eaff;
+      font-size: 15px;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trust-item {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .trust-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(143,92,255,.15), transparent);
+      transform: translateX(-100%);
+      animation: shimmer 2.2s infinite;
+      z-index: -1;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .trust-item span {
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .trust-item:nth-child(2n)::before {
+      animation-delay: .6s;
+    }
+
+    .trust-item:nth-child(3n)::before {
+      animation-delay: 1.2s;
+    }
+
+    .trust-item:nth-child(4n)::before {
+      animation-delay: 1.8s;
+    }
+
+    .trust-item:nth-child(2n) span {
+      animation-delay: .2s;
+    }
+
+    .trust-item:nth-child(3n) span {
+      animation-delay: .4s;
+    }
+
+    .trust-item:nth-child(4n) span {
+      animation-delay: .6s;
     }
 
     .section-head {
@@ -567,10 +628,10 @@
 
     <div class="trust">
       <div class="container trust-list">
-        <div>⭐ Được anh em tin dùng toàn cầu</div>
-        <div>🔌 Kết nối 1,000+ ứng dụng phổ biến</div>
-        <div>🧩 Giao diện kéo thả dễ hiểu</div>
-        <div>💸 Dễ bắt đầu với gói Free</div>
+        <div class="trust-item"><span>⭐ Được anh em tin dùng toàn cầu</span></div>
+        <div class="trust-item"><span>🔌 Kết nối 1,000+ ứng dụng phổ biến</span></div>
+        <div class="trust-item"><span>🧩 Giao diện kéo thả dễ hiểu</span></div>
+        <div class="trust-item"><span>💸 Dễ bắt đầu với gói Free</span></div>
       </div>
     </div>
   </section>
