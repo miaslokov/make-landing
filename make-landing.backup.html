@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make (Integromat) Review - Tự động hóa công việc thông minh</title>
+  <meta name="description" content="Make (trước đây là Integromat) giúp bạn tự động hóa mọi quy trình làm việc dễ dàng bằng thao tác kéo thả trực quan. Đăng ký ngay để nhận gói Free!">
+  <style>
+    /* === CSS VARIABLES === */
+    :root {
+      --color-primary: #8200ff;
+      --color-primary-hover: #6300cc;
+      --color-bg: #ffffff;
+      --color-surface: #f3ebff;
+      --color-text: #111111;
+      --color-text-light: #555555;
+      --color-accent: #ff0055;
+      --color-border: #e2e8f0;
+    }
+
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--color-primary); text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+
+    /* === LAYOUT === */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .narrow { max-width: 720px; margin: 0 auto; }
+    section { padding: 64px 0; }
+
+    /* === FTC DISCLOSURE === */
+    .disclosure {
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* === HERO === */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    /* === CTA BUTTON === */
+    .cta {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .cta:hover { background: var(--color-primary-hover); color: #fff; }
+    .cta-note {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 24px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .trust-item {
+      font-size: 14px;
+      color: var(--color-text-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stars { color: var(--color-accent); }
+
+    /* === FEATURES GRID === */
+    .features { background: var(--color-bg); }
+    .features h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 24px;
+    }
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.5;
+    }
+
+    /* === PRICING === */
+    .pricing {
+      background: var(--color-surface);
+      text-align: center;
+    }
+    .pricing h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .pricing .price-highlight {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin: 16px 0 8px;
+    }
+    .pricing .price-note {
+      font-size: 16px;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+    }
+
+    /* === TESTIMONIAL === */
+    .testimonial {
+      background: var(--color-bg);
+    }
+    .testimonial-card {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 32px;
+    }
+    .testimonial-card blockquote {
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--color-text);
+    }
+    .testimonial-card cite {
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-style: normal;
+    }
+
+    /* === WHO IS THIS FOR === */
+    .audience h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .audience-list {
+      max-width: 640px;
+      margin: 0 auto;
+      list-style: none;
+    }
+    .audience-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .audience-list li::before {
+      content: "✅";
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* === FAQ === */
+    .faq { background: var(--color-surface); }
+    .faq h2 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .faq-list {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+    .faq-item summary {
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 22px;
+      color: var(--color-text-light);
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+    .faq-item p {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    /* === FINAL CTA === */
+    .final-cta {
+      text-align: center;
+      background: var(--color-bg);
+      padding: 80px 24px;
+    }
+    .final-cta h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 18px;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* === FOOTER === */
+    .page-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #666;
+      border-top: 1px solid var(--color-border);
+    }
+    .page-footer a { color: var(--color-primary); }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .hero .subtitle { font-size: 17px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cta { width: 100%; text-align: center; padding: 16px 24px; }
+      .trust-bar { gap: 16px; }
+      .pricing .price-highlight { font-size: 36px; }
+      section { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FTC DISCLOSURE -->
+  <div class="container" style="padding-top: 24px;">
+    <div class="disclosure">
+      Tuyên bố miễn trừ trách nhiệm: Trang web này chứa các liên kết tiếp thị liên kết. Nếu bạn đăng ký qua các liên kết này, Tui có thể nhận được một khoản hoa hồng nhỏ mà không làm phát sinh thêm bất kỳ chi phí nào cho bạn. Tui chỉ giới thiệu những công cụ thực sự chất lượng.
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Rảnh tay uống cà phê vì mọi thứ đã tự động!</h1>
+      <p class="subtitle">Make kết nối các ứng dụng bạn đang dùng (Facebook, Gmail, Sheet...) và tự động làm việc thay bạn với thao tác kéo thả siêu dễ.</p>
+      <a href="https://www.make.com/en/register?pc=affitor" target="_blank" rel="noopener" class="cta">Bắt Đầu Dùng Thử Miễn Phí 🚀</a>
+      <span class="cta-note">Không cần thẻ tín dụng • Tặng ngay 1,000 tác vụ/tháng</span>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <span class="stars">★★★★★</span> 4.7/5 trên G2
+    </div>
+    <div class="trust-item">
+      Hơn 1,000+ App được hỗ trợ
+    </div>
+    <div class="trust-item">
+      Lựa chọn hàng đầu của dân No-code
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2>Tại Sao Make "Ăn Đứt" Các Tool Khác?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧩</div>
+          <h3>Kéo thả trực quan</h3>
+          <p>Không cần biết code! Giao diện của Make giống như một sơ đồ tư duy. Bạn chỉ cần kéo các vòng tròn lại với nhau để tạo ra luồng tự động hóa chạy trơn tru.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Tốc độ ánh sáng</h3>
+          <p>Khách nhắn tin Fanpage? Make lập tức đẩy data về Google Sheet, đồng thời gửi email thông báo cho bạn chỉ trong 1 nốt nhạc. Không rớt một đơn nào!</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Rẻ hơn Zapier cực nhiều</h3>
+          <p>Bạn được tận 1,000 tác vụ miễn phí mỗi tháng (Zapier chỉ cho 100). Khi nâng cấp, gói trả phí của Make cũng rẻ hơn gấp 3 lần.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="container">
+      <h2>Bảng Giá Mềm Nhất Quả Đất</h2>
+      <p style="color: var(--color-text-light); font-size: 16px;">Xài free tẹt ga, chừng nào dư dả hãy nâng cấp.</p>
+      <div class="price-highlight">$0/tháng</div>
+      <p class="price-note">Gói Free • Nhận 1,000 tác vụ/tháng • Tích hợp không giới hạn App</p>
+      <a href="https://www.make.com/en/register?pc=affitor" target="_blank" rel="noopener" class="cta">Nhận Tài Khoản Free Ngay 🎁</a>
+      <span class="cta-note">Nâng cấp gói Core chỉ từ $13.50/tháng nếu bạn cần nhiều hơn</span>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+    <div class="container">
+      <div class="testimonial-card">
+        <blockquote>"Từ hồi xài Make, tui không còn phải copy/paste thủ công data khách hàng nữa. Khách điền form phát là tự động bay vào CRM và bắn email chào mừng luôn. Đỡ tốn tiền thuê nhân sự nhập liệu!"</blockquote>
+        <cite>— Dân chơi hệ kinh doanh online</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IS THIS FOR -->
+  <section class="audience">
+    <div class="container">
+      <h2>Make Sinh Ra Để Dành Cho Ai?</h2>
+      <ul class="audience-list">
+        <li>Chủ Shop Online muốn tự động lấy thông tin đơn hàng</li>
+        <li>Marketer cần thu thập data khách từ các chiến dịch Ads</li>
+        <li>Người chơi hệ "No-code" thích build hệ thống thông minh</li>
+        <li>Các Agency chạy quảng cáo muốn quản lý chục khách hàng cùng lúc</li>
+        <li>Bất kỳ ai chán ngấy việc lặp đi lặp lại một cú click chuột!</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>Hỏi Đáp Nhanh Trí</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Tui không biết xíu Code nào thì có xài được không?</summary>
+          <p>Được 100%! Giao diện Make hoàn toàn là kéo thả trực quan. Bạn có thể coi nó giống như chơi trò nối hình vậy, rất dễ làm quen và cực kỳ gây nghiện.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Gói Free có bị giới hạn tính năng gì nhiều không?</summary>
+          <p>Tin vui là Không! Gói Free của Make hào phóng vô cùng. Bạn có thể kết nối bất kỳ ứng dụng nào và chạy tới 1.000 tác vụ mỗi tháng, dư sức phục vụ cá nhân hoặc shop nhỏ.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Nó khác gì Zapier?</summary>
+          <p>Rẻ hơn (rất nhiều), luồng tự động hóa trực quan hơn (Zapier là luồng dọc chữ xuống, Make là luồng tỏa tròn), và làm được nhiều logic rẽ nhánh phức tạp hơn.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Bạn Đã Sẵn Sàng "Nhân Bản" Chính Mình?</h2>
+    <p>Hãy để máy móc làm việc vặt, còn bạn dành thời gian đếm tiền và đi du lịch.</p>
+    <a href="https://www.make.com/en/register?pc=affitor" target="_blank" rel="noopener" class="cta">Mở Tài Khoản Make Miễn Phí ⚡</a>
+    <span class="cta-note">Chỉ mất 1 phút đăng ký.</span>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    Built with <a href="https://list.affitor.com" target="_blank">Affiliate Skills by Affitor</a>
+  </footer>
+
+</body>
+</html>
