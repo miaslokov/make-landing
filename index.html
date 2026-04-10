@@ -277,44 +277,66 @@
     }
 
     .hero-card {
-      border: 1px solid rgba(143,92,255,.35);
-      background: linear-gradient(145deg, rgba(143,92,255,.18), rgba(92,226,255,.08), rgba(255,255,255,.03));
+      border: 1px solid rgba(143,92,255,.42);
+      background: linear-gradient(155deg, rgba(143,92,255,.24), rgba(92,226,255,.14), rgba(255,255,255,.04));
       border-radius: var(--radius-xl);
-      padding: 24px;
+      padding: 28px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       position: relative;
+      overflow: hidden;
     }
 
     .hero-card::before {
       content: "";
       position: absolute;
-      inset: -1px;
+      inset: -2px;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(143,92,255,.55), rgba(92,226,255,.35), rgba(255,95,162,.35));
+      background: linear-gradient(135deg, rgba(143,92,255,.62), rgba(92,226,255,.42), rgba(255,95,162,.42));
       z-index: -1;
-      filter: blur(16px);
-      opacity: .35;
+      filter: blur(20px);
+      opacity: .48;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(92,226,255,.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: rotateBg 12s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .flow {
       display: grid;
-      gap: 12px;
+      gap: 14px;
+      grid-template-columns: 1fr;
     }
 
     .flow-item {
-      border: 1px solid rgba(143,92,255,.35);
-      border-radius: 12px;
-      background: linear-gradient(120deg, rgba(16,14,30,.92), rgba(24,20,45,.82));
-      padding: 14px 15px;
+      border: 1px solid rgba(143,92,255,.46);
+      border-radius: 14px;
+      background: linear-gradient(120deg, rgba(16,14,30,.94), rgba(24,20,45,.84));
+      padding: 16px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14.5px;
-      color: #f5f2ff;
-      gap: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8f5ff;
+      gap: 12px;
       position: relative;
       overflow: hidden;
+      min-height: 70px;
     }
 
     .flow-item::before {
@@ -324,10 +346,22 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(92,226,255,.14), transparent);
+      background: linear-gradient(90deg, transparent, rgba(92,226,255,.18), transparent);
       transform: translateX(-100%);
       animation: shimmerFlow 2.8s infinite;
       pointer-events: none;
+    }
+
+    .flow-item::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #7ef0ff, #8f5cff, #ff9bc6);
+      box-shadow: 0 0 14px rgba(126,240,255,.55);
     }
 
     @keyframes shimmerFlow {
@@ -336,15 +370,19 @@
     }
 
     .pill {
-      font-size: 11px;
-      color: #dffcf2;
-      background: rgba(72,229,169,.16);
-      border: 1px solid rgba(72,229,169,.45);
+      font-size: 11.5px;
+      color: #e7fff9;
+      background: rgba(72,229,169,.22);
+      border: 1px solid rgba(72,229,169,.52);
       border-radius: 999px;
-      padding: 4px 9px;
+      padding: 5px 11px;
       white-space: nowrap;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: .03em;
+      min-width: 78px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(72,229,169,.22);
     }
 
     .trust {
@@ -811,7 +849,8 @@
       .feature h3 { font-size: 17px; }
       .typewriter { white-space: normal; border-right: none; animation: none; }
       .hero-copy { padding: 22px 18px; }
-      .hero-card { min-height: auto; }
+      .hero-card { min-height: auto; padding: 22px; }
+      .flow-item { min-height: 64px; font-size: 14px; }
     }
 
     @media (max-width: 680px) {
@@ -859,11 +898,11 @@
 
       <div class="hero-card" aria-label="Giá trị chính">
         <div class="flow">
-          <div class="flow-item"><span>TỐI ƯU THỜI GIAN CHO VIỆC QUAN TRỌNG HƠN</span><span class="pill">Hiệu quả</span></div>
-          <div class="flow-item"><span>GIẢM LỖI THAO TÁC TAY KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
-          <div class="flow-item"><span>QUY TRÌNH GỌN, DỄ CHUYỂN GIAO CHO TEAM</span><span class="pill">Rõ ràng</span></div>
-          <div class="flow-item"><span>DỄ NÂNG CẤP KHI KHỐI LƯỢNG CÔNG VIỆC TĂNG</span><span class="pill">Mở rộng</span></div>
-          <div class="flow-item"><span>KHÔNG CẦN CODE VẪN LÀM AUTOMATION BÀI BẢN</span><span class="pill">No-code</span></div>
+          <div class="flow-item"><span>01 • TỐI ƯU THỜI GIAN CHO VIỆC QUAN TRỌNG HƠN</span><span class="pill">Hiệu quả</span></div>
+          <div class="flow-item"><span>02 • GIẢM LỖI THAO TÁC TAY KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
+          <div class="flow-item"><span>03 • QUY TRÌNH GỌN, DỄ CHUYỂN GIAO CHO TEAM</span><span class="pill">Rõ ràng</span></div>
+          <div class="flow-item"><span>04 • DỄ NÂNG CẤP KHI KHỐI LƯỢNG CÔNG VIỆC TĂNG</span><span class="pill">Mở rộng</span></div>
+          <div class="flow-item"><span>05 • KHÔNG CẦN CODE VẪN LÀM AUTOMATION BÀI BẢN</span><span class="pill">No-code</span></div>
         </div>
       </div>
     </div>
