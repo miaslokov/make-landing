@@ -394,80 +394,148 @@
     }
     .proof-title { font-size: 15px; font-weight: 800; color: #f6f2ff; line-height: 1.35; }
 
-    /* Drag & Drop demo - xịn hơn */
+    /* Drag & Drop demo - Make.com style */
+    .proof-card.drag-drop-card { min-height: 360px; }
+    .proof-card.drag-drop-card .proof-demo { height: 280px; border: none; border-radius: 10px 10px 0 0; }
+
     .drag-demo {
-      position: absolute; inset: 0; display: flex; gap: 6px; padding: 10px;
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+    }
+    .drag-toolbar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px;
+      background: rgba(143,92,255,.08);
+      border-bottom: 1px solid rgba(143,92,255,.15);
+    }
+    .drag-toolbar-btn {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      display: grid; place-items: center; font-size: 12px; color: #b9b3d4;
+    }
+    .drag-toolbar-title {
+      flex: 1; font-size: 11px; font-weight: 700; color: #c9b8ff;
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .drag-body {
+      flex: 1; display: flex; gap: 0; overflow: hidden;
     }
     .drag-palette {
-      display: flex; flex-direction: column; gap: 5px;
-      width: 56px; flex-shrink: 0; justify-content: center;
+      width: 60px; flex-shrink: 0;
+      padding: 8px 6px;
+      display: flex; flex-direction: column; gap: 6px;
+      background: rgba(0,0,0,.15);
+      border-right: 1px solid rgba(255,255,255,.06);
+      overflow-y: auto;
+    }
+    .drag-palette-title {
+      font-size: 8px; color: #8a82a8; text-transform: uppercase;
+      letter-spacing: .06em; font-weight: 800; text-align: center;
+      margin-bottom: 2px;
     }
     .drag-node {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; cursor: grab; user-select: none;
+      width: 46px; height: 46px; border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; cursor: grab; user-select: none;
       transition: transform .15s ease, box-shadow .15s ease;
-      border: 2px solid rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.15);
     }
-    .drag-node:hover { transform: scale(1.12); }
-    .drag-node:active { cursor: grabbing; transform: scale(1.18); }
-    .drag-node.placed { opacity: .35; pointer-events: none; }
-    .drag-node[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); box-shadow: 0 3px 12px rgba(110,69,226,.4); }
-    .drag-node[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 3px 12px rgba(0,176,155,.4); }
-    .drag-node[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); box-shadow: 0 3px 12px rgba(233,30,99,.4); }
-    .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); box-shadow: 0 3px 12px rgba(143,92,255,.4); }
-    .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); box-shadow: 0 3px 12px rgba(234,67,53,.4); }
-    .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 3px 12px rgba(247,151,30,.3); }
+    .drag-node:hover { transform: scale(1.08); }
+    .drag-node:active { cursor: grabbing; transform: scale(1.12); }
+    .drag-node.placed { opacity: .3; pointer-events: none; }
+    .drag-node .node-emoji { font-size: 16px; }
+    .drag-node .node-label { font-size: 7px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; }
+    .drag-node[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
+    .drag-node[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .drag-node[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); }
+    .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
+    .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
+    .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
 
     .drag-canvas {
-      flex: 1; border: 2px dashed rgba(143,92,255,.22); border-radius: 10px;
-      position: relative;
-      background-image: radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1px);
-      background-size: 14px 14px;
-      background-color: rgba(143,92,255,.03);
+      flex: 1; position: relative; overflow: hidden;
+      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 18px 18px;
+      background-color: rgba(143,92,255,.02);
       transition: border-color .2s ease, background-color .2s ease;
-      min-height: 100%;
     }
     .drag-canvas.drag-over {
-      border-color: rgba(92,226,255,.55);
       background-color: rgba(92,226,255,.06);
+      box-shadow: inset 0 0 0 2px rgba(92,226,255,.3);
     }
-    .canvas-node {
-      position: absolute; width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.35);
-      animation: nodeDrop .4s cubic-bezier(.34,1.56,.64,1);
-      border: 2px solid rgba(255,255,255,.25);
+    .canvas-hint {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 10px; color: rgba(255,255,255,.25); text-transform: uppercase;
+      font-weight: 700; letter-spacing: .05em; pointer-events: none; white-space: nowrap;
     }
-    @keyframes nodeDrop {
-      from { transform: scale(0) translateY(-12px); opacity: 0; }
+
+    .canvas-module {
+      position: absolute; width: 64px; display: flex; flex-direction: column;
+      align-items: center; gap: 4px; animation: moduleAppear .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes moduleAppear {
+      from { transform: scale(0) translateY(-10px); opacity: 0; }
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
-    .canvas-node.pulse-once {
+    .canvas-mod-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; border: 2px solid rgba(255,255,255,.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,.35);
+    }
+    .canvas-mod-icon.pulse-once {
       animation: pulseSuccess .6s ease-out;
     }
     @keyframes pulseSuccess {
       0% { box-shadow: 0 0 0 0 rgba(72,229,169,.6); }
-      50% { box-shadow: 0 0 0 12px rgba(72,229,169,0); }
+      50% { box-shadow: 0 0 0 14px rgba(72,229,169,0); }
       100% { box-shadow: 0 0 0 0 rgba(72,229,169,0); }
     }
-    .canvas-connector {
-      position: absolute; height: 2px;
-      background: linear-gradient(90deg, rgba(92,226,255,.5), rgba(143,92,255,.5));
-      border-radius: 2px; transform-origin: left center;
-      box-shadow: 0 0 6px rgba(92,226,255,.25);
+    .canvas-mod-icon[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
+    .canvas-mod-icon[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .canvas-mod-icon[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); }
+    .canvas-mod-icon[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
+    .canvas-mod-icon[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
+    .canvas-mod-icon[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .canvas-mod-name {
+      font-size: 8px; color: #d5d0ec; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .04em; text-align: center; white-space: nowrap;
     }
-    .canvas-connector::after {
-      content: ""; position: absolute; top: -3px; left: 0;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #5ce2ff; box-shadow: 0 0 10px rgba(92,226,255,.6);
-      animation: dataFlow 1.2s ease-in-out infinite;
+    .canvas-mod-type {
+      font-size: 7px; color: #8a82a8; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .03em;
     }
-    @keyframes dataFlow {
-      0% { left: 0; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; }
+
+    /* SVG connectors */
+    .canvas-svg {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
     }
-    .canvas-hint {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    .canvas-svg path {
+      stroke: url(#connGrad);
+      stroke-width: 2.5;
+      fill: none;
+      filter: drop-shadow(0 0 4px rgba(92,226,255,.3));
+    }
+    .canvas-svg circle {
+      fill: #5ce2ff;
+      filter: drop-shadow(0 0 6px rgba(92,226,255,.5));
+      animation: dotMove 1.5s ease-in-out infinite;
+    }
+    @keyframes dotMove {
+      0%, 100% { r: 3; opacity: .6; }
+      50% { r: 5; opacity: 1; }
+    }
+
+    .flow-ready-badge {
+      position: absolute; bottom: 10px; right: 10px;
+      background: linear-gradient(135deg, rgba(72,229,169,.2), rgba(92,226,255,.15));
+      border: 1px solid rgba(72,229,169,.45); border-radius: 999px;
+      padding: 5px 12px; font-size: 10px; font-weight: 800;
+      color: #e7fff9; text-transform: uppercase; letter-spacing: .04em;
+      animation: badgePop .4s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 0 14px rgba(72,229,169,.15);
+      z-index: 5;
+    }
+    @keyframes badgePop { from { transform: scale(0); } to { transform: scale(1); } }: translate(-50%, -50%);
       font-size: 9px; color: rgba(255,255,255,.3); text-transform: uppercase;
       font-weight: 700; letter-spacing: .05em; pointer-events: none; white-space: nowrap;
     }
@@ -982,19 +1050,48 @@
       </div>
       <div class="proof-grid">
         <!-- Drag & Drop -->
-        <div class="proof-card">
+        <div class="proof-card drag-drop-card">
           <div class="proof-demo" id="dragDemo">
             <div class="drag-demo">
-              <div class="drag-palette">
-                <div class="drag-node" draggable="true" data-app="webhook" data-node="Webhook">🪝</div>
-                <div class="drag-node" draggable="true" data-app="sheets" data-node="Sheets">📊</div>
-                <div class="drag-node" draggable="true" data-app="slack" data-node="Slack">💬</div>
-                <div class="drag-node" draggable="true" data-app="openai" data-node="AI">🤖</div>
-                <div class="drag-node" draggable="true" data-app="gmail" data-node="Gmail">📧</div>
-                <div class="drag-node" draggable="true" data-app="timer" data-node="Timer">⏰</div>
+              <div class="drag-toolbar">
+                <div class="drag-toolbar-btn">+</div>
+                <div class="drag-toolbar-btn">⚙</div>
+                <div class="drag-toolbar-title">My First Flow</div>
+                <div class="drag-toolbar-btn">▶</div>
               </div>
-              <div class="drag-canvas" id="dragCanvas">
-                <div class="canvas-hint">↕ Kéo module vào đây</div>
+              <div class="drag-body">
+                <div class="drag-palette">
+                  <div class="drag-palette-title">MODULES</div>
+                  <div class="drag-node" draggable="true" data-app="webhook">
+                    <span class="node-emoji">🪝</span><span class="node-label">Webhook</span>
+                  </div>
+                  <div class="drag-node" draggable="true" data-app="sheets">
+                    <span class="node-emoji">📊</span><span class="node-label">Sheets</span>
+                  </div>
+                  <div class="drag-node" draggable="true" data-app="slack">
+                    <span class="node-emoji">💬</span><span class="node-label">Slack</span>
+                  </div>
+                  <div class="drag-node" draggable="true" data-app="openai">
+                    <span class="node-emoji">🤖</span><span class="node-label">OpenAI</span>
+                  </div>
+                  <div class="drag-node" draggable="true" data-app="gmail">
+                    <span class="node-emoji">📧</span><span class="node-label">Gmail</span>
+                  </div>
+                  <div class="drag-node" draggable="true" data-app="timer">
+                    <span class="node-emoji">⏰</span><span class="node-label">Timer</span>
+                  </div>
+                </div>
+                <div class="drag-canvas" id="dragCanvas">
+                  <svg class="canvas-svg" id="canvasSvg">
+                    <defs>
+                      <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#8f5cff"/>
+                        <stop offset="100%" stop-color="#5ce2ff"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div class="canvas-hint">↕ Kéo module vào đây</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1406,44 +1503,85 @@
     })();
   </script>
 
-  <!-- JS: Drag & Drop (xịn) -->
+  <!-- JS: Drag & Drop (Make.com style) -->
   <script>
     (function () {
       const canvas = document.getElementById('dragCanvas');
       if (!canvas) return;
       const hint = canvas.querySelector('.canvas-hint');
-      const appColors = {
-        webhook: { bg: 'linear-gradient(135deg, #6e45e2, #88d3ce)', emoji: '🪝' },
-        sheets: { bg: 'linear-gradient(135deg, #00b09b, #96c93d)', emoji: '📊' },
-        slack: { bg: 'linear-gradient(135deg, #e91e63, #ff5722)', emoji: '💬' },
-        openai: { bg: 'linear-gradient(135deg, #8f5cff, #5ce2ff)', emoji: '🤖' },
-        gmail: { bg: 'linear-gradient(135deg, #ea4335, #fbbc04)', emoji: '📧' },
-        timer: { bg: 'linear-gradient(135deg, #f7971e, #ffd200)', emoji: '⏰' }
+      const svg = document.getElementById('canvasSvg');
+      const appInfo = {
+        webhook: { emoji: '🪝', name: 'Webhook', type: 'Trigger' },
+        sheets: { emoji: '📊', name: 'Google Sheets', type: 'Action' },
+        slack: { emoji: '💬', name: 'Slack', type: 'Action' },
+        openai: { emoji: '🤖', name: 'OpenAI', type: 'AI' },
+        gmail: { emoji: '📧', name: 'Gmail', type: 'Action' },
+        timer: { emoji: '⏰', name: 'Timer', type: 'Trigger' }
       };
       const placed = [];
-      const positions = [{ x: 18, y: 22 }, { x: 52, y: 22 }, { x: 14, y: 58 }, { x: 48, y: 58 }, { x: 33, y: 40 }];
+      const positions = [
+        { x: 12, y: 15 }, { x: 45, y: 15 },
+        { x: 28, y: 48 }, { x: 60, y: 48 },
+        { x: 44, y: 75 }
+      ];
+
+      const bezierPath = (x1, y1, x2, y2) => {
+        const dx = Math.abs(x2 - x1) * 0.5;
+        return `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+      };
+
       const renderCanvas = () => {
-        canvas.querySelectorAll('.canvas-node, .canvas-connector, .flow-ready-badge').forEach(n => n.remove());
+        canvas.querySelectorAll('.canvas-module, .flow-ready-badge').forEach(n => n.remove());
+        if (svg) { while (svg.childNodes.length > 1) { if (svg.lastChild) svg.removeChild(svg.lastChild); else break; } }
+
         placed.forEach((app, i) => {
           const pos = positions[i];
-          const node = document.createElement('div');
-          node.className = 'canvas-node';
-          if (i === placed.length - 1 && placed.length >= 3) node.classList.add('pulse-once');
-          const c = appColors[app];
-          node.style.cssText = `left:calc(${pos.x}% - 20px);top:calc(${pos.y}% - 20px);background:${c.bg};`;
-          node.textContent = c.emoji;
-          canvas.appendChild(node);
+          const info = appInfo[app];
+          const mod = document.createElement('div');
+          mod.className = 'canvas-module';
+          mod.style.cssText = `left:${pos.x}%;top:${pos.y}%;`;
+
+          const icon = document.createElement('div');
+          icon.className = 'canvas-mod-icon';
+          if (i === placed.length - 1 && placed.length >= 3) icon.classList.add('pulse-once');
+          icon.setAttribute('data-app', app);
+          icon.textContent = info.emoji;
+
+          const nameEl = document.createElement('div');
+          nameEl.className = 'canvas-mod-name';
+          nameEl.textContent = info.name;
+
+          const typeEl = document.createElement('div');
+          typeEl.className = 'canvas-mod-type';
+          typeEl.textContent = info.type;
+
+          mod.appendChild(icon);
+          mod.appendChild(nameEl);
+          mod.appendChild(typeEl);
+          canvas.appendChild(mod);
         });
-        for (let i = 0; i < placed.length - 1; i++) {
-          const a = positions[i], b = positions[i + 1];
-          const dx = b.x - a.x, dy = b.y - a.y;
-          const length = Math.sqrt(dx * dx + dy * dy);
-          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-          const connector = document.createElement('div');
-          connector.className = 'canvas-connector';
-          connector.style.cssText = `left:calc(${a.x}% - 20px);top:calc(${a.y}%);width:${length}%;transform:rotate(${angle}deg);`;
-          canvas.appendChild(connector);
+
+        if (placed.length > 1 && svg) {
+          const svgRect = svg.getBoundingClientRect();
+          for (let i = 0; i < placed.length - 1; i++) {
+            const a = positions[i], b = positions[i + 1];
+            const x1 = (a.x / 100) * svgRect.width + 32;
+            const y1 = (a.y / 100) * svgRect.height + 24;
+            const x2 = (b.x / 100) * svgRect.width + 32;
+            const y2 = (b.y / 100) * svgRect.height + 24;
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', bezierPath(x1, y1, x2, y2));
+            svg.appendChild(path);
+
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('cx', (x1 + x2) / 2);
+            dot.setAttribute('cy', (y1 + y2) / 2);
+            dot.setAttribute('r', '4');
+            svg.appendChild(dot);
+          }
         }
+
         if (placed.length >= 3) {
           const badge = document.createElement('div');
           badge.className = 'flow-ready-badge';
@@ -1451,10 +1589,12 @@
           canvas.appendChild(badge);
         }
       };
+
       document.querySelectorAll('.drag-node').forEach(node => {
-        node.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', node.dataset.app); node.style.opacity = '.4'; });
+        node.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', node.dataset.app); node.style.opacity = '.3'; });
         node.addEventListener('dragend', e => { node.style.opacity = '1'; });
       });
+
       canvas.addEventListener('dragover', e => { e.preventDefault(); canvas.classList.add('drag-over'); });
       canvas.addEventListener('dragleave', () => { canvas.classList.remove('drag-over'); });
       canvas.addEventListener('drop', e => {
