@@ -399,7 +399,7 @@
     .drag-drop-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(800px 500px at 50% 30%, rgba(143,92,255,.08), transparent 60%); pointer-events: none; }
     .drag-drop-container { width: min(1100px, 96%); margin: 0 auto; }
     .drag-drop-card-full { border: 1px solid rgba(143,92,255,.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.3); background: #0d0b1a; }
-    .drag-demo { display: flex; flex-direction: column; min-height: 540px; }
+    .drag-demo { display: flex; flex-direction: column; min-height: 340px; }
     .drag-toolbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: #1a1630; border-bottom: 1px solid rgba(143,92,255,.15); flex-shrink: 0; }
     .drag-toolbar-logo { font-size: 16px; font-weight: 900; color: #c9b8ff; letter-spacing: .02em; margin-right: 16px; }
     .drag-toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,.1); }
@@ -422,7 +422,7 @@
     .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
     .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
     .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
-    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 360px; }
+    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 160px; }
     .drag-canvas.drag-over { background-color: rgba(92,226,255,.04); box-shadow: inset 0 0 0 2px rgba(92,226,255,.2); }
     .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
     .canvas-slot { position: absolute; width: 80px; height: 80px; border-radius: 12px; border: 2px dashed rgba(143,92,255,.2); background: rgba(143,92,255,.03); transition: border-color .2s, background .2s; pointer-events: none; }
@@ -1414,16 +1414,16 @@ var hint=document.getElementById("canvasHint");
 var svg=document.getElementById("canvasSvg");
 var statusEl=document.getElementById("flowStatus");
 var playBtn=document.getElementById("playBtn");
-var CELL_W=96,CELL_H=96,PAD_X=30,PAD_Y=20,COLS=5,ROWS=3;
+var CELL_W=96,CELL_H=96,PAD_X=30,PAD_Y=20,COLS=3,ROWS=1;
 var slots=[];
 for(var r=0;r<ROWS;r++)for(var cc=0;cc<COLS;cc++)slots.push({x:PAD_X+cc*CELL_W,y:PAD_Y+r*CELL_H});
 var appInfo={
-  webhook:{emoji:"\ud83e\ude9d",name:"Webhook",type:"Trigger",desc:"Nh\u1eadn d\u1eef li\u1ec7u t\u1eeb b\u1ea5t k\u1ef3 \u0111\u00e2u"},
-  sheets:{emoji:"\ud83d\udcca",name:"Google Sheets",type:"Action",desc:"\u0110\u1ecdc/ghi b\u1ea3ng t\u00ednh"},
-  slack:{emoji:"\ud83d\udcac",name:"Slack",type:"Action",desc:"G\u1eedi th\u00f4ng b\u00e1o team"},
-  openai:{emoji:"\ud83e\udd16",name:"OpenAI",type:"AI",desc:"X\u1eed l\u00fd ng\u00f4n ng\u1eef th\u00f4ng minh"},
-  gmail:{emoji:"\ud83d\udce7",name:"Gmail",type:"Action",desc:"G\u1eedi/nh\u1eadn email t\u1ef1 \u0111\u1ed9ng"},
-  timer:{emoji:"\u23f0",name:"Timer",type:"Trigger",desc:"Ch\u1ea1y theo l\u1ecbch \u0111\u1ecbnh s\u1eb5n"}
+  webhook:{emoji:"\ud83e\ude9d",name:"Webhook",type:"Trigger",desc:"Nh\u1eadn d\u1eef li\u1ec7u t\u1eeb b\u1ea5t k\u1ef3 \u0111\u00e2u",isTrigger:true},
+  sheets:{emoji:"\ud83d\udcca",name:"Google Sheets",type:"Action",desc:"\u0110\u1ecdc/ghi b\u1ea3ng t\u00ednh",isTrigger:false},
+  slack:{emoji:"\ud83d\udcac",name:"Slack",type:"Action",desc:"G\u1eedi th\u00f4ng b\u00e1o team",isTrigger:false},
+  openai:{emoji:"\ud83e\udd16",name:"OpenAI",type:"AI",desc:"X\u1eed l\u00fd ng\u00f4n ng\u1eef th\u00f4ng minh",isTrigger:false},
+  gmail:{emoji:"\ud83d\udce7",name:"Gmail",type:"Action",desc:"G\u1eedi/nh\u1eadn email t\u1ef1 \u0111\u1ed9ng",isTrigger:false},
+  timer:{emoji:"\u23f0",name:"Timer",type:"Trigger",desc:"Ch\u1ea1y theo l\u1ecbch \u0111\u1ecbnh s\u1eb5n",isTrigger:true}
 };
 var placed=[];
 
@@ -1447,10 +1447,10 @@ function getSlotEl(i){
 
 var flowDescs=[
   "Webhook \u2192 ghi Sheets \u2192 b\u00e1o Slack",
-  "Timer \u2192 \u0111\u1ecdc Sheets \u2192 OpenAI \u2192 g\u1eedi Gmail",
-  "Webhook \u2192 OpenAI x\u1eed l\u00fd \u2192 l\u01b0u Sheets \u2192 b\u00e1o Slack",
-  "Timer \u2192 qu\u00e9t Sheets \u2192 t\u1ea1o n\u1ed9i dung OpenAI \u2192 Gmail",
-  "Webhook \u2192 Sheets \u2192 OpenAI ph\u00e2n t\u00edch \u2192 Slack + Gmail"
+  "Timer \u2192 \u0111\u1ecdc Sheets \u2192 g\u1eedi Gmail",
+  "Webhook \u2192 OpenAI x\u1eed l\u00fd \u2192 b\u00e1o Slack",
+  "Timer \u2192 t\u1ea1o n\u1ed9i dung OpenAI \u2192 g\u1eedi Gmail",
+  "Webhook \u2192 l\u01b0u Sheets \u2192 g\u1eedi Gmail"
 ];
 
 function updateStatus(){
@@ -1465,10 +1465,20 @@ function updateStatus(){
     if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
     hint.style.opacity="0";
   }else{
-    statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Ready</span>';
-    statusEl.style.color="#47e7aa";
-    if(playBtn){playBtn.style.opacity="1";playBtn.style.pointerEvents="";}
-    hint.style.opacity="0";
+    // Check logic: slot 0 must be a Trigger
+    var firstApp=placed[0].app;
+    var firstIsTrigger=appInfo[firstApp]&&appInfo[firstApp].isTrigger;
+    if(firstIsTrigger){
+      statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Ready</span>';
+      statusEl.style.color="#47e7aa";
+      if(playBtn){playBtn.style.opacity="1";playBtn.style.pointerEvents="";}
+      hint.style.opacity="0";
+    }else{
+      statusEl.innerHTML='<div class="drag-toolbar-dot" style="background:#e74c3c;box-shadow:0 0 6px rgba(231,76,60,.5)"></div><span>Sai logic</span>';
+      statusEl.style.color="#e74c3c";
+      if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+      hint.style.opacity="0";
+    }
   }
 }
 
@@ -1525,10 +1535,16 @@ function renderCanvas(){
     }
   }
   if(placed.length>=3){
-    var fi=placed.length%flowDescs.length;
+    var firstIsTrigger=appInfo[placed[0].app]&&appInfo[placed[0].app].isTrigger;
     var fp=document.createElement("div");
     fp.className="flow-status";
-    fp.innerHTML='<div class="flow-status-inner"><div class="flow-status-icon">\ud83d\ude80</div><div><div class="flow-status-text">Flow s\u1eb5n s\u00e0ng \u2014 '+placed.length+' modules</div><div class="flow-status-sub">'+flowDescs[fi]+'</div></div></div>';
+    if(firstIsTrigger){
+      var fi=placed.length%flowDescs.length;
+      var apps=placed.map(function(p){return appInfo[p.app].name;}).join(" \u2192 ");
+      fp.innerHTML='<div class="flow-status-inner"><div class="flow-status-icon">\ud83d\ude80</div><div><div class="flow-status-text">Flow h\u1ee3p l\u1ec7 \u2014 s\u1eb5n s\u00e0ng ch\u1ea1y</div><div class="flow-status-sub">'+apps+'</div><div class="flow-status-sub">'+flowDescs[fi]+'</div></div></div>';
+    }else{
+      fp.innerHTML='<div class="flow-status-inner" style="border-color:rgba(231,76,60,.5)"><div class="flow-status-icon">\u274c</div><div><div class="flow-status-text" style="color:#ff6b6b">Sai quy tr\u00ecnh</div><div class="flow-status-sub">B\u01b0\u1edbc 1 ph\u1ea3i l\u00e0 Trigger (Webhook ho\u1eb7c Timer). K\u00e9o l\u1ea1i \u0111\u1ec3 \u0111\u1ecbnh tuy\u1ebfn \u0111\u00fang.</div></div></div>';
+    }
     canvas.appendChild(fp);
   }
 }
