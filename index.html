@@ -422,16 +422,22 @@
     .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
     .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
     .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
-    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 160px; }
-    .drag-canvas.drag-over { background-color: rgba(92,226,255,.04); box-shadow: inset 0 0 0 2px rgba(92,226,255,.2); }
-    .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
-    .canvas-slot { position: absolute; width: 80px; height: 80px; border-radius: 12px; border: 2px dashed rgba(143,92,255,.2); background: rgba(143,92,255,.03); transition: border-color .2s, background .2s; pointer-events: none; }
+    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 220px; display: flex; align-items: center; justify-content: center; }
+    .canvas-flex { display: flex; align-items: center; gap: 16px; position: relative; z-index: 2; }
+    .canvas-slot { width: 96px; height: 96px; border-radius: 14px; border: 2px dashed rgba(143,92,255,.25); background: rgba(143,92,255,.03); transition: border-color .2s, background .2s; flex-shrink: 0; }
     .canvas-slot.occupied { border-color: transparent; background: transparent; }
     .canvas-slot.highlight { border-color: rgba(92,226,255,.5); background: rgba(92,226,255,.08); }
-    .canvas-module { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; gap: 2px; animation: modAppear .4s cubic-bezier(.34,1.56,.64,1); z-index: 3; }
+    .slot-connector { display: flex; align-items: center; justify-content: center; width: 28px; flex-shrink: 0; }
+    .slot-connector svg { width: 28px; height: 14px; }
+    .slot-connector .conn-path { stroke: url(#connGrad); stroke-width: 2; fill: none; filter: drop-shadow(0 0 3px rgba(92,226,255,.3)); }
+    .slot-connector .conn-dot { fill: #5ce2ff; filter: drop-shadow(0 0 4px rgba(92,226,255,.4)); animation: dotPulse 1.5s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{r:2.5;opacity:.6}50%{r:4;opacity:1} }
+    .drag-canvas.drag-over { background-color: rgba(92,226,255,.04); box-shadow: inset 0 0 0 2px rgba(92,226,255,.2); }
+    .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
+    .canvas-module { width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px; animation: modAppear .4s cubic-bezier(.34,1.56,.64,1); z-index: 3; flex-shrink: 0; }
     @keyframes modAppear { from { transform: scale(0) translateY(-8px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
     .canvas-mod-wrapper { position: relative; }
-    .canvas-mod-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid rgba(255,255,255,.15); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+    .canvas-mod-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid rgba(255,255,255,.15); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
     .canvas-mod-icon.pulse-once { animation: pulseOk .6s ease-out; }
     @keyframes pulseOk { 0% { box-shadow: 0 0 0 0 rgba(72,229,169,.6); } 50% { box-shadow: 0 0 0 14px rgba(72,229,169,0); } 100% { box-shadow: 0 0 0 0 rgba(72,229,169,0); } }
     .canvas-mod-icon[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
@@ -448,7 +454,7 @@
     .canvas-svg path { stroke: url(#connGrad); stroke-width: 2.5; fill: none; filter: drop-shadow(0 0 4px rgba(92,226,255,.3)); }
     .canvas-svg circle { fill: #5ce2ff; filter: drop-shadow(0 0 6px rgba(92,226,255,.5)); animation: dotMove 1.5s ease-in-out infinite; }
     @keyframes dotMove { 0%, 100% { r: 3; opacity: .6; } 50% { r: 5; opacity: 1; } }
-    .flow-status { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 5; animation: flowPop .4s cubic-bezier(.34,1.56,.64,1); }
+    .flow-status { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 5; animation: flowPop .4s cubic-bezier(.34,1.56,.64,1); max-width: 90%; }
     .flow-status-inner { background: rgba(13,11,26,.92); border: 1px solid rgba(72,229,169,.4); border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,.4); white-space: nowrap; }
     .flow-status-icon { font-size: 20px; }
     .flow-status-text { font-size: 11px; color: #e7fff9; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
@@ -1414,9 +1420,11 @@ var hint=document.getElementById("canvasHint");
 var svg=document.getElementById("canvasSvg");
 var statusEl=document.getElementById("flowStatus");
 var playBtn=document.getElementById("playBtn");
-var CELL_W=96,CELL_H=96,PAD_X=30,PAD_Y=20,COLS=3,ROWS=1;
+var CELL_W=96,CELL_H=96,GAP=32,PAD_X=16,PAD_Y=20,COLS=3,ROWS=1;
 var slots=[];
-for(var r=0;r<ROWS;r++)for(var cc=0;cc<COLS;cc++)slots.push({x:PAD_X+cc*CELL_W,y:PAD_Y+r*CELL_H});
+var totalW=COLS*CELL_W+(COLS-1)*GAP;
+var startX=PAD_X+Math.max(0,(1100-2*96-totalW)/6);
+for(var r=0;r<ROWS;r++)for(var cc=0;cc<COLS;cc++)slots.push({x:startX+cc*(CELL_W+GAP),y:PAD_Y+r*(CELL_H+GAP)});
 var appInfo={
   webhook:{emoji:"\ud83e\ude9d",name:"Webhook",type:"Trigger",desc:"Nh\u1eadn d\u1eef li\u1ec7u t\u1eeb b\u1ea5t k\u1ef3 \u0111\u00e2u",isTrigger:true},
   sheets:{emoji:"\ud83d\udcca",name:"Google Sheets",type:"Action",desc:"\u0110\u1ecdc/ghi b\u1ea3ng t\u00ednh",isTrigger:false},
@@ -1426,20 +1434,29 @@ var appInfo={
   timer:{emoji:"\u23f0",name:"Timer",type:"Trigger",desc:"Ch\u1ea1y theo l\u1ecbch \u0111\u1ecbnh s\u1eb5n",isTrigger:true}
 };
 var placed=[];
+var flexWrap=null;
 
-function drawSlots(){
-  var e=canvas.querySelectorAll(".canvas-slot");
-  for(var i=0;i<e.length;i++)e[i].remove();
+function buildLayout(){
+  // Create flex wrapper
+  flexWrap=document.createElement("div");
+  flexWrap.className="canvas-flex";
+  canvas.appendChild(flexWrap);
+  // Draw slots and connectors
   for(var i=0;i<slots.length;i++){
     var el=document.createElement("div");
     el.className="canvas-slot";
-    el.style.left=slots[i].x+"px";
-    el.style.top=slots[i].y+"px";
     el.dataset.slotIndex=i;
-    canvas.appendChild(el);
+    flexWrap.appendChild(el);
+    // Add connector after each slot (except last)
+    if(i<slots.length-1){
+      var conn=document.createElement("div");
+      conn.className="slot-connector";
+      conn.innerHTML='<svg viewBox="0 0 28 14"><path class="conn-path" d="M0 7 C8 2,20 12,28 7"/><circle class="conn-dot" cx="14" cy="7" r="2.5"/></svg>';
+      flexWrap.appendChild(conn);
+    }
   }
 }
-drawSlots();
+buildLayout();
 
 function getSlotEl(i){
   return canvas.querySelector('.canvas-slot[data-slot-index="'+i+'"]');
@@ -1483,17 +1500,18 @@ function updateStatus(){
 }
 
 function renderCanvas(){
-  var m=canvas.querySelectorAll(".canvas-module");for(var i=0;i<m.length;i++)m[i].remove();
+  var m=flexWrap.querySelectorAll(".canvas-module");for(var i=0;i<m.length;i++)m[i].remove();
+  // Clear SVG paths (keep defs)
   while(svg.childNodes.length>1){if(svg.lastChild)svg.removeChild(svg.lastChild);else break;}
-  var s=canvas.querySelectorAll(".canvas-slot");for(var i=0;i<s.length;i++)s[i].classList.remove("occupied","highlight");
+  var s=flexWrap.querySelectorAll(".canvas-slot");for(var i=0;i<s.length;i++)s[i].classList.remove("occupied","highlight");
   var f=canvas.querySelectorAll(".flow-status");for(var i=0;i<f.length;i++)f[i].remove();
   for(var i=0;i<placed.length;i++){
-    var item=placed[i],info=appInfo[item.app],slot=slots[item.slotIndex];
+    var item=placed[i],info=appInfo[item.app];
     var se=getSlotEl(item.slotIndex);if(se)se.classList.add("occupied");
+    // Get the slot element to append module inside it
+    var slotEl=getSlotEl(item.slotIndex);
     var mod=document.createElement("div");
     mod.className="canvas-module";
-    mod.style.left=slot.x+"px";
-    mod.style.top=slot.y+"px";
     var wrap=document.createElement("div");
     wrap.className="canvas-mod-wrapper";
     var icon=document.createElement("div");
@@ -1518,21 +1536,8 @@ function renderCanvas(){
     var tp=document.createElement("div");
     tp.className="canvas-mod-type";tp.textContent=info.type;
     mod.appendChild(wrap);mod.appendChild(nm);mod.appendChild(tp);
-    canvas.appendChild(mod);
+    slotEl.appendChild(mod);
     if(i===placed.length-1&&placed.length>=3)icon.classList.add("pulse-once");
-  }
-  if(placed.length>1){
-    for(var i=0;i<placed.length-1;i++){
-      var a=slots[placed[i].slotIndex],b=slots[placed[i+1].slotIndex];
-      var x1=a.x+40,y1=a.y+40,x2=b.x+40,y2=b.y+40;
-      var midX=(x1+x2)/2;
-      var path=document.createElementNS("http://www.w3.org/2000/svg","path");
-      path.setAttribute("d","M "+x1+" "+y1+" C "+midX+" "+y1+", "+midX+" "+y2+", "+x2+" "+y2);
-      svg.appendChild(path);
-      var dot=document.createElementNS("http://www.w3.org/2000/svg","circle");
-      dot.setAttribute("cx",midX);dot.setAttribute("cy",(y1+y2)/2);dot.setAttribute("r","4");
-      svg.appendChild(dot);
-    }
   }
   if(placed.length>=3){
     var firstIsTrigger=appInfo[placed[0].app]&&appInfo[placed[0].app].isTrigger;
