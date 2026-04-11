@@ -397,24 +397,24 @@
     /* Drag & Drop demo - Make.com style */
     .drag-drop-section { padding: 72px 0; position: relative; }
     .drag-drop-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(800px 500px at 50% 30%, rgba(143,92,255,.08), transparent 60%); pointer-events: none; }
-    .drag-drop-container { width: min(1040px, 94%); margin: 0 auto; }
-    .drag-drop-card-full { border: 1px solid rgba(143,92,255,.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.3); min-height: 480px; background: #0d0b1a; }
-    .drag-demo { display: flex; flex-direction: column; height: 480px; }
+    .drag-drop-container { width: min(1100px, 96%); margin: 0 auto; }
+    .drag-drop-card-full { border: 1px solid rgba(143,92,255,.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.3); background: #0d0b1a; }
+    .drag-demo { display: flex; flex-direction: column; min-height: 540px; }
     .drag-toolbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: #1a1630; border-bottom: 1px solid rgba(143,92,255,.15); flex-shrink: 0; }
     .drag-toolbar-logo { font-size: 16px; font-weight: 900; color: #c9b8ff; letter-spacing: .02em; margin-right: 16px; }
+    .drag-toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,.1); }
     .drag-toolbar-title { font-size: 13px; font-weight: 700; color: #e0dbf5; flex: 1; }
-    .drag-toolbar-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #47e7aa; font-weight: 700; }
+    .drag-toolbar-status { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; transition: color .3s; }
     .drag-toolbar-dot { width: 7px; height: 7px; border-radius: 50%; background: #47e7aa; box-shadow: 0 0 6px rgba(72,229,169,.5); }
     .drag-toolbar-btn { width: 32px; height: 32px; border-radius: 8px; background: rgba(143,92,255,.15); border: 1px solid rgba(143,92,255,.25); display: grid; place-items: center; font-size: 14px; color: #c9b8ff; }
     .drag-toolbar-btn.play-btn { background: linear-gradient(135deg, #47e7aa, #5ce2ff); border-color: transparent; color: #0d0b1a; font-size: 12px; }
-    .drag-body { flex: 1; display: flex; overflow: hidden; }
-    .drag-palette { width: 80px; flex-shrink: 0; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #13112a; border-right: 1px solid rgba(255,255,255,.06); overflow-y: auto; }
-    .drag-palette-title { font-size: 9px; color: #6b6394; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; text-align: center; margin-bottom: 4px; }
-    .drag-node { width: 64px; height: 56px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: grab; user-select: none; transition: transform .15s ease, box-shadow .15s ease; border: 1px solid rgba(255,255,255,.1); }
+    .drag-palette-row { display: flex; gap: 8px; padding: 12px 16px; background: #13112a; border-bottom: 1px solid rgba(255,255,255,.06); flex-shrink: 0; flex-wrap: wrap; justify-content: center; }
+    .drag-palette-label { font-size: 9px; color: #6b6394; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; width: 100%; text-align: center; margin-bottom: 2px; }
+    .drag-node { width: 76px; height: 58px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: grab; user-select: none; transition: transform .15s ease, box-shadow .15s ease; border: 1px solid rgba(255,255,255,.12); flex-shrink: 0; }
     .drag-node:hover { transform: scale(1.06); box-shadow: 0 4px 16px rgba(0,0,0,.3); }
     .drag-node:active { cursor: grabbing; transform: scale(1.1); }
     .drag-node.placed { opacity: .25; pointer-events: none; }
-    .drag-node .node-emoji { font-size: 18px; }
+    .drag-node .node-emoji { font-size: 20px; }
     .drag-node .node-label { font-size: 8px; color: #fff; font-weight: 800; text-transform: uppercase; }
     .drag-node[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
     .drag-node[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); }
@@ -422,11 +422,15 @@
     .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
     .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
     .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
-    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 20px 20px; transition: background-color .2s ease; }
+    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 360px; }
     .drag-canvas.drag-over { background-color: rgba(92,226,255,.04); box-shadow: inset 0 0 0 2px rgba(92,226,255,.2); }
-    .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; }
-    .canvas-module { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; gap: 4px; animation: modAppear .4s cubic-bezier(.34,1.56,.64,1); }
+    .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
+    .canvas-slot { position: absolute; width: 80px; height: 80px; border-radius: 12px; border: 2px dashed rgba(143,92,255,.2); background: rgba(143,92,255,.03); transition: border-color .2s, background .2s; pointer-events: none; }
+    .canvas-slot.occupied { border-color: transparent; background: transparent; }
+    .canvas-slot.highlight { border-color: rgba(92,226,255,.5); background: rgba(92,226,255,.08); }
+    .canvas-module { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; gap: 2px; animation: modAppear .4s cubic-bezier(.34,1.56,.64,1); z-index: 3; }
     @keyframes modAppear { from { transform: scale(0) translateY(-8px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+    .canvas-mod-wrapper { position: relative; }
     .canvas-mod-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid rgba(255,255,255,.15); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
     .canvas-mod-icon.pulse-once { animation: pulseOk .6s ease-out; }
     @keyframes pulseOk { 0% { box-shadow: 0 0 0 0 rgba(72,229,169,.6); } 50% { box-shadow: 0 0 0 14px rgba(72,229,169,0); } 100% { box-shadow: 0 0 0 0 rgba(72,229,169,0); } }
@@ -436,29 +440,20 @@
     .canvas-mod-icon[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
     .canvas-mod-icon[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
     .canvas-mod-icon[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
-    .canvas-mod-name { font-size: 9px; color: #d5d0ec; font-weight: 800; text-transform: uppercase; text-align: center; white-space: nowrap; }
+    .canvas-mod-btn-del { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #e74c3c; color: #fff; border: 2px solid #0d0b1a; font-size: 12px; line-height: 16px; text-align: center; cursor: pointer; opacity: 0; transition: opacity .15s; z-index: 5; }
+    .canvas-mod-wrapper:hover .canvas-mod-btn-del { opacity: 1; }
+    .canvas-mod-name { font-size: 9px; color: #d5d0ec; font-weight: 800; text-transform: uppercase; text-align: center; white-space: nowrap; margin-top: 2px; }
     .canvas-mod-type { font-size: 8px; color: #6b6394; font-weight: 600; }
     .canvas-svg { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
     .canvas-svg path { stroke: url(#connGrad); stroke-width: 2.5; fill: none; filter: drop-shadow(0 0 4px rgba(92,226,255,.3)); }
     .canvas-svg circle { fill: #5ce2ff; filter: drop-shadow(0 0 6px rgba(92,226,255,.5)); animation: dotMove 1.5s ease-in-out infinite; }
     @keyframes dotMove { 0%, 100% { r: 3; opacity: .6; } 50% { r: 5; opacity: 1; } }
-    .flow-ready-badge { position: absolute; bottom: 12px; right: 12px; background: linear-gradient(135deg, rgba(72,229,169,.2), rgba(92,226,255,.15)); border: 1px solid rgba(72,229,169,.45); border-radius: 999px; padding: 6px 14px; font-size: 11px; font-weight: 800; color: #e7fff9; text-transform: uppercase; animation: badgePop .4s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 0 16px rgba(72,229,169,.15); z-index: 5; }
-    @keyframes badgePop { from { transform: scale(0); } to { transform: scale(1); } }
-
-    : translate(-50%, -50%);
-      font-size: 9px; color: rgba(255,255,255,.3); text-transform: uppercase;
-      font-weight: 700; letter-spacing: .05em; pointer-events: none; white-space: nowrap;
-    }
-    .flow-ready-badge {
-      position: absolute; bottom: 8px; right: 8px;
-      background: linear-gradient(135deg, rgba(72,229,169,.25), rgba(92,226,255,.2));
-      border: 1px solid rgba(72,229,169,.5); border-radius: 999px;
-      padding: 4px 10px; font-size: 10px; font-weight: 800;
-      color: #e7fff9; text-transform: uppercase; letter-spacing: .04em;
-      animation: badgePop .4s cubic-bezier(.34,1.56,.64,1);
-      box-shadow: 0 0 12px rgba(72,229,169,.2);
-    }
-    @keyframes badgePop { from { transform: scale(0); } to { transform: scale(1); } }
+    .flow-status { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 5; animation: flowPop .4s cubic-bezier(.34,1.56,.64,1); }
+    .flow-status-inner { background: rgba(13,11,26,.92); border: 1px solid rgba(72,229,169,.4); border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,.4); white-space: nowrap; }
+    .flow-status-icon { font-size: 20px; }
+    .flow-status-text { font-size: 11px; color: #e7fff9; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+    .flow-status-sub { font-size: 10px; color: #8a82a8; font-weight: 600; margin-top: 2px; }
+    @keyframes flowPop { from { transform: translateX(-50%) scale(0); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
 
     /* App connector demo */
     .app-demo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 8px; }
@@ -1009,7 +1004,7 @@
     <div class="drag-drop-container">
       <div class="section-head">
         <h2>KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</h2>
-        <p>Thử kéo module vào canvas bên phải — kéo đủ 3+ module để xem flow sẵn sàng chạy.</p>
+        <p>Thử kéo module vào canvas — kéo đủ 3+ module để xem flow sẵn sàng chạy. Mỗi module có nút × để xóa.</p>
       </div>
       <div class="drag-drop-card-full">
         <div class="drag-demo">
@@ -1017,47 +1012,31 @@
             <div class="drag-toolbar-logo">make</div>
             <div class="drag-toolbar-sep"></div>
             <div class="drag-toolbar-title">My First Flow</div>
-            <div class="drag-toolbar-status">
+            <div class="drag-toolbar-status" id="flowStatus">
               <div class="drag-toolbar-dot"></div>
-              <span>Ready</span>
+              <span>Idle</span>
             </div>
-            <div class="drag-toolbar-btn">↩</div>
-            <div class="drag-toolbar-btn">↪</div>
-            <div class="drag-toolbar-btn play-btn">▶</div>
+            <div class="drag-toolbar-btn play-btn" id="playBtn" style="opacity:.4;pointer-events:none">▶</div>
           </div>
-          <div class="drag-body">
-            <div class="drag-palette">
-              <div class="drag-palette-title">MODULES</div>
-              <div class="drag-node" draggable="true" data-app="webhook">
-                <span class="node-emoji">🪝</span><span class="node-label">Webhook</span>
-              </div>
-              <div class="drag-node" draggable="true" data-app="sheets">
-                <span class="node-emoji">📊</span><span class="node-label">Sheets</span>
-              </div>
-              <div class="drag-node" draggable="true" data-app="slack">
-                <span class="node-emoji">💬</span><span class="node-label">Slack</span>
-              </div>
-              <div class="drag-node" draggable="true" data-app="openai">
-                <span class="node-emoji">🤖</span><span class="node-label">OpenAI</span>
-              </div>
-              <div class="drag-node" draggable="true" data-app="gmail">
-                <span class="node-emoji">📧</span><span class="node-label">Gmail</span>
-              </div>
-              <div class="drag-node" draggable="true" data-app="timer">
-                <span class="node-emoji">⏰</span><span class="node-label">Timer</span>
-              </div>
-            </div>
-            <div class="drag-canvas" id="dragCanvas">
-              <svg class="canvas-svg" id="canvasSvg">
-                <defs>
-                  <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#8f5cff"/>
-                    <stop offset="100%" stop-color="#5ce2ff"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="canvas-hint">↕ Kéo module vào đây</div>
-            </div>
+          <div class="drag-palette-row">
+            <div class="drag-palette-label">MODULES — kéo vào canvas</div>
+            <div class="drag-node" draggable="true" data-app="webhook"><span class="node-emoji">🪝</span><span class="node-label">Webhook</span></div>
+            <div class="drag-node" draggable="true" data-app="sheets"><span class="node-emoji">📊</span><span class="node-label">Sheets</span></div>
+            <div class="drag-node" draggable="true" data-app="slack"><span class="node-emoji">💬</span><span class="node-label">Slack</span></div>
+            <div class="drag-node" draggable="true" data-app="openai"><span class="node-emoji">🤖</span><span class="node-label">OpenAI</span></div>
+            <div class="drag-node" draggable="true" data-app="gmail"><span class="node-emoji">📧</span><span class="node-label">Gmail</span></div>
+            <div class="drag-node" draggable="true" data-app="timer"><span class="node-emoji">⏰</span><span class="node-label">Timer</span></div>
+          </div>
+          <div class="drag-canvas" id="dragCanvas">
+            <svg class="canvas-svg" id="canvasSvg">
+              <defs>
+                <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#8f5cff"/>
+                  <stop offset="100%" stop-color="#5ce2ff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="canvas-hint" id="canvasHint">↕ Kéo module vào đây</div>
           </div>
         </div>
       </div>
@@ -1427,119 +1406,177 @@
   </script>
 
   <!-- JS: Drag & Drop (Make.com style) -->
-  <script>
-    (function () {
-      const canvas = document.getElementById('dragCanvas');
-      if (!canvas) return;
-      const hint = canvas.querySelector('.canvas-hint');
-      const svg = document.getElementById('canvasSvg');
-      const appInfo = {
-        webhook: { emoji: '🪝', name: 'Webhook', type: 'Trigger' },
-        sheets: { emoji: '📊', name: 'Google Sheets', type: 'Action' },
-        slack: { emoji: '💬', name: 'Slack', type: 'Action' },
-        openai: { emoji: '🤖', name: 'OpenAI', type: 'AI' },
-        gmail: { emoji: '📧', name: 'Gmail', type: 'Action' },
-        timer: { emoji: '⏰', name: 'Timer', type: 'Trigger' }
-      };
-      const placed = [];
-      const positions = [
-        { x: 12, y: 15 }, { x: 45, y: 15 },
-        { x: 28, y: 48 }, { x: 60, y: 48 },
-        { x: 44, y: 75 }
-      ];
+<script>
+(function(){
+var canvas=document.getElementById("dragCanvas");
+if(!canvas)return;
+var hint=document.getElementById("canvasHint");
+var svg=document.getElementById("canvasSvg");
+var statusEl=document.getElementById("flowStatus");
+var playBtn=document.getElementById("playBtn");
+var CELL_W=96,CELL_H=96,PAD_X=30,PAD_Y=20,COLS=5,ROWS=3;
+var slots=[];
+for(var r=0;r<ROWS;r++)for(var cc=0;cc<COLS;cc++)slots.push({x:PAD_X+cc*CELL_W,y:PAD_Y+r*CELL_H});
+var appInfo={
+  webhook:{emoji:"\ud83e\ude9d",name:"Webhook",type:"Trigger",desc:"Nh\u1eadn d\u1eef li\u1ec7u t\u1eeb b\u1ea5t k\u1ef3 \u0111\u00e2u"},
+  sheets:{emoji:"\ud83d\udcca",name:"Google Sheets",type:"Action",desc:"\u0110\u1ecdc/ghi b\u1ea3ng t\u00ednh"},
+  slack:{emoji:"\ud83d\udcac",name:"Slack",type:"Action",desc:"G\u1eedi th\u00f4ng b\u00e1o team"},
+  openai:{emoji:"\ud83e\udd16",name:"OpenAI",type:"AI",desc:"X\u1eed l\u00fd ng\u00f4n ng\u1eef th\u00f4ng minh"},
+  gmail:{emoji:"\ud83d\udce7",name:"Gmail",type:"Action",desc:"G\u1eedi/nh\u1eadn email t\u1ef1 \u0111\u1ed9ng"},
+  timer:{emoji:"\u23f0",name:"Timer",type:"Trigger",desc:"Ch\u1ea1y theo l\u1ecbch \u0111\u1ecbnh s\u1eb5n"}
+};
+var placed=[];
 
-      const bezierPath = (x1, y1, x2, y2) => {
-        const dx = Math.abs(x2 - x1) * 0.5;
-        return `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
-      };
+function drawSlots(){
+  var e=canvas.querySelectorAll(".canvas-slot");
+  for(var i=0;i<e.length;i++)e[i].remove();
+  for(var i=0;i<slots.length;i++){
+    var el=document.createElement("div");
+    el.className="canvas-slot";
+    el.style.left=slots[i].x+"px";
+    el.style.top=slots[i].y+"px";
+    el.dataset.slotIndex=i;
+    canvas.appendChild(el);
+  }
+}
+drawSlots();
 
-      const renderCanvas = () => {
-        canvas.querySelectorAll('.canvas-module, .flow-ready-badge').forEach(n => n.remove());
-        if (svg) { while (svg.childNodes.length > 1) { if (svg.lastChild) svg.removeChild(svg.lastChild); else break; } }
+function getSlotEl(i){
+  return canvas.querySelector('.canvas-slot[data-slot-index="'+i+'"]');
+}
 
-        placed.forEach((app, i) => {
-          const pos = positions[i];
-          const info = appInfo[app];
-          const mod = document.createElement('div');
-          mod.className = 'canvas-module';
-          mod.style.cssText = `left:${pos.x}%;top:${pos.y}%;`;
+var flowDescs=[
+  "Webhook \u2192 ghi Sheets \u2192 b\u00e1o Slack",
+  "Timer \u2192 \u0111\u1ecdc Sheets \u2192 OpenAI \u2192 g\u1eedi Gmail",
+  "Webhook \u2192 OpenAI x\u1eed l\u00fd \u2192 l\u01b0u Sheets \u2192 b\u00e1o Slack",
+  "Timer \u2192 qu\u00e9t Sheets \u2192 t\u1ea1o n\u1ed9i dung OpenAI \u2192 Gmail",
+  "Webhook \u2192 Sheets \u2192 OpenAI ph\u00e2n t\u00edch \u2192 Slack + Gmail"
+];
 
-          const icon = document.createElement('div');
-          icon.className = 'canvas-mod-icon';
-          if (i === placed.length - 1 && placed.length >= 3) icon.classList.add('pulse-once');
-          icon.setAttribute('data-app', app);
-          icon.textContent = info.emoji;
+function updateStatus(){
+  if(placed.length===0){
+    statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Idle</span>';
+    statusEl.style.color="#8a82a8";
+    if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+    hint.style.opacity="1";
+  }else if(placed.length<3){
+    statusEl.innerHTML='<div class="drag-toolbar-dot" style="background:#f7971e;box-shadow:0 0 6px rgba(247,151,30,.5)"></div><span>Building... ('+placed.length+'/3)</span>';
+    statusEl.style.color="#f7971e";
+    if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+    hint.style.opacity="0";
+  }else{
+    statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Ready</span>';
+    statusEl.style.color="#47e7aa";
+    if(playBtn){playBtn.style.opacity="1";playBtn.style.pointerEvents="";}
+    hint.style.opacity="0";
+  }
+}
 
-          const nameEl = document.createElement('div');
-          nameEl.className = 'canvas-mod-name';
-          nameEl.textContent = info.name;
-
-          const typeEl = document.createElement('div');
-          typeEl.className = 'canvas-mod-type';
-          typeEl.textContent = info.type;
-
-          mod.appendChild(icon);
-          mod.appendChild(nameEl);
-          mod.appendChild(typeEl);
-          canvas.appendChild(mod);
-        });
-
-        if (placed.length > 1 && svg) {
-          const canvasRect = canvas.getBoundingClientRect();
-          if (canvasRect.width === 0 || canvasRect.height === 0) {
-            requestAnimationFrame(() => renderCanvas());
-            return;
-          }
-          for (let i = 0; i < placed.length - 1; i++) {
-            const a = positions[i], b = positions[i + 1];
-            // Tính tâm module (80px rộng, ~80px cao cả icon + label)
-            const x1 = (a.x / 100) * canvasRect.width + 40;
-            const y1 = (a.y / 100) * canvasRect.height + 35;
-            const x2 = (b.x / 100) * canvasRect.width + 40;
-            const y2 = (b.y / 100) * canvasRect.height + 35;
-
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', bezierPath(x1, y1, x2, y2));
-            svg.appendChild(path);
-
-            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            dot.setAttribute('cx', (x1 + x2) / 2);
-            dot.setAttribute('cy', (y1 + y2) / 2);
-            dot.setAttribute('r', '4');
-            svg.appendChild(dot);
-          }
-        }
-
-        if (placed.length >= 3) {
-          const badge = document.createElement('div');
-          badge.className = 'flow-ready-badge';
-          badge.textContent = 'Flow sẵn sàng! 🚀';
-          canvas.appendChild(badge);
-        }
-      };
-
-      document.querySelectorAll('.drag-node').forEach(node => {
-        node.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', node.dataset.app); node.style.opacity = '.3'; });
-        node.addEventListener('dragend', e => { node.style.opacity = '1'; });
+function renderCanvas(){
+  var m=canvas.querySelectorAll(".canvas-module");for(var i=0;i<m.length;i++)m[i].remove();
+  while(svg.childNodes.length>1){if(svg.lastChild)svg.removeChild(svg.lastChild);else break;}
+  var s=canvas.querySelectorAll(".canvas-slot");for(var i=0;i<s.length;i++)s[i].classList.remove("occupied","highlight");
+  var f=canvas.querySelectorAll(".flow-status");for(var i=0;i<f.length;i++)f[i].remove();
+  for(var i=0;i<placed.length;i++){
+    var item=placed[i],info=appInfo[item.app],slot=slots[item.slotIndex];
+    var se=getSlotEl(item.slotIndex);if(se)se.classList.add("occupied");
+    var mod=document.createElement("div");
+    mod.className="canvas-module";
+    mod.style.left=slot.x+"px";
+    mod.style.top=slot.y+"px";
+    var wrap=document.createElement("div");
+    wrap.className="canvas-mod-wrapper";
+    var icon=document.createElement("div");
+    icon.className="canvas-mod-icon";
+    icon.setAttribute("data-app",item.app);
+    icon.textContent=info.emoji;
+    var delBtn=document.createElement("div");
+    delBtn.className="canvas-mod-btn-del";
+    delBtn.innerHTML="\u00d7";
+    (function(idx){
+      delBtn.addEventListener("click",function(e){
+        e.stopPropagation();
+        var rm=placed.splice(idx,1)[0];
+        var pn=document.querySelector('.drag-node[data-app="'+rm.app+'"]');
+        if(pn)pn.classList.remove("placed");
+        renderCanvas();updateStatus();
       });
+    })(i);
+    wrap.appendChild(icon);wrap.appendChild(delBtn);
+    var nm=document.createElement("div");
+    nm.className="canvas-mod-name";nm.textContent=info.name;
+    var tp=document.createElement("div");
+    tp.className="canvas-mod-type";tp.textContent=info.type;
+    mod.appendChild(wrap);mod.appendChild(nm);mod.appendChild(tp);
+    canvas.appendChild(mod);
+    if(i===placed.length-1&&placed.length>=3)icon.classList.add("pulse-once");
+  }
+  if(placed.length>1){
+    for(var i=0;i<placed.length-1;i++){
+      var a=slots[placed[i].slotIndex],b=slots[placed[i+1].slotIndex];
+      var x1=a.x+40,y1=a.y+40,x2=b.x+40,y2=b.y+40;
+      var midX=(x1+x2)/2;
+      var path=document.createElementNS("http://www.w3.org/2000/svg","path");
+      path.setAttribute("d","M "+x1+" "+y1+" C "+midX+" "+y1+", "+midX+" "+y2+", "+x2+" "+y2);
+      svg.appendChild(path);
+      var dot=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      dot.setAttribute("cx",midX);dot.setAttribute("cy",(y1+y2)/2);dot.setAttribute("r","4");
+      svg.appendChild(dot);
+    }
+  }
+  if(placed.length>=3){
+    var fi=placed.length%flowDescs.length;
+    var fp=document.createElement("div");
+    fp.className="flow-status";
+    fp.innerHTML='<div class="flow-status-inner"><div class="flow-status-icon">\ud83d\ude80</div><div><div class="flow-status-text">Flow s\u1eb5n s\u00e0ng \u2014 '+placed.length+' modules</div><div class="flow-status-sub">'+flowDescs[fi]+'</div></div></div>';
+    canvas.appendChild(fp);
+  }
+}
 
-      canvas.addEventListener('dragover', e => { e.preventDefault(); canvas.classList.add('drag-over'); });
-      canvas.addEventListener('dragleave', () => { canvas.classList.remove('drag-over'); });
-      canvas.addEventListener('drop', e => {
-        e.preventDefault(); canvas.classList.remove('drag-over');
-        const app = e.dataTransfer.getData('text/plain');
-        if (app && placed.length < 5 && !placed.includes(app)) {
-          placed.push(app);
-          const paletteNode = document.querySelector(`.drag-node[data-app="${app}"]`);
-          if (paletteNode) paletteNode.classList.add('placed');
-          if (hint) hint.style.display = 'none';
-          renderCanvas();
-        }
-      });
-    })();
-  </script>
+var nodes=document.querySelectorAll(".drag-node");
+for(var i=0;i<nodes.length;i++){
+  (function(node){
+    node.addEventListener("dragstart",function(e){e.dataTransfer.setData("text/plain",node.dataset.app);node.style.opacity=".3";});
+    node.addEventListener("dragend",function(e){node.style.opacity="1";});
+  })(nodes[i]);
+}
 
-  <!-- JS: App connection animation -->
+canvas.addEventListener("dragover",function(e){
+  e.preventDefault();
+  canvas.classList.add("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+  for(var i=0;i<slots.length;i++){
+    if(!placed.some(function(p){return p.slotIndex===i;})){
+      var el=getSlotEl(i);if(el)el.classList.add("highlight");
+      break;
+    }
+  }
+});
+
+canvas.addEventListener("dragleave",function(){
+  canvas.classList.remove("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+});
+
+canvas.addEventListener("drop",function(e){
+  e.preventDefault();
+  canvas.classList.remove("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+  var app=e.dataTransfer.getData("text/plain");
+  if(!app||placed.length>=15||placed.some(function(p){return p.app===app;}))return;
+  var si=-1;
+  for(var i=0;i<slots.length;i++){if(!placed.some(function(p){return p.slotIndex===i;})){si=i;break;}}
+  if(si===-1)return;
+  placed.push({app:app,slotIndex:si});
+  var pn=document.querySelector('.drag-node[data-app="'+app+'"]');
+  if(pn)pn.classList.add("placed");
+  renderCanvas();updateStatus();
+});
+
+updateStatus();
+})();
+</script>
+<!-- JS: App connection animation -->
   <script>
     (function () {
       const cells = document.querySelectorAll('.app-cell');
