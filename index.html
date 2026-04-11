@@ -563,23 +563,24 @@
     }
     @keyframes templateShine { 0% { left: -100%; } 100% { left: 100%; } }
     .template-card:hover { transform: translateY(-4px); border-color: rgba(143,92,255,.56); }
-    .template-icon {
+    .template-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .tmpl-icon {
       width: 36px; height: 36px; border-radius: 10px;
-      display: grid; place-items: center; margin-bottom: 12px;
+      display: grid; place-items: center; flex-shrink: 0;
       background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
       border: 1px solid rgba(255,255,255,.15); font-size: 16px;
     }
-    .template-title {
+    .tmpl-title {
       font-size: 14px; font-weight: 800; color: #f0ecff;
-      margin-bottom: 8px; line-height: 1.35;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      display: block !important;
-      width: 100%;
+      line-height: 1.35;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       min-width: 0;
-      word-break: normal !important;
-      overflow-wrap: normal !important;
+      margin: 0;
     }
     .template-desc {
       font-size: 13px; color: var(--text-soft); margin-bottom: 10px;
@@ -1052,8 +1053,7 @@
       </div>
       <div class="templates-grid">
         <article class="template-card">
-          <div class="template-icon">📊</div>
-          <div class="template-title">SHEETS → OPENAI</div>
+          <div class="template-card-head"><div class="tmpl-icon">📊</div><h3 class="tmpl-title">SHEETS → OPENAI</h3></div>
           <div class="template-desc">Tạo nội dung tự động từ Sheet bằng ChatGPT. Phù hợp anh em cần scale content.</div>
           <div class="template-stats">
             <span class="template-stat template-used">🔥 Rất phổ biến</span>
@@ -1063,8 +1063,7 @@
           <a class="template-link-pill" href="https://www.make.com/en/templates/10570-create-new-completions-with-openai-chatgpt-from-new-rows-in-google-sheets" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
         <article class="template-card">
-          <div class="template-icon">🤖</div>
-          <div class="template-title">WHATSAPP CHATBOT</div>
+          <div class="template-card-head"><div class="tmpl-icon">🤖</div><h3 class="tmpl-title">WHATSAPP CHATBOT</h3></div>
           <div class="template-desc">Triển khai chatbot CSKH trên WhatsApp mà không cần viết code.</div>
           <div class="template-stats">
             <span class="template-stat template-used">💡 Dễ viral</span>
@@ -1074,8 +1073,7 @@
           <a class="template-link-pill" href="https://www.make.com/en/templates/10260-create-a-basic-chatbot-for-whatsapp" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
         <article class="template-card">
-          <div class="template-icon">🗓️</div>
-          <div class="template-title">NOTION → CALENDAR</div>
+          <div class="template-card-head"><div class="tmpl-icon">🗓️</div><h3 class="tmpl-title">NOTION → CALENDAR</h3></div>
           <div class="template-desc">Đồng bộ lịch từ Notion vào Google Calendar theo thời gian thực.</div>
           <div class="template-stats">
             <span class="template-stat template-used">✅ Dễ áp dụng</span>
@@ -1085,8 +1083,7 @@
           <a class="template-link-pill" href="https://www.make.com/en/templates/6407-create-new-google-calendar-events-from-notion-database-items" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
         <article class="template-card">
-          <div class="template-icon">💬</div>
-          <div class="template-title">FORM → SLACK</div>
+          <div class="template-card-head"><div class="tmpl-icon">💬</div><h3 class="tmpl-title">FORM → SLACK</h3></div>
           <div class="template-desc">Nhận thông báo Slack mỗi khi có form submit mới. Không bỏ sót lead.</div>
           <div class="template-stats">
             <span class="template-stat template-used">🔥 Team yêu thích</span>
@@ -1096,8 +1093,7 @@
           <a class="template-link-pill" href="https://www.make.com/en/templates/10203-send-a-slack-message-for-each-new-typeform-entry" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
         <article class="template-card">
-          <div class="template-icon">📧</div>
-          <div class="template-title">GMAIL → DRIVE</div>
+          <div class="template-card-head"><div class="tmpl-icon">📧</div><h3 class="tmpl-title">GMAIL → DRIVE</h3></div>
           <div class="template-desc">Tự động lưu đính kèm Gmail vào Google Drive. Sắp xếp file gọn gàng.</div>
           <div class="template-stats">
             <span class="template-stat template-used">✅ Thiết thực</span>
@@ -1107,8 +1103,7 @@
           <a class="template-link-pill" href="https://www.make.com/en/templates/452-save-gmail-attachments-to-google-drive" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
         <article class="template-card">
-          <div class="template-icon">🛒</div>
-          <div class="template-title">SHOPIFY → SHEETS</div>
+          <div class="template-card-head"><div class="tmpl-icon">🛒</div><h3 class="tmpl-title">SHOPIFY → SHEETS</h3></div>
           <div class="template-desc">Tự động ghi đơn Shopify mới vào Sheet để theo dõi và báo cáo.</div>
           <div class="template-stats">
             <span class="template-stat template-used">🔥 E-com cần có</span>
