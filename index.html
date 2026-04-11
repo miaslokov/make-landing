@@ -130,7 +130,23 @@
       background: rgba(255,255,255,.04);
     }
 
-    .disclosure-wrap { padding-top: 20px; }
+    .disclosure-wrap { padding-top: 16px; }
+
+    .badge-top {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(13px, 1.8vw, 16px);
+      font-weight: 800;
+      color: #f8f4ff;
+      border: 1px solid rgba(255,255,255,.24);
+      background: linear-gradient(120deg, rgba(143,92,255,.35), rgba(92,226,255,.25), rgba(255,95,162,.22));
+      border-radius: 999px;
+      padding: 10px 20px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 8px 24px rgba(143,92,255,.25);
+      margin-bottom: 8px;
+    }
     
     .slide-up {
       opacity: 0;
@@ -643,18 +659,18 @@
       border-radius: 14px;
       background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
       padding: 14px;
-      min-height: 170px;
+      min-height: 190px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .proof-shot {
+    .proof-demo {
       border: 1px solid rgba(255,255,255,.16);
       border-radius: 10px;
       background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
-      height: 104px;
-      padding: 12px;
+      height: 120px;
+      padding: 10px;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -662,28 +678,21 @@
       justify-content: center;
     }
 
-    .proof-shot::after {
+    .proof-demo::after {
       content: "";
       position: absolute;
       top: 0;
       left: -120%;
       width: 120%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(126,240,255,.24), transparent);
+      background: linear-gradient(90deg, transparent, rgba(126,240,255,.18), transparent);
       animation: proofScan 2.6s infinite;
+      pointer-events: none;
     }
 
     @keyframes proofScan {
       0% { left: -120%; }
       100% { left: 120%; }
-    }
-
-    .proof-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.35);
     }
 
     .proof-label {
@@ -699,6 +708,237 @@
       font-weight: 800;
       color: #f6f2ff;
       line-height: 1.35;
+    }
+
+    /* Mini drag-and-drop demo */
+    .drag-demo {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .drag-palette {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 64px;
+      flex-shrink: 0;
+    }
+
+    .drag-node {
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #fff;
+      cursor: grab;
+      user-select: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 6px;
+    }
+
+    .drag-node:active { cursor: grabbing; transform: scale(1.05); }
+
+    .drag-node.form-node { background: linear-gradient(135deg, #6e45e2, #88d3ce); box-shadow: 0 3px 12px rgba(110,69,226,.4); }
+    .drag-node.sheet-node { background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 3px 12px rgba(0,176,155,.4); }
+    .drag-node.notify-node { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 3px 12px rgba(247,151,30,.3); color: #1a1a2e; }
+    .drag-node.ai-node { background: linear-gradient(135deg, #8f5cff, #5ce2ff); box-shadow: 0 3px 12px rgba(143,92,255,.4); }
+
+    .drag-canvas {
+      flex: 1;
+      border: 2px dashed rgba(143,92,255,.22);
+      border-radius: 8px;
+      position: relative;
+      background: rgba(143,92,255,.04);
+      transition: border-color .2s ease, background .2s ease;
+      min-height: 100px;
+    }
+
+    .drag-canvas.drag-over {
+      border-color: rgba(92,226,255,.55);
+      background: rgba(92,226,255,.08);
+    }
+
+    .canvas-node {
+      position: absolute;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+      padding: 0 5px;
+      animation: nodeDrop .3s ease-out;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @keyframes nodeDrop {
+      from { transform: scale(0) translateY(-20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .canvas-connector {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(92,226,255,.6), rgba(143,92,255,.6));
+      top: 50%;
+      border-radius: 2px;
+      transform: translateY(-50%);
+      box-shadow: 0 0 6px rgba(92,226,255,.3);
+    }
+
+    .canvas-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 9px;
+      color: rgba(255,255,255,.3);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .05em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* App connector demo */
+    .app-demo {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 5px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .app-cell {
+      border-radius: 6px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      cursor: default;
+      position: relative;
+    }
+
+    .app-cell:hover {
+      background: rgba(143,92,255,.2);
+      border-color: rgba(143,92,255,.4);
+      transform: scale(1.12);
+      z-index: 2;
+    }
+
+    .app-cell.connected {
+      border-color: rgba(72,229,169,.5);
+      background: rgba(72,229,169,.12);
+      box-shadow: 0 0 8px rgba(72,229,169,.2);
+    }
+
+    .app-cell .app-icon { font-size: 12px; }
+
+    /* Flow animation demo */
+    .flow-demo {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .flow-module {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(143,92,255,.3), rgba(92,226,255,.2));
+      border: 1px solid rgba(143,92,255,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      animation: flowPulse 2.4s ease-in-out infinite;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .flow-module:nth-child(2) { animation-delay: .4s; }
+    .flow-module:nth-child(4) { animation-delay: .8s; }
+    .flow-module:nth-child(6) { animation-delay: 1.2s; }
+
+    @keyframes flowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(92,226,255,.3); }
+      50% { box-shadow: 0 0 0 6px rgba(92,226,255,0); }
+    }
+
+    .flow-connector {
+      width: 18px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(143,92,255,.4), rgba(92,226,255,.4));
+      border-radius: 2px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .flow-connector::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5ce2ff;
+      box-shadow: 0 0 10px rgba(92,226,255,.6);
+      animation: dataFlow 1.2s ease-in-out infinite;
+    }
+
+    @keyframes dataFlow {
+      0% { left: -4px; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { left: 14px; opacity: 0; }
+    }
+
+    .flow-label-mini {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
     }
 
     .trust {
@@ -1170,8 +1410,10 @@
       .hero-copy { padding: 24px 20px; }
       .hero-card { min-height: auto; padding: 22px; }
       .flow-item { min-height: 64px; font-size: 14px; }
-      .proof-card { min-height: 150px; }
+      .proof-card { min-height: 170px; }
+      .proof-demo { height: 110px; }
       .hero p { font-size: 18px; }
+      .badge-top { font-size: 13px; padding: 8px 16px; }
     }
 
     @media (max-width: 680px) {
@@ -1192,6 +1434,7 @@
 </head>
 <body>
   <div class="container disclosure-wrap">
+    <span class="badge badge-top">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
     <div class="disclosure slide-up">
       Minh bạch affiliate: Trang này có chứa liên kết tiếp thị liên kết. Nếu anh em đăng ký qua link này, mình có thể nhận một khoản hoa hồng nhỏ và anh em không mất thêm chi phí nào. Mình chỉ giới thiệu công cụ thật sự hữu ích cho anh em muốn làm tự động hóa.
     </div>
@@ -1211,7 +1454,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="badge">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
+        <span class="badge">Bắt đầu chỉ với tài khoản Free — chưa cần trả phí</span>
         <h1>LÀM VIỆC THÔNG MINH HƠN VỚI <span class="gradient-text">MAKE FREE</span></h1>
         <p>
           Đừng chờ đủ giỏi mới làm automation. Anh em chỉ cần kéo thả vài bước là đã có một luồng chạy tự động, gọn việc và đỡ mệt ngay từ tuần đầu.
@@ -1258,32 +1501,71 @@
             <div class="flow-head">KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</div>
             <div class="flow-meta">Không cần đội kỹ thuật riêng</div>
             <div class="flow-detail">Dựa trên thư viện module có sẵn, anh em thao tác kéo thả để build luồng. Không phải viết script từ đầu.</div>
-            <img class="flow-gif" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F1o55lpuiX3hCRQpLoxYJYo%2Ff95d0ae5dde450f5259cd27ee0818768%2FIconWrapper__5_.png&w=3840&q=75" alt="Minh họa kéo thả Make" loading="lazy" />
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
         </div>
 
         <div class="proof-grid">
+          <!-- Card 1: Interactive Drag & Drop Demo -->
           <div class="proof-card">
-            <div class="proof-shot">
-              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F1o55lpuiX3hCRQpLoxYJYo%2Ff95d0ae5dde450f5259cd27ee0818768%2FIconWrapper__5_.png&w=3840&q=75" alt="Giao diện visual của Make" loading="lazy" />
+            <div class="proof-demo" id="dragDemo">
+              <div class="drag-demo">
+                <div class="drag-palette">
+                  <div class="drag-node form-node" draggable="true" data-node="Form">📋 Form</div>
+                  <div class="drag-node sheet-node" draggable="true" data-node="Sheet">📊 Sheet</div>
+                  <div class="drag-node notify-node" draggable="true" data-node="Notify">🔔 Notify</div>
+                  <div class="drag-node ai-node" draggable="true" data-node="AI">🤖 AI</div>
+                </div>
+                <div class="drag-canvas" id="dragCanvas">
+                  <div class="canvas-hint">↕ Kéo module vào đây</div>
+                </div>
+              </div>
             </div>
             <div class="proof-label">Kéo thả trực quan</div>
-            <div class="proof-title">Chỉ cần kéo là xong, không cần code</div>
+            <div class="proof-title">Thử kéo module vào khung bên phải</div>
           </div>
+          <!-- Card 2: App Connector Demo -->
           <div class="proof-card">
-            <div class="proof-shot">
-              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2FappIcon-slack%2Ff45f814f869603015c9c639081f996a0%2Fslack.png&w=3840&q=75" alt="Tích hợp ứng dụng trên Make" loading="lazy" />
+            <div class="proof-demo">
+              <div class="app-demo">
+                <div class="app-grid" id="appGrid">
+                  <div class="app-cell connected"><span class="app-icon">📧</span></div>
+                  <div class="app-cell connected"><span class="app-icon">📊</span></div>
+                  <div class="app-cell connected"><span class="app-icon">💬</span></div>
+                  <div class="app-cell connected"><span class="app-icon">📅</span></div>
+                  <div class="app-cell"><span class="app-icon">🔔</span></div>
+                  <div class="app-cell"><span class="app-icon">📁</span></div>
+                  <div class="app-cell"><span class="app-icon">🎨</span></div>
+                  <div class="app-cell"><span class="app-icon">🛒</span></div>
+                  <div class="app-cell"><span class="app-icon">📈</span></div>
+                  <div class="app-cell"><span class="app-icon">🔗</span></div>
+                  <div class="app-cell"><span class="app-icon">💼</span></div>
+                  <div class="app-cell"><span class="app-icon">🗂</span></div>
+                  <div class="app-cell"><span class="app-icon">⚡</span></div>
+                  <div class="app-cell"><span class="app-icon">📱</span></div>
+                  <div class="app-cell"><span class="app-icon">🔐</span></div>
+                </div>
+              </div>
             </div>
             <div class="proof-label">Kết nối 3000+ app</div>
-            <div class="proof-title">Facebook, Gmail, Notion, Google...</div>
+            <div class="proof-title">Hover vào icon xem tương tác</div>
           </div>
+          <!-- Card 3: Flow Animation Demo -->
           <div class="proof-card">
-            <div class="proof-shot">
-              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F6VxuX1WeSVngWJ7h7EmN0V%2Fac8ea15c9aec6d1dd1794cb2eec61528%2FIconWrapper__6_.png&w=3840&q=75" alt="Khả năng tự động hóa liên tục" loading="lazy" />
+            <div class="proof-demo">
+              <div class="flow-demo">
+                <div class="flow-module">📥</div>
+                <div class="flow-connector"></div>
+                <div class="flow-module">⚙️</div>
+                <div class="flow-connector"></div>
+                <div class="flow-module">🔄</div>
+                <div class="flow-connector"></div>
+                <div class="flow-module">📤</div>
+              </div>
+              <div class="flow-label-mini">24/7 Tự động</div>
             </div>
             <div class="proof-label">Chạy tự động</div>
-            <div class="proof-title">Luồng chạy 24/7, không cần can thiệp</div>
+            <div class="proof-title">Luồng chạy liên tục, không cần can thiệp</div>
           </div>
         </div>
       </div>
@@ -1619,6 +1901,75 @@
         el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
         io.observe(el);
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      const canvas = document.getElementById('dragCanvas');
+      if (!canvas) return;
+      const hint = canvas.querySelector('.canvas-hint');
+      const colors = { Form: 'linear-gradient(135deg, #6e45e2, #88d3ce)', Sheet: 'linear-gradient(135deg, #00b09b, #96c93d)', Notify: 'linear-gradient(135deg, #f7971e, #ffd200)', AI: 'linear-gradient(135deg, #8f5cff, #5ce2ff)' };
+      const textColors = { Form: '#fff', Sheet: '#fff', Notify: '#1a1a2e', AI: '#fff' };
+      const placed = [];
+      const positions = [{ l: 8, t: 24 }, { l: 50, t: 24 }, { l: 14, t: 62 }, { l: 56, t: 62 }];
+
+      const renderCanvas = () => {
+        canvas.querySelectorAll('.canvas-node, .canvas-connector').forEach(n => n.remove());
+        placed.forEach((item, i) => {
+          const pos = positions[i];
+          const node = document.createElement('div');
+          node.className = 'canvas-node';
+          node.style.cssText = `left:${pos.l}%;top:${pos.t}%;background:${colors[item]};color:${textColors[item]};`;
+          node.textContent = item;
+          canvas.appendChild(node);
+        });
+        for (let i = 0; i < placed.length - 1; i++) {
+          const a = positions[i], b = positions[i + 1];
+          const x1 = a.l + 6, x2 = b.l + 6;
+          const y1 = (a.t + 10);
+          const connector = document.createElement('div');
+          connector.className = 'canvas-connector';
+          connector.style.left = x1 + '%';
+          connector.style.width = (x2 - x1) + '%';
+          connector.style.top = y1 + '%';
+          canvas.appendChild(connector);
+        }
+      };
+
+      document.querySelectorAll('.drag-node').forEach(node => {
+        node.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', node.dataset.node);
+          node.style.opacity = '.5';
+        });
+        node.addEventListener('dragend', e => { node.style.opacity = '1'; });
+      });
+
+      canvas.addEventListener('dragover', e => { e.preventDefault(); canvas.classList.add('drag-over'); });
+      canvas.addEventListener('dragleave', () => { canvas.classList.remove('drag-over'); });
+      canvas.addEventListener('drop', e => {
+        e.preventDefault();
+        canvas.classList.remove('drag-over');
+        const name = e.dataTransfer.getData('text/plain');
+        if (name && placed.length < 4 && !placed.includes(name)) {
+          placed.push(name);
+          if (hint) hint.style.display = 'none';
+          renderCanvas();
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      const cells = document.querySelectorAll('.app-cell');
+      if (!cells.length) return;
+      let idx = 0;
+      setInterval(() => {
+        cells.forEach(c => c.classList.remove('connected'));
+        for (let i = 0; i < Math.min(idx + 5, cells.length); i++) {
+          cells[i].classList.add('connected');
+        }
+        idx = (idx + 1) % (cells.length + 3);
+      }, 800);
     })();
   </script>
 </body>
