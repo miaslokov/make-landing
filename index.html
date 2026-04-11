@@ -157,12 +157,9 @@
       letter-spacing: .06em;
     }
 
-    .brand-logo-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 4px;
-      background: linear-gradient(135deg, #8f5cff, #5ce2ff);
-      box-shadow: 0 0 14px rgba(92,226,255,.45);
+    .brand-make svg {
+      color: #bfa7ff;
+      filter: drop-shadow(0 0 10px rgba(143,92,255,.4));
     }
 
     .brand-template-link {
@@ -564,10 +561,13 @@
       border: 1px solid rgba(255,255,255,.16);
       border-radius: 10px;
       background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
-      height: 84px;
-      padding: 10px;
+      height: 104px;
+      padding: 12px;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .proof-shot::after {
@@ -586,17 +586,12 @@
       100% { left: 120%; }
     }
 
-    .proof-line {
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(143,92,255,.9), rgba(92,226,255,.9));
-      margin-bottom: 8px;
-      opacity: .9;
-    }
-
-    .proof-line.small {
-      width: 62%;
-      opacity: .75;
+    .proof-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.35);
     }
 
     .proof-label {
@@ -1152,27 +1147,21 @@
         <div class="proof-grid">
           <div class="proof-card">
             <div class="proof-shot">
-              <div class="proof-line" style="width: 100%"></div>
-              <div class="proof-line small"></div>
-              <div class="proof-line" style="width: 82%"></div>
+              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F1o55lpuiX3hCRQpLoxYJYo%2Ff95d0ae5dde450f5259cd27ee0818768%2FIconWrapper__5_.png&w=3840&q=75" alt="Giao diện visual của Make" loading="lazy" />
             </div>
             <div class="proof-label">Kéo thả trực quan</div>
             <div class="proof-title">Chỉ cần kéo là xong, không cần code</div>
           </div>
           <div class="proof-card">
             <div class="proof-shot">
-              <div class="proof-line" style="width: 78%"></div>
-              <div class="proof-line" style="width: 100%"></div>
-              <div class="proof-line small"></div>
+              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2FappIcon-slack%2Ff45f814f869603015c9c639081f996a0%2Fslack.png&w=3840&q=75" alt="Tích hợp ứng dụng trên Make" loading="lazy" />
             </div>
             <div class="proof-label">Kết nối 3000+ app</div>
             <div class="proof-title">Facebook, Gmail, Notion, Google...</div>
           </div>
           <div class="proof-card">
             <div class="proof-shot">
-              <div class="proof-line" style="width: 100%"></div>
-              <div class="proof-line" style="width: 64%"></div>
-              <div class="proof-line" style="width: 100%"></div>
+              <img class="proof-img" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F6VxuX1WeSVngWJ7h7EmN0V%2Fac8ea15c9aec6d1dd1794cb2eec61528%2FIconWrapper__6_.png&w=3840&q=75" alt="Khả năng tự động hóa liên tục" loading="lazy" />
             </div>
             <div class="proof-label">Chạy tự động</div>
             <div class="proof-title">Luồng chạy 24/7, không cần can thiệp</div>
