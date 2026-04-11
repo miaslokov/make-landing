@@ -469,18 +469,32 @@
       border-radius: 14px;
       background: linear-gradient(120deg, rgba(16,14,30,.94), rgba(24,20,45,.84));
       padding: 16px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: block;
       font-size: 15px;
       font-weight: 700;
       color: #f8f5ff;
       gap: 12px;
       position: relative;
       overflow: hidden;
-      min-height: 70px;
+      min-height: 78px;
       cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .flow-head {
+      display: block;
+      font-size: 15px;
+      line-height: 1.45;
+      letter-spacing: .01em;
+    }
+
+    .flow-meta {
+      margin-top: 7px;
+      font-size: 12.5px;
+      color: #c8c2e4;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
     .flow-item:hover {
@@ -1137,11 +1151,26 @@
 
       <div class="hero-card" aria-label="Giá trị chính">
         <div class="flow">
-          <div class="flow-item"><span>01 • TIẾT KIỆM 5 GIỜ/TUẦN CHO VIỆC QUAN TRỌNG</span><span class="pill">Hiệu quả</span></div>
-          <div class="flow-item"><span>02 • GIẢM 90% SAI SÓT KHI XỬ LÝ DỮ LIỆU</span><span class="pill">Ổn định</span></div>
-          <div class="flow-item"><span>03 • CHỈ CẦN NHÌN LÀ HIỂU LUÔNG CHẠY</span><span class="pill">Rõ ràng</span></div>
-          <div class="flow-item"><span>04 • TĂNG GẤP 3 LẦN KHỐI LƯỢNG CÔNG VIỆC</span><span class="pill">Mở rộng</span></div>
-          <div class="flow-item"><span>05 • KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</span><span class="pill">No-code</span></div>
+          <div class="flow-item">
+            <div class="flow-head">TIẾT KIỆM 5 GIỜ/TUẦN CHO VIỆC QUAN TRỌNG</div>
+            <div class="flow-meta">Thay vì copy paste thủ công</div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-head">GIẢM 90% SAI SÓT KHI XỬ LÝ DỮ LIỆU</div>
+            <div class="flow-meta">Tự động hóa giúp loại bỏ lỗi do tay</div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-head">CHỈ CẦN NHÌN LÀ HIỂU LUÔNG CHẠY</div>
+            <div class="flow-meta">Giao diện trực quan, không cần tài liệu</div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-head">TĂNG GẤP 3 LẦN KHỐI LƯỢNG CÔNG VIỆC</div>
+            <div class="flow-meta">Mà không cần tăng nhân sự</div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-head">KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</div>
+            <div class="flow-meta">Không cần đội kỹ thuật riêng</div>
+          </div>
         </div>
 
         <div class="proof-grid">
