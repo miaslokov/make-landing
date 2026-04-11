@@ -952,8 +952,8 @@
     .trust-list {
       min-height: 96px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
       align-items: center;
       text-align: center;
       color: #f0eaff;
@@ -963,33 +963,36 @@
     }
 
     .trust-item {
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
       background: rgba(8,6,16,.26);
       min-height: 64px;
       display: grid;
       place-items: center;
       position: relative;
       overflow: hidden;
-      padding: 8px 10px;
+      padding: 12px 10px;
+      transition: color .3s ease, transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      cursor: default;
     }
 
     .trust-item::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(143,92,255,.22), transparent);
-      transform: translateX(-100%);
-      animation: shimmer 2.2s infinite;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(92,226,255,.10), rgba(143,92,255,.08));
+      opacity: 0;
+      transition: opacity .35s ease;
       z-index: 0;
     }
 
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .trust-item:hover::before { opacity: 1; }
+
+    .trust-item:hover {
+      color: #78e9ff;
+      transform: translateY(-3px) scale(1.03);
+      border-color: rgba(126,240,255,.35);
+      box-shadow: 0 10px 28px rgba(92,226,255,.18);
     }
 
     .trust-item > span { position: relative; z-index: 1; }
@@ -1003,17 +1006,48 @@
       text-align: right;
     }
 
-    .typewriter {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid rgba(183,151,255,.8);
-      animation: typing 3.2s steps(36, end), blink-caret .75s step-end infinite;
-      max-width: 100%;
+    /* Interactive demo section */
+    .interactive-demo-section {
+      padding: 72px 0;
+      position: relative;
     }
 
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink-caret {
+    .interactive-demo-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(600px 400px at 20% 30%, rgba(143,92,255,.10), transparent 60%),
+        radial-gradient(500px 300px at 80% 70%, rgba(92,226,255,.08), transparent 55%);
+      pointer-events: none;
+    }
+
+    .section-head.demo-section-head {
+      margin-bottom: 36px;
+      text-align: center;
+    }
+
+    .proof-grid.interactive-proof-grid {
+      gap: 20px;
+    }
+
+    .proof-card.interactive-card {
+      min-height: 260px;
+      border-color: rgba(143,92,255,.22);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .proof-card.interactive-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(143,92,255,.18);
+      border-color: rgba(143,92,255,.4);
+    }
+
+    .proof-card.interactive-card .proof-demo {
+      height: 150px;
+    }
+
+    .counter {
       from, to { border-color: transparent }
       50% { border-color: rgba(183,151,255,.9); }
     }
@@ -1403,17 +1437,18 @@
       .features-grid,
       .audience-grid,
       .proof-grid,
-      .templates-grid { grid-template-columns: 1fr; }
+      .templates-grid,
+      .proof-grid.interactive-proof-grid { grid-template-columns: 1fr; }
       .trust-list { grid-template-columns: 1fr 1fr; }
       .feature h3 { font-size: 17px; }
-      .typewriter { white-space: normal; border-right: none; animation: none; }
       .hero-copy { padding: 24px 20px; }
       .hero-card { min-height: auto; padding: 22px; }
       .flow-item { min-height: 64px; font-size: 14px; }
       .proof-card { min-height: 170px; }
       .proof-demo { height: 110px; }
+      .proof-card.interactive-card .proof-demo { height: 130px; }
       .hero p { font-size: 18px; }
-      .badge-top { font-size: 13px; padding: 8px 16px; }
+      .interactive-demo-section { padding: 56px 0; }
     }
 
     @media (max-width: 680px) {
@@ -1434,10 +1469,6 @@
 </head>
 <body>
   <div class="container disclosure-wrap">
-    <span class="badge badge-top">Dành cho anh em muốn tự động hóa công việc theo cách đơn giản</span>
-    <div class="disclosure slide-up">
-      Minh bạch affiliate: Trang này có chứa liên kết tiếp thị liên kết. Nếu anh em đăng ký qua link này, mình có thể nhận một khoản hoa hồng nhỏ và anh em không mất thêm chi phí nào. Mình chỉ giới thiệu công cụ thật sự hữu ích cho anh em muốn làm tự động hóa.
-    </div>
     <div class="brand-strip slide-up">
       <div class="brand-make">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
@@ -1504,79 +1535,88 @@
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
         </div>
-
-        <div class="proof-grid">
-          <!-- Card 1: Interactive Drag & Drop Demo -->
-          <div class="proof-card">
-            <div class="proof-demo" id="dragDemo">
-              <div class="drag-demo">
-                <div class="drag-palette">
-                  <div class="drag-node form-node" draggable="true" data-node="Form">📋 Form</div>
-                  <div class="drag-node sheet-node" draggable="true" data-node="Sheet">📊 Sheet</div>
-                  <div class="drag-node notify-node" draggable="true" data-node="Notify">🔔 Notify</div>
-                  <div class="drag-node ai-node" draggable="true" data-node="AI">🤖 AI</div>
-                </div>
-                <div class="drag-canvas" id="dragCanvas">
-                  <div class="canvas-hint">↕ Kéo module vào đây</div>
-                </div>
-              </div>
-            </div>
-            <div class="proof-label">Kéo thả trực quan</div>
-            <div class="proof-title">Thử kéo module vào khung bên phải</div>
-          </div>
-          <!-- Card 2: App Connector Demo -->
-          <div class="proof-card">
-            <div class="proof-demo">
-              <div class="app-demo">
-                <div class="app-grid" id="appGrid">
-                  <div class="app-cell connected"><span class="app-icon">📧</span></div>
-                  <div class="app-cell connected"><span class="app-icon">📊</span></div>
-                  <div class="app-cell connected"><span class="app-icon">💬</span></div>
-                  <div class="app-cell connected"><span class="app-icon">📅</span></div>
-                  <div class="app-cell"><span class="app-icon">🔔</span></div>
-                  <div class="app-cell"><span class="app-icon">📁</span></div>
-                  <div class="app-cell"><span class="app-icon">🎨</span></div>
-                  <div class="app-cell"><span class="app-icon">🛒</span></div>
-                  <div class="app-cell"><span class="app-icon">📈</span></div>
-                  <div class="app-cell"><span class="app-icon">🔗</span></div>
-                  <div class="app-cell"><span class="app-icon">💼</span></div>
-                  <div class="app-cell"><span class="app-icon">🗂</span></div>
-                  <div class="app-cell"><span class="app-icon">⚡</span></div>
-                  <div class="app-cell"><span class="app-icon">📱</span></div>
-                  <div class="app-cell"><span class="app-icon">🔐</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="proof-label">Kết nối 3000+ app</div>
-            <div class="proof-title">Hover vào icon xem tương tác</div>
-          </div>
-          <!-- Card 3: Flow Animation Demo -->
-          <div class="proof-card">
-            <div class="proof-demo">
-              <div class="flow-demo">
-                <div class="flow-module">📥</div>
-                <div class="flow-connector"></div>
-                <div class="flow-module">⚙️</div>
-                <div class="flow-connector"></div>
-                <div class="flow-module">🔄</div>
-                <div class="flow-connector"></div>
-                <div class="flow-module">📤</div>
-              </div>
-              <div class="flow-label-mini">24/7 Tự động</div>
-            </div>
-            <div class="proof-label">Chạy tự động</div>
-            <div class="proof-title">Luồng chạy liên tục, không cần can thiệp</div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="trust">
       <div class="container trust-list">
-        <div class="trust-item"><span class="typewriter">⭐ Được anh em tin dùng toàn cầu</span></div>
+        <div class="trust-item"><span>⭐ ĐƯỢC ANH EM TIN DÙNG TOÀN CẦU</span></div>
         <div class="trust-item"><span>🔌 KẾT NỐI <strong class="counter" data-target="3000">0</strong>+ ỨNG DỤNG</span></div>
         <div class="trust-item"><span>🧩 GIAO DIỆN KÉO THẢ DỄ HIỂU</span></div>
         <div class="trust-item"><span>💸 GÓI FREE DỄ BẮT ĐẦU</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="interactive-demo-section">
+    <div class="container">
+      <div class="section-head demo-section-head">
+        <h2>TRẢI NGHIỆM THỰC TẾ</h2>
+        <p>Thử kéo thả module, xem cách Make kết nối hàng nghìn app, và hình dung luồng tự động chạy 24/7.</p>
+      </div>
+
+      <div class="proof-grid interactive-proof-grid">
+        <!-- Card 1: Interactive Drag & Drop Demo -->
+        <div class="proof-card interactive-card">
+          <div class="proof-demo" id="dragDemo">
+            <div class="drag-demo">
+              <div class="drag-palette">
+                <div class="drag-node form-node" draggable="true" data-node="Form">📋 Form</div>
+                <div class="drag-node sheet-node" draggable="true" data-node="Sheet">📊 Sheet</div>
+                <div class="drag-node notify-node" draggable="true" data-node="Notify">🔔 Notify</div>
+                <div class="drag-node ai-node" draggable="true" data-node="AI">🤖 AI</div>
+              </div>
+              <div class="drag-canvas" id="dragCanvas">
+                <div class="canvas-hint">↕ Kéo module vào đây</div>
+              </div>
+            </div>
+          </div>
+          <div class="proof-label">Kéo thả trực quan</div>
+          <div class="proof-title">Thử kéo module vào khung bên phải</div>
+        </div>
+        <!-- Card 2: App Connector Demo -->
+        <div class="proof-card interactive-card">
+          <div class="proof-demo">
+            <div class="app-demo">
+              <div class="app-grid" id="appGrid">
+                <div class="app-cell connected"><span class="app-icon">📧</span></div>
+                <div class="app-cell connected"><span class="app-icon">📊</span></div>
+                <div class="app-cell connected"><span class="app-icon">💬</span></div>
+                <div class="app-cell connected"><span class="app-icon">📅</span></div>
+                <div class="app-cell"><span class="app-icon">🔔</span></div>
+                <div class="app-cell"><span class="app-icon">📁</span></div>
+                <div class="app-cell"><span class="app-icon">🎨</span></div>
+                <div class="app-cell"><span class="app-icon">🛒</span></div>
+                <div class="app-cell"><span class="app-icon">📈</span></div>
+                <div class="app-cell"><span class="app-icon">🔗</span></div>
+                <div class="app-cell"><span class="app-icon">💼</span></div>
+                <div class="app-cell"><span class="app-icon">🗂</span></div>
+                <div class="app-cell"><span class="app-icon">⚡</span></div>
+                <div class="app-cell"><span class="app-icon">📱</span></div>
+                <div class="app-cell"><span class="app-icon">🔐</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="proof-label">Kết nối 3000+ app</div>
+          <div class="proof-title">Hover vào icon xem tương tác</div>
+        </div>
+        <!-- Card 3: Flow Animation Demo -->
+        <div class="proof-card interactive-card">
+          <div class="proof-demo">
+            <div class="flow-demo">
+              <div class="flow-module">📥</div>
+              <div class="flow-connector"></div>
+              <div class="flow-module">⚙️</div>
+              <div class="flow-connector"></div>
+              <div class="flow-module">🔄</div>
+              <div class="flow-connector"></div>
+              <div class="flow-module">📤</div>
+            </div>
+            <div class="flow-label-mini">24/7 Tự động</div>
+          </div>
+          <div class="proof-label">Chạy tự động</div>
+          <div class="proof-title">Luồng chạy liên tục, không cần can thiệp</div>
+        </div>
       </div>
     </div>
   </section>
