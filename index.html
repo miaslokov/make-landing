@@ -1551,11 +1551,14 @@
 
       counters.forEach((counter) => observer.observe(counter));
     })();
+  </script>
   <script>
     (function() {
       const items = document.querySelectorAll('.flow-item');
       items.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
+          // Prevent triggering if clicking on a link inside
+          if (e.target.tagName === 'A') return;
           item.classList.toggle('expanded');
         });
       });
