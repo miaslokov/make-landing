@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -41,18 +41,10 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      width: min(1140px, 92%);
-      margin: 0 auto;
-    }
-
+    .container { width: min(1140px, 92%); margin: 0 auto; }
     section { padding: 84px 0; }
 
-    h1, h2, h3 {
-      text-transform: uppercase;
-      letter-spacing: .02em;
-      line-height: 1.2;
-    }
+    h1, h2, h3 { text-transform: uppercase; letter-spacing: .02em; line-height: 1.2; }
 
     .glass {
       border: 1px solid var(--border);
@@ -61,6 +53,7 @@
       box-shadow: var(--shadow);
     }
 
+    /* Badge */
     .badge {
       position: relative;
       display: inline-flex;
@@ -78,869 +71,230 @@
       isolation: isolate;
       animation: badgePulse 2.8s ease-in-out infinite;
     }
-
     .badge::before {
       content: "";
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(110deg, transparent 10%, rgba(255,255,255,.25) 50%, transparent 90%);
       transform: translateX(-120%);
       animation: shine 3.8s ease-in-out infinite;
       z-index: -1;
     }
-
     @keyframes badgePulse {
       0%, 100% { transform: translateY(0); box-shadow: 0 12px 34px rgba(143,92,255,.30); }
       50% { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(92,226,255,.32); }
     }
-
     @keyframes shine {
       0% { transform: translateX(-120%); }
       45%, 100% { transform: translateX(120%); }
     }
 
+    /* Buttons */
     .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      border: 0;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 16px;
-      border-radius: 12px;
-      padding: 14px 22px;
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      border: 0; cursor: pointer; font-weight: 800; font-size: 16px;
+      border-radius: 12px; padding: 14px 22px;
       transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: .02em;
+      text-align: center; text-transform: uppercase; letter-spacing: .02em;
     }
-
     .btn-primary {
       color: #0d0520;
       background: linear-gradient(135deg, #b697ff, #78e9ff 55%, #5ce2ff);
       box-shadow: 0 12px 30px rgba(92,226,255,.28);
     }
-
     .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(143,92,255,.38); }
-
     .btn-ghost {
       color: var(--text);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.04);
     }
-
-    .disclosure-wrap { padding-top: 16px; }
-
-    .badge-top {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: clamp(13px, 1.8vw, 16px);
-      font-weight: 800;
-      color: #f8f4ff;
-      border: 1px solid rgba(255,255,255,.24);
-      background: linear-gradient(120deg, rgba(143,92,255,.35), rgba(92,226,255,.25), rgba(255,95,162,.22));
+    .btn-pill {
+      display: inline-flex; justify-content: center; align-items: center;
+      background: rgba(143,92,255,.15);
+      border: 1px solid rgba(143,92,255,.35);
       border-radius: 999px;
-      padding: 10px 20px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 8px 24px rgba(143,92,255,.25);
-      margin-bottom: 8px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #c9b8ff;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      margin-top: 12px;
+      width: fit-content;
     }
-    
+    .btn-pill:hover {
+      background: rgba(143,92,255,.28);
+      border-color: rgba(143,92,255,.55);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(143,92,255,.2);
+    }
+
+    /* Slide-up reveal */
     .slide-up {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    
-    .slide-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .slide-up.visible { opacity: 1; transform: translateY(0); }
 
-    .brand-strip {
-      width: min(980px, 100%);
-      margin: 12px auto 0;
-      border: 1px solid rgba(143,92,255,.35);
-      background: linear-gradient(135deg, rgba(143,92,255,.15), rgba(92,226,255,.12));
-      color: #f4f1ff;
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-make {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 900;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    .brand-make svg {
-      color: #bfa7ff;
-      filter: drop-shadow(0 0 10px rgba(143,92,255,.4));
-    }
-
-    .brand-template-link {
-      font-size: 13px;
-      color: #dff5ff;
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 999px;
-      padding: 7px 10px;
-      background: rgba(255,255,255,.06);
-      white-space: nowrap;
-      font-weight: 700;
-    }
-
+    /* Disclosure */
+    .disclosure-wrap { padding-top: 16px; }
     .disclosure {
-      width: min(980px, 100%);
-      margin: 0 auto;
+      width: min(980px, 100%); margin: 0 auto;
       border: 1px solid rgba(143,92,255,.35);
       background: linear-gradient(135deg, rgba(143,92,255,.12), rgba(92,226,255,.10));
-      color: #eee9ff;
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 13px;
+      color: #eee9ff; border-radius: 12px; padding: 14px 16px; font-size: 13px;
     }
 
-    .hero {
-      position: relative;
-      padding-top: 54px;
-      overflow: hidden;
-    }
-
+    /* ===== HERO ===== */
+    .hero { position: relative; padding-top: 48px; overflow: hidden; }
     .hero::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 18px;
-      height: 110px;
+      content: ""; position: absolute; left: 0; right: 0; bottom: 18px; height: 110px;
       pointer-events: none;
       background: linear-gradient(180deg, transparent 0%, rgba(7,6,13,.95) 100%);
     }
-
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.03fr .97fr;
-      gap: 28px;
-      align-items: stretch;
-      position: relative;
-      z-index: 1;
+      display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px;
+      align-items: stretch; position: relative; z-index: 1;
     }
-
     .hero-copy {
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.18); border-radius: 24px;
       background: linear-gradient(150deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
+      padding: 32px 28px; display: flex; flex-direction: column;
+      justify-content: center; gap: 4px; box-shadow: var(--shadow);
+      position: relative; overflow: hidden; isolation: isolate;
     }
-
     .hero-copy::before {
-      content: "";
-      position: absolute;
-      top: -40%;
-      right: -30%;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
+      content: ""; position: absolute; top: -40%; right: -30%;
+      width: 300px; height: 300px; border-radius: 50%;
       background: radial-gradient(circle, rgba(92,226,255,.28), transparent 60%);
-      filter: blur(24px);
-      z-index: -1;
+      filter: blur(24px); z-index: -1;
     }
-
     .hero-copy::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
       background: linear-gradient(135deg, rgba(143,92,255,.12), transparent 40%, rgba(92,226,255,.08));
-      z-index: -1;
-      pointer-events: none;
+      z-index: -1; pointer-events: none;
     }
-
     .hero h1 {
-      font-size: clamp(40px, 5.4vw, 68px);
-      margin: 14px 0 14px;
-      max-width: 11.8ch;
-      line-height: 1.12;
-      text-wrap: balance;
+      font-size: clamp(40px, 5.4vw, 68px); margin: 14px 0 14px;
+      max-width: 11.8ch; line-height: 1.12; text-wrap: balance;
     }
-
-    .templates-section {
-      padding-top: 42px;
-      padding-bottom: 28px;
-    }
-
-    .section-head.templates {
-      margin-bottom: 28px;
-    }
-
-    .templates-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .template-card {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: linear-gradient(155deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      padding: 18px;
-      transition: transform .2s ease, border-color .2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .template-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(143,92,255,.12), transparent);
-      animation: templateShine 2.8s infinite;
-    }
-
-    @keyframes templateShine {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    .template-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143,92,255,.56);
-    }
-
-    .template-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
-      border: 1px solid rgba(255,255,255,.15);
-      font-size: 16px;
-    }
-
-    .template-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #f0ecff;
-      margin-bottom: 8px;
-      line-height: 1.35;
-    }
-
-    .template-desc {
-      font-size: 13.5px;
-      color: var(--text-soft);
-      margin-bottom: 12px;
-      line-height: 1.45;
-    }
-
-    .template-stats {
-      display: flex;
-      gap: 12px;
-      font-size: 12px;
-      color: #b9b3d4;
-    }
-
-    .template-stat {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .template-used {
-      color: #78e9ff;
-    }
-
-    .template-link {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 12.5px;
-      color: #8f5cff;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ffd966, #ffb76b 20%, #ff9494 40%, #a4d7ff 60%, #c9b3ff 80%, #d8c9ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 900;
-      text-shadow: 0 0 20px rgba(255,217,102,.28);
-    }
-
     .hero p {
-      color: #e3def5;
-      max-width: 54ch;
-      font-size: 19.5px;
-      margin-bottom: 18px;
-      line-height: 1.55;
-      font-weight: 500;
+      color: #e3def5; max-width: 54ch; font-size: 19.5px;
+      margin-bottom: 18px; line-height: 1.55; font-weight: 500;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero .btn-primary {
-      font-size: 18px;
-      padding: 16px 28px;
+      font-size: 18px; padding: 16px 28px;
       animation: glowCta 2.4s ease-in-out infinite alternate;
       box-shadow: 0 12px 32px rgba(92,226,255,.32);
     }
-
     @keyframes glowCta {
       from { box-shadow: 0 12px 32px rgba(92,226,255,.32); }
       to { box-shadow: 0 18px 48px rgba(143,92,255,.46); transform: translateY(-1.5px); }
     }
-
-    .hero .btn-ghost {
-      font-size: 15px;
-      padding: 14px 18px;
-      border-color: rgba(255,255,255,.22);
-    }
-
+    .hero .btn-ghost { font-size: 15px; padding: 14px 18px; border-color: rgba(255,255,255,.22); }
     .mini-note {
-      margin-top: 10px;
-      color: #e8e1ff;
-      font-size: 14.5px;
-      font-weight: 700;
-      border-left: 3px solid rgba(126,240,255,.65);
-      padding-left: 10px;
-      max-width: 52ch;
+      margin-top: 10px; color: #e8e1ff; font-size: 14.5px; font-weight: 700;
+      border-left: 3px solid rgba(126,240,255,.65); padding-left: 10px; max-width: 52ch;
     }
-
-    .hero-scroll {
-      margin-top: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #ddd7f5;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      opacity: .92;
-      animation: bounceY 1.8s ease-in-out infinite;
-      width: fit-content;
+    .hero-social-proof {
+      margin-top: 12px; font-size: 13px; color: #b9b3d4; font-weight: 600;
+      letter-spacing: .02em;
     }
+    .hero-social-proof strong { color: #c9b8ff; }
 
-    .hero-scroll-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #78e9ff, #8f5cff);
-      box-shadow: 0 0 0 7px rgba(120,233,255,.12);
-    }
-
-    @keyframes bounceY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
-
+    /* Hero card */
     .hero-card {
       border: 1px solid rgba(143,92,255,.42);
       background: linear-gradient(155deg, rgba(143,92,255,.24), rgba(92,226,255,.14), rgba(255,255,255,.04));
-      border-radius: var(--radius-xl);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius-xl); padding: 28px;
+      box-shadow: var(--shadow); backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
     }
-
     .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
+      content: ""; position: absolute; inset: -2px; border-radius: inherit;
       background: linear-gradient(135deg, rgba(143,92,255,.62), rgba(92,226,255,.42), rgba(255,95,162,.42));
-      z-index: -1;
-      filter: blur(20px);
-      opacity: .48;
+      z-index: -1; filter: blur(20px); opacity: .48;
     }
-
     .hero-card::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ""; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(92,226,255,.18) 0%, transparent 70%);
-      pointer-events: none;
-      animation: rotateBg 12s linear infinite;
-      z-index: -1;
+      pointer-events: none; animation: rotateBg 12s linear infinite; z-index: -1;
     }
+    @keyframes rotateBg { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    @keyframes rotateBg {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .flow {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: 1fr;
-    }
-
+    /* Flow items (hero right) */
+    .flow { display: grid; gap: 14px; grid-template-columns: 1fr; }
     .flow-item {
-      border: 1px solid rgba(143,92,255,.46);
-      border-radius: 14px;
+      border: 1px solid rgba(143,92,255,.46); border-radius: 14px;
       background: linear-gradient(120deg, rgba(16,14,30,.94), rgba(24,20,45,.84));
-      padding: 16px 16px;
-      display: block;
-      font-size: 15px;
-      font-weight: 700;
-      color: #f8f5ff;
-      position: relative;
-      overflow: hidden;
-      min-height: 78px;
-      cursor: pointer;
+      padding: 16px 16px; display: block; font-size: 15px; font-weight: 700;
+      color: #f8f5ff; position: relative; overflow: hidden;
+      min-height: 78px; cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-
     .flow-item.expanded {
-      min-height: 140px;
-      border-color: rgba(126,240,255,.62);
+      min-height: 140px; border-color: rgba(126,240,255,.62);
       box-shadow: 0 12px 32px rgba(143,92,255,.28);
     }
-
     .flow-expand-trigger {
-      position: absolute;
-      bottom: 8px;
-      right: 10px;
-      font-size: 11px;
-      color: #b9b3d4;
-      background: rgba(0,0,0,.3);
-      border-radius: 999px;
-      padding: 4px 8px;
-      pointer-events: none;
-      opacity: 0;
+      position: absolute; bottom: 8px; right: 10px; font-size: 11px;
+      color: #b9b3d4; background: rgba(0,0,0,.3); border-radius: 999px;
+      padding: 4px 8px; pointer-events: none; opacity: 0;
       transition: opacity .2s ease;
     }
-
-    .flow-item:hover .flow-expand-trigger {
-      opacity: 1;
-    }
-
-    .flow-head {
-      display: block;
-      font-size: 15px;
-      line-height: 1.45;
-      letter-spacing: .01em;
-    }
-
+    .flow-item:hover .flow-expand-trigger { opacity: 1; }
+    .flow-head { display: block; font-size: 15px; line-height: 1.45; letter-spacing: .01em; }
     .flow-meta {
-      margin-top: 7px;
-      font-size: 12.5px;
-      color: #c8c2e4;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .04em;
+      margin-top: 7px; font-size: 12.5px; color: #c8c2e4;
+      font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
     }
-
     .flow-detail {
-      margin-top: 10px;
-      display: none;
-      border-top: 1px dashed rgba(255,255,255,.2);
-      padding-top: 10px;
-      color: #e9e4ff;
-      font-size: 13px;
-      line-height: 1.5;
+      margin-top: 10px; display: none; border-top: 1px dashed rgba(255,255,255,.2);
+      padding-top: 10px; color: #e9e4ff; font-size: 13px; line-height: 1.5;
     }
-
-    .flow-item.expanded .flow-detail {
-      display: block;
-    }
-
-    .flow-gif {
-      margin-top: 8px;
-      width: 100%;
-      max-height: 120px;
-      object-fit: contain;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.24);
-    }
-
+    .flow-item.expanded .flow-detail { display: block; }
     .flow-item:hover {
-      transform: translateY(-2px);
-      border-color: rgba(126,240,255,.58);
+      transform: translateY(-2px); border-color: rgba(126,240,255,.58);
       box-shadow: 0 12px 28px rgba(92,226,255,.18);
     }
-
-    .flow-item:active {
-      transform: translateY(0);
-    }
-
+    .flow-item:active { transform: translateY(0); }
     .flow-item::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(90deg, transparent, rgba(92,226,255,.18), transparent);
-      transform: translateX(-100%);
-      animation: shimmerFlow 2.8s infinite;
-      pointer-events: none;
+      transform: translateX(-100%); animation: shimmerFlow 2.8s infinite; pointer-events: none;
     }
-
     .flow-item::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
       border-radius: 999px;
       background: linear-gradient(180deg, #7ef0ff, #8f5cff, #ff9bc6);
       box-shadow: 0 0 14px rgba(126,240,255,.55);
     }
+    @keyframes shimmerFlow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-    @keyframes shimmerFlow {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    /* Hero stats bar */
+    .hero-stats-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-top: 18px;
     }
-
-    .pill {
-      font-size: 11.5px;
-      color: #e7fff9;
-      background: rgba(72,229,169,.22);
-      border: 1px solid rgba(72,229,169,.52);
-      border-radius: 999px;
-      padding: 5px 11px;
-      white-space: nowrap;
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: .03em;
-      min-width: 78px;
-      text-align: center;
-      box-shadow: 0 0 12px rgba(72,229,169,.22);
-    }
-
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .proof-card {
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 14px;
-      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
-      padding: 14px;
-      min-height: 190px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .proof-demo {
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 10px;
-      background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
-      height: 120px;
-      padding: 10px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .proof-demo::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 120%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(126,240,255,.18), transparent);
-      animation: proofScan 2.6s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes proofScan {
-      0% { left: -120%; }
-      100% { left: 120%; }
-    }
-
-    .proof-label {
-      font-size: 12px;
-      color: #c8c2e4;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      font-weight: 700;
-    }
-
-    .proof-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: #f6f2ff;
-      line-height: 1.35;
-    }
-
-    /* Mini drag-and-drop demo */
-    .drag-demo {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      gap: 8px;
-      padding: 10px;
-    }
-
-    .drag-palette {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      width: 64px;
-      flex-shrink: 0;
-    }
-
-    .drag-node {
-      height: 28px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: #fff;
-      cursor: grab;
-      user-select: none;
-      transition: transform .15s ease, box-shadow .15s ease;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding: 0 6px;
-    }
-
-    .drag-node:active { cursor: grabbing; transform: scale(1.05); }
-
-    .drag-node.form-node { background: linear-gradient(135deg, #6e45e2, #88d3ce); box-shadow: 0 3px 12px rgba(110,69,226,.4); }
-    .drag-node.sheet-node { background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 3px 12px rgba(0,176,155,.4); }
-    .drag-node.notify-node { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 3px 12px rgba(247,151,30,.3); color: #1a1a2e; }
-    .drag-node.ai-node { background: linear-gradient(135deg, #8f5cff, #5ce2ff); box-shadow: 0 3px 12px rgba(143,92,255,.4); }
-
-    .drag-canvas {
-      flex: 1;
-      border: 2px dashed rgba(143,92,255,.22);
-      border-radius: 8px;
-      position: relative;
-      background: rgba(143,92,255,.04);
+    .hero-stat {
+      border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
+      background: rgba(255,255,255,.04); padding: 10px 8px; text-align: center;
       transition: border-color .2s ease, background .2s ease;
-      min-height: 100px;
     }
-
-    .drag-canvas.drag-over {
-      border-color: rgba(92,226,255,.55);
-      background: rgba(92,226,255,.08);
+    .hero-stat:hover {
+      border-color: rgba(126,240,255,.35);
+      background: rgba(92,226,255,.06);
     }
-
-    .canvas-node {
-      position: absolute;
-      height: 24px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
-      padding: 0 5px;
-      animation: nodeDrop .3s ease-out;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .hero-stat-value {
+      font-size: 18px; font-weight: 900; color: #fff;
+      background: linear-gradient(135deg, #b697ff, #5ce2ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .hero-stat-label { font-size: 10px; color: #b9b3d4; text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; font-weight: 700; }
 
-    @keyframes nodeDrop {
-      from { transform: scale(0) translateY(-20px); opacity: 0; }
-      to { transform: scale(1) translateY(0); opacity: 1; }
-    }
-
-    .canvas-connector {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(92,226,255,.6), rgba(143,92,255,.6));
-      top: 50%;
-      border-radius: 2px;
-      transform: translateY(-50%);
-      box-shadow: 0 0 6px rgba(92,226,255,.3);
-    }
-
-    .canvas-hint {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 9px;
-      color: rgba(255,255,255,.3);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: .05em;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    /* App connector demo */
-    .app-demo {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-    }
-
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 5px;
-      width: 100%;
-      height: 100%;
-    }
-
-    .app-cell {
-      border-radius: 6px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      transition: background .2s ease, border-color .2s ease, transform .2s ease;
-      cursor: default;
-      position: relative;
-    }
-
-    .app-cell:hover {
-      background: rgba(143,92,255,.2);
-      border-color: rgba(143,92,255,.4);
-      transform: scale(1.12);
-      z-index: 2;
-    }
-
-    .app-cell.connected {
-      border-color: rgba(72,229,169,.5);
-      background: rgba(72,229,169,.12);
-      box-shadow: 0 0 8px rgba(72,229,169,.2);
-    }
-
-    .app-cell .app-icon { font-size: 12px; }
-
-    /* Flow animation demo */
-    .flow-demo {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px;
-    }
-
-    .flow-module {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(143,92,255,.3), rgba(92,226,255,.2));
-      border: 1px solid rgba(143,92,255,.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      animation: flowPulse 2.4s ease-in-out infinite;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .flow-module:nth-child(2) { animation-delay: .4s; }
-    .flow-module:nth-child(4) { animation-delay: .8s; }
-    .flow-module:nth-child(6) { animation-delay: 1.2s; }
-
-    @keyframes flowPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(92,226,255,.3); }
-      50% { box-shadow: 0 0 0 6px rgba(92,226,255,0); }
-    }
-
-    .flow-connector {
-      width: 18px;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(143,92,255,.4), rgba(92,226,255,.4));
-      border-radius: 2px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .flow-connector::after {
-      content: "";
-      position: absolute;
-      top: -3px;
-      left: -4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #5ce2ff;
-      box-shadow: 0 0 10px rgba(92,226,255,.6);
-      animation: dataFlow 1.2s ease-in-out infinite;
-    }
-
-    @keyframes dataFlow {
-      0% { left: -4px; opacity: 0; }
-      20% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { left: 14px; opacity: 0; }
-    }
-
-    .flow-label-mini {
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 8px;
-      color: rgba(255,255,255,.4);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: .04em;
-      white-space: nowrap;
-    }
-
+    /* Trust bar */
     .trust {
       margin-top: 38px;
       border-top: 1px solid rgba(143,92,255,.35);
@@ -948,509 +302,509 @@
       background: linear-gradient(90deg, rgba(143,92,255,.12), rgba(92,226,255,.10), rgba(255,95,162,.10));
       box-shadow: 0 8px 30px rgba(143,92,255,.18) inset;
     }
-
     .trust-list {
-      min-height: 96px;
-      display: grid;
+      min-height: 96px; display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      align-items: center;
-      text-align: center;
-      color: #f0eaff;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 12px 0;
+      gap: 16px; align-items: center; text-align: center;
+      color: #f0eaff; font-size: 15px; font-weight: 700; padding: 12px 0;
     }
-
     .trust-item {
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 14px;
-      background: rgba(8,6,16,.26);
-      min-height: 64px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 14px;
+      background: rgba(8,6,16,.26); min-height: 64px;
+      display: grid; place-items: center; position: relative; overflow: hidden;
       padding: 12px 10px;
       transition: color .3s ease, transform .3s ease, border-color .3s ease, box-shadow .3s ease;
       cursor: default;
     }
-
     .trust-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content: ""; position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(92,226,255,.10), rgba(143,92,255,.08));
-      opacity: 0;
-      transition: opacity .35s ease;
-      z-index: 0;
+      opacity: 0; transition: opacity .35s ease; z-index: 0;
     }
-
     .trust-item:hover::before { opacity: 1; }
-
     .trust-item:hover {
-      color: #78e9ff;
-      transform: translateY(-3px) scale(1.03);
+      color: #78e9ff; transform: translateY(-3px) scale(1.03);
       border-color: rgba(126,240,255,.35);
       box-shadow: 0 10px 28px rgba(92,226,255,.18);
     }
-
     .trust-item > span { position: relative; z-index: 1; }
-
     .counter {
-      font-size: 18px;
-      font-weight: 800;
-      color: #ffec8b;
-      display: inline-block;
-      min-width: 56px;
-      text-align: right;
+      font-size: 18px; font-weight: 800; color: #ffec8b;
+      display: inline-block; min-width: 56px; text-align: right;
     }
 
-    /* Interactive demo section */
-    .interactive-demo-section {
-      padding: 72px 0;
-      position: relative;
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #ffd966, #ffb76b 20%, #ff9494 40%, #a4d7ff 60%, #c9b3ff 80%, #d8c9ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 900; text-shadow: 0 0 20px rgba(255,217,102,.28);
     }
 
+    /* Section heads */
+    .section-head { text-align: center; margin-bottom: 42px; }
+    .section-head h2 {
+      font-size: clamp(30px, 4.2vw, 48px); margin-bottom: 12px;
+      background: linear-gradient(135deg, #b697ff, #78e9ff 40%, #5ce2ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 900;
+    }
+    .section-head p { color: var(--text-soft); width: min(760px, 94%); margin: 0 auto; }
+    .section-head.demo-section-head { margin-bottom: 36px; }
+
+    /* ===== INTERACTIVE DEMO SECTION ===== */
+    .interactive-demo-section { padding: 72px 0; position: relative; }
     .interactive-demo-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(600px 400px at 20% 30%, rgba(143,92,255,.10), transparent 60%),
         radial-gradient(500px 300px at 80% 70%, rgba(92,226,255,.08), transparent 55%);
       pointer-events: none;
     }
 
-    .section-head.demo-section-head {
-      margin-bottom: 36px;
-      text-align: center;
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px; margin-top: 16px;
     }
-
-    .proof-grid.interactive-proof-grid {
-      gap: 20px;
-    }
-
-    .proof-card.interactive-card {
-      min-height: 260px;
-      border-color: rgba(143,92,255,.22);
+    .proof-card {
+      border: 1px solid rgba(143,92,255,.22); border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
+      padding: 14px; min-height: 260px;
+      display: flex; flex-direction: column; gap: 10px;
       transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
-
-    .proof-card.interactive-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(143,92,255,.18);
+    .proof-card:hover {
+      transform: translateY(-6px); box-shadow: 0 16px 48px rgba(143,92,255,.18);
       border-color: rgba(143,92,255,.4);
     }
-
-    .proof-card.interactive-card .proof-demo {
-      height: 150px;
+    .proof-demo {
+      border: 1px solid rgba(255,255,255,.16); border-radius: 10px;
+      background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
+      height: 180px; padding: 0; position: relative; overflow: hidden;
     }
-
-    .counter {
-      from, to { border-color: transparent }
-      50% { border-color: rgba(183,151,255,.9); }
+    .proof-demo::after {
+      content: ""; position: absolute; top: 0; left: -120%;
+      width: 120%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(126,240,255,.18), transparent);
+      animation: proofScan 2.6s infinite; pointer-events: none;
     }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 42px;
+    @keyframes proofScan { 0% { left: -120%; } 100% { left: 120%; } }
+    .proof-label {
+      font-size: 12px; color: #c8c2e4; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 700;
     }
+    .proof-title { font-size: 15px; font-weight: 800; color: #f6f2ff; line-height: 1.35; }
 
-    .section-head h2 {
-      font-size: clamp(30px, 4.2vw, 48px);
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #b697ff, #78e9ff 40%, #5ce2ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 900;
+    /* Drag & Drop demo - xịn hơn */
+    .drag-demo {
+      position: absolute; inset: 0; display: flex; gap: 6px; padding: 10px;
     }
-
-    .section-head p {
-      color: var(--text-soft);
-      width: min(760px, 94%);
-      margin: 0 auto;
+    .drag-palette {
+      display: flex; flex-direction: column; gap: 5px;
+      width: 56px; flex-shrink: 0; justify-content: center;
     }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      width: min(980px, 100%);
-      margin: 0 auto;
+    .drag-node {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: grab; user-select: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+      border: 2px solid rgba(255,255,255,.2);
     }
+    .drag-node:hover { transform: scale(1.12); }
+    .drag-node:active { cursor: grabbing; transform: scale(1.18); }
+    .drag-node.placed { opacity: .35; pointer-events: none; }
+    .drag-node[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); box-shadow: 0 3px 12px rgba(110,69,226,.4); }
+    .drag-node[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 3px 12px rgba(0,176,155,.4); }
+    .drag-node[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); box-shadow: 0 3px 12px rgba(233,30,99,.4); }
+    .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); box-shadow: 0 3px 12px rgba(143,92,255,.4); }
+    .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); box-shadow: 0 3px 12px rgba(234,67,53,.4); }
+    .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 3px 12px rgba(247,151,30,.3); }
 
-    .feature {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      padding: 20px;
-      transition: transform .2s ease, border-color .2s ease;
-    }
-
-    .feature:hover {
-      transform: translateY(-2px);
-      border-color: rgba(143,92,255,.56);
-    }
-
-    .feature-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      min-height: 48px;
-    }
-
-    .feature .icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
-      border: 1px solid rgba(255,255,255,.15);
-      font-size: 20px;
-      flex: 0 0 auto;
-    }
-
-    .feature h3 {
-      font-size: clamp(15px, 2vw, 20px);
-      margin: 0;
-      line-height: 1.3;
-    }
-
-    .feature p {
-      color: var(--text-soft);
-      font-size: 15px;
-      margin: 0;
-    }
-
-    .comparison-two-col {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .compare-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255,255,255,.04);
-      padding: 20px;
-      min-height: 100%;
-      box-shadow: var(--shadow);
-    }
-
-    .compare-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .make-card h3 {
-      color: #d8c8ff;
-      text-shadow: 0 0 14px rgba(143,92,255,.35);
-    }
-
-    .zapier-card h3 {
-      color: #ffd9c7;
-      text-shadow: 0 0 14px rgba(255,132,90,.30);
-    }
-
-    .compare-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .compare-list li {
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 10px;
-      padding: 10px 12px;
-      color: #ece9ff;
-      font-size: 14px;
-      background: rgba(255,255,255,.02);
-    }
-
-    .compare-list li strong { color: #fff; }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .plan {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255,255,255,.03);
-      padding: 18px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .drag-canvas {
+      flex: 1; border: 2px dashed rgba(143,92,255,.22); border-radius: 10px;
       position: relative;
-      overflow: hidden;
+      background-image: radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1px);
+      background-size: 14px 14px;
+      background-color: rgba(143,92,255,.03);
+      transition: border-color .2s ease, background-color .2s ease;
+      min-height: 100%;
+    }
+    .drag-canvas.drag-over {
+      border-color: rgba(92,226,255,.55);
+      background-color: rgba(92,226,255,.06);
+    }
+    .canvas-node {
+      position: absolute; width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; box-shadow: 0 3px 14px rgba(0,0,0,.35);
+      animation: nodeDrop .4s cubic-bezier(.34,1.56,.64,1);
+      border: 2px solid rgba(255,255,255,.25);
+    }
+    @keyframes nodeDrop {
+      from { transform: scale(0) translateY(-12px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .canvas-node.pulse-once {
+      animation: pulseSuccess .6s ease-out;
+    }
+    @keyframes pulseSuccess {
+      0% { box-shadow: 0 0 0 0 rgba(72,229,169,.6); }
+      50% { box-shadow: 0 0 0 12px rgba(72,229,169,0); }
+      100% { box-shadow: 0 0 0 0 rgba(72,229,169,0); }
+    }
+    .canvas-connector {
+      position: absolute; height: 2px;
+      background: linear-gradient(90deg, rgba(92,226,255,.5), rgba(143,92,255,.5));
+      border-radius: 2px; transform-origin: left center;
+      box-shadow: 0 0 6px rgba(92,226,255,.25);
+    }
+    .canvas-connector::after {
+      content: ""; position: absolute; top: -3px; left: 0;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #5ce2ff; box-shadow: 0 0 10px rgba(92,226,255,.6);
+      animation: dataFlow 1.2s ease-in-out infinite;
+    }
+    @keyframes dataFlow {
+      0% { left: 0; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; }
+    }
+    .canvas-hint {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 9px; color: rgba(255,255,255,.3); text-transform: uppercase;
+      font-weight: 700; letter-spacing: .05em; pointer-events: none; white-space: nowrap;
+    }
+    .flow-ready-badge {
+      position: absolute; bottom: 8px; right: 8px;
+      background: linear-gradient(135deg, rgba(72,229,169,.25), rgba(92,226,255,.2));
+      border: 1px solid rgba(72,229,169,.5); border-radius: 999px;
+      padding: 4px 10px; font-size: 10px; font-weight: 800;
+      color: #e7fff9; text-transform: uppercase; letter-spacing: .04em;
+      animation: badgePop .4s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 0 12px rgba(72,229,169,.2);
+    }
+    @keyframes badgePop { from { transform: scale(0); } to { transform: scale(1); } }
+
+    /* App connector demo */
+    .app-demo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 8px; }
+    .app-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(3, 1fr);
+      gap: 5px; width: 100%; height: 100%;
+    }
+    .app-cell {
+      border-radius: 6px; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1); display: flex;
+      align-items: center; justify-content: center; font-size: 10px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      cursor: default; position: relative;
+    }
+    .app-cell:hover {
+      background: rgba(143,92,255,.2); border-color: rgba(143,92,255,.4);
+      transform: scale(1.12); z-index: 2;
+    }
+    .app-cell.connected {
+      border-color: rgba(72,229,169,.5); background: rgba(72,229,169,.12);
+      box-shadow: 0 0 8px rgba(72,229,169,.2);
+    }
+    .app-cell .app-icon { font-size: 12px; }
+
+    /* Flow animation demo */
+    .flow-demo {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center; gap: 10px; padding: 12px;
+    }
+    .flow-module {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(143,92,255,.3), rgba(92,226,255,.2));
+      border: 1px solid rgba(143,92,255,.4); display: flex;
+      align-items: center; justify-content: center; font-size: 14px;
+      animation: flowPulse 2.4s ease-in-out infinite; position: relative; flex-shrink: 0;
+    }
+    .flow-module:nth-child(2) { animation-delay: .4s; }
+    .flow-module:nth-child(4) { animation-delay: .8s; }
+    .flow-module:nth-child(6) { animation-delay: 1.2s; }
+    @keyframes flowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(92,226,255,.3); }
+      50% { box-shadow: 0 0 0 6px rgba(92,226,255,0); }
+    }
+    .flow-connector {
+      width: 18px; height: 2px;
+      background: linear-gradient(90deg, rgba(143,92,255,.4), rgba(92,226,255,.4));
+      border-radius: 2px; position: relative; flex-shrink: 0;
+    }
+    .flow-connector::after {
+      content: ""; position: absolute; top: -3px; left: -4px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #5ce2ff; box-shadow: 0 0 10px rgba(92,226,255,.6);
+      animation: dataFlow 1.2s ease-in-out infinite;
+    }
+    .flow-label-mini {
+      position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 8px; color: rgba(255,255,255,.4); text-transform: uppercase;
+      font-weight: 700; letter-spacing: .04em; white-space: nowrap;
     }
 
+    /* ===== TEMPLATES ===== */
+    .templates-section { padding-top: 42px; padding-bottom: 28px; }
+    .section-head.templates { margin-bottom: 28px; }
+    .templates-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; align-items: stretch;
+    }
+    .template-card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: linear-gradient(155deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding: 18px; transition: transform .2s ease, border-color .2s ease;
+      position: relative; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .template-card::before {
+      content: ""; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(143,92,255,.12), transparent);
+      animation: templateShine 2.8s infinite;
+    }
+    @keyframes templateShine { 0% { left: -100%; } 100% { left: 100%; } }
+    .template-card:hover { transform: translateY(-4px); border-color: rgba(143,92,255,.56); }
+    .template-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: grid; place-items: center; margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
+      border: 1px solid rgba(255,255,255,.15); font-size: 16px;
+    }
+    .template-title {
+      font-size: 14px; font-weight: 800; color: #f0ecff;
+      margin-bottom: 8px; line-height: 1.3; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+    }
+    .template-desc {
+      font-size: 13px; color: var(--text-soft); margin-bottom: 10px;
+      line-height: 1.45; flex: 1;
+    }
+    .template-stats { display: flex; gap: 8px; font-size: 11.5px; color: #b9b3d4; flex-wrap: wrap; }
+    .template-stat { display: flex; align-items: center; gap: 3px; }
+    .template-used { color: #78e9ff; }
+    .template-link {
+      display: block; text-align: center; margin-top: 14px;
+      font-size: 12px; color: #c9b8ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .template-link-pill {
+      display: block; text-align: center; margin-top: 14px;
+      background: rgba(143,92,255,.12); border: 1px solid rgba(143,92,255,.3);
+      border-radius: 999px; padding: 8px 16px;
+      font-size: 12px; color: #c9b8ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .template-link-pill:hover {
+      background: rgba(143,92,255,.25); border-color: rgba(143,92,255,.5);
+      transform: translateY(-2px); box-shadow: 0 6px 16px rgba(143,92,255,.15);
+    }
+
+    /* ===== FEATURES (6 items) ===== */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; width: min(1080px, 100%); margin: 0 auto;
+    }
+    .feature {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      padding: 22px 20px; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-4px); border-color: rgba(143,92,255,.5);
+      box-shadow: 0 12px 36px rgba(143,92,255,.15);
+    }
+    .feature-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; min-height: 48px; }
+    .feature .icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
+      border: 1px solid rgba(255,255,255,.15); font-size: 20px; flex: 0 0 auto;
+    }
+    .feature h3 { font-size: clamp(14px, 1.8vw, 17px); margin: 0; line-height: 1.3; }
+    .feature p { color: var(--text-soft); font-size: 14px; margin: 0; }
+    .feature-data {
+      margin-top: 8px; font-size: 12px; color: #78e9ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .03em;
+    }
+
+    /* ===== COMPARISON TABLE ===== */
+    .comparison-section { overflow-x: auto; }
+    .compare-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      border-radius: 14px; overflow: hidden;
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    }
+    .compare-table thead th {
+      padding: 16px 14px; font-size: 14px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .04em;
+      background: rgba(143,92,255,.1); border-bottom: 1px solid var(--border);
+    }
+    .compare-table thead th:first-child { text-align: left; }
+    .compare-table thead th:nth-child(2) { color: #c9b8ff; }
+    .compare-table thead th:nth-child(3) { color: #ffd9c7; }
+    .compare-table tbody td {
+      padding: 14px; font-size: 13.5px; color: #d5d0ec;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      vertical-align: top;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody td:first-child {
+      font-weight: 700; color: #ece9ff; text-transform: uppercase;
+      font-size: 12px; letter-spacing: .04em; white-space: nowrap;
+    }
+    .compare-table tbody tr:hover { background: rgba(143,92,255,.04); }
+    .compare-note {
+      margin-top: 16px; font-size: 13px; color: #b9b3d4;
+      text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
+      line-height: 1.55;
+    }
+    .compare-note strong { color: #c9b8ff; }
+
+    /* ===== PRICING ===== */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px; margin-top: 18px;
+    }
+    .plan {
+      border: 1px solid var(--border); border-radius: 16px;
+      background: rgba(255,255,255,.03); padding: 18px 14px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative; overflow: hidden;
+    }
     .plan::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content: ""; position: absolute; inset: 0;
       background: linear-gradient(120deg, transparent, rgba(255,255,255,.06), transparent);
-      transform: translateX(-120%);
-      animation: shimmer 3s infinite;
-      pointer-events: none;
+      transform: translateX(-120%); animation: shimmer 3s infinite; pointer-events: none;
     }
-
-    .plan-name {
-      font-size: 16px;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #efe9ff;
-    }
-
-    .plan-price {
-      font-size: 34px;
-      font-weight: 900;
-      line-height: 1;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-
-    .plan-sub {
-      font-size: 12px;
-      color: #c9c3e4;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
+    .plan-name { font-size: 16px; font-weight: 900; text-transform: uppercase; color: #efe9ff; }
+    .plan-price { font-size: 34px; font-weight: 900; line-height: 1; color: #fff; letter-spacing: -0.02em; }
+    .plan-sub { font-size: 12px; color: #c9c3e4; text-transform: uppercase; letter-spacing: .04em; }
     .plan ul {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-      margin-top: 2px;
-      font-size: 13px;
-      color: #dfdaf3;
+      list-style: none; display: grid; gap: 8px; margin-top: 2px;
+      font-size: 13px; color: #dfdaf3;
     }
-
     .plan ul li {
-      border: 1px solid rgba(255,255,255,.11);
-      border-radius: 9px;
-      padding: 7px 8px;
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.11); border-radius: 9px;
+      padding: 7px 8px; background: rgba(255,255,255,.03);
     }
-
     .plan-free {
       border: 2px solid rgba(255, 209, 102, .86);
       background: linear-gradient(165deg, rgba(255,209,102,.20), rgba(143,92,255,.14), rgba(92,226,255,.10));
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(255,209,102,.20);
+      transform: translateY(-4px); box-shadow: 0 16px 40px rgba(255,209,102,.20);
     }
-
     .plan-tag {
-      align-self: flex-start;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 5px 9px;
-      border-radius: 999px;
+      align-self: flex-start; font-size: 11px; font-weight: 800;
+      text-transform: uppercase; padding: 5px 9px; border-radius: 999px;
       border: 1px solid rgba(255,255,255,.25);
-      background: rgba(255,255,255,.08);
-      letter-spacing: .04em;
+      background: rgba(255,255,255,.08); letter-spacing: .04em;
     }
-
     .pricing-note {
-      margin-top: 14px;
-      color: #cfc9eb;
-      font-size: 13px;
-      text-align: center;
+      margin-top: 14px; color: #cfc9eb; font-size: 13px; text-align: center;
     }
 
+    /* ===== TESTIMONIAL ===== */
     .testimonial {
-      width: min(920px, 100%);
-      margin: 0 auto;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: rgba(255,255,255,.04);
-      padding: 30px 24px;
-      box-shadow: var(--shadow);
-      position: relative;
+      width: min(920px, 100%); margin: 0 auto;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: rgba(255,255,255,.04); padding: 30px 24px;
+      box-shadow: var(--shadow); position: relative;
     }
-
     .testimonial::before {
-      content: "“";
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      font-size: 72px;
-      color: rgba(143,92,255,.55);
-      line-height: 1;
-      font-family: Georgia, serif;
+      content: "“"; position: absolute; top: -10px; left: 20px;
+      font-size: 72px; color: rgba(143,92,255,.55);
+      line-height: 1; font-family: Georgia, serif;
     }
-
     .testimonial blockquote {
-      font-size: 20px;
-      line-height: 1.65;
-      color: #f3f1ff;
-      margin-bottom: 12px;
-      padding-left: 12px;
+      font-size: 20px; line-height: 1.65; color: #f3f1ff;
+      margin-bottom: 12px; padding-left: 12px;
     }
-
     .testimonial cite {
-      color: #c9c3e3;
-      font-style: normal;
-      font-size: 14px;
-      padding-left: 12px;
-      text-transform: uppercase;
-      letter-spacing: .03em;
+      color: #c9c3e3; font-style: normal; font-size: 14px;
+      padding-left: 12px; text-transform: uppercase; letter-spacing: .03em;
     }
 
+    /* ===== AUDIENCE ===== */
     .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      width: min(900px, 100%);
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; width: min(1080px, 100%); margin: 0 auto;
     }
-
-    .audience-item {
-      border: 1px solid var(--border);
-      border-radius: 14px;
+    .audience-card {
+      border: 1px solid var(--border); border-radius: 14px;
       background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
-      padding: 14px 15px;
-      color: #ece9ff;
-      font-size: 15px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      position: relative;
+      padding: 20px 18px; display: flex; flex-direction: column; gap: 8px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .audience-card:hover {
+      transform: translateY(-4px); box-shadow: 0 10px 30px rgba(143,92,255,.12);
+      border-color: rgba(143,92,255,.4);
+    }
+    .audience-card-icon { font-size: 24px; margin-bottom: 4px; }
+    .audience-card h4 {
+      font-size: 15px; font-weight: 800; color: #f0ecff;
+      text-transform: uppercase; letter-spacing: .02em;
+    }
+    .audience-card p { color: var(--text-soft); font-size: 13.5px; line-height: 1.5; }
+    .audience-card-data {
+      margin-top: auto; font-size: 12px; color: #78e9ff;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
     }
 
-    .audience-item::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(92,226,255,.8), transparent);
-      animation: pulseLine 2.8s infinite;
-    }
-
-    @keyframes pulseLine {
-      0%, 100% { opacity: .35; }
-      50% { opacity: 1; }
-    }
-
-    .audience-item .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--ok), #74f6c1);
-      margin-top: 8px;
-      flex: 0 0 auto;
-      box-shadow: 0 0 0 5px rgba(72,229,169,.15);
-    }
-
+    /* ===== FAQ ===== */
     .faq-wrap {
-      width: min(900px, 100%);
-      margin: 0 auto;
-      display: grid;
-      gap: 12px;
+      width: min(900px, 100%); margin: 0 auto; display: grid; gap: 12px;
     }
-
     .faq-item {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      border-radius: 12px;
-      padding: 16px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.03);
+      border-radius: 12px; padding: 16px;
     }
-
     .faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      font-weight: 800;
-      color: #f1efff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: .02em;
+      list-style: none; cursor: pointer; font-weight: 800;
+      color: #f1efff; display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; font-size: 15px;
+      text-transform: uppercase; letter-spacing: .02em;
     }
-
     .faq-item summary::-webkit-details-marker { display: none; }
-
     .faq-item summary::after {
-      content: "+";
-      font-size: 23px;
-      color: #b9b1dd;
-      line-height: 1;
+      content: "+"; font-size: 23px; color: #b9b1dd; line-height: 1;
     }
-
     .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { margin-top: 10px; color: var(--text-soft); font-size: 15px; }
 
-    .faq-item p {
-      margin-top: 10px;
-      color: var(--text-soft);
-      font-size: 15px;
-    }
-
+    /* ===== FINAL CTA ===== */
     .final-cta {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       text-align: center;
       background: radial-gradient(500px 220px at 50% 0%, rgba(143,92,255,.2), transparent 70%), rgba(255,255,255,.02);
     }
+    .final-cta h2 { font-size: clamp(30px, 4.5vw, 50px); margin-bottom: 14px; }
+    .final-cta p { color: #d5d0ec; width: min(760px, 94%); margin: 0 auto 22px; font-size: 18px; }
 
-    .final-cta h2 {
-      font-size: clamp(30px, 4.5vw, 50px);
-      margin-bottom: 14px;
-    }
-
-    .final-cta p {
-      color: #d5d0ec;
-      width: min(760px, 94%);
-      margin: 0 auto 22px;
-      font-size: 18px;
-    }
-
-    .footer {
-      text-align: center;
-      color: #9e97c1;
-      font-size: 13px;
-      padding: 26px 16px 32px;
-    }
-
+    /* Footer */
+    .footer { text-align: center; color: #9e97c1; font-size: 13px; padding: 26px 16px 32px; }
     .footer a { color: #c9bcff; }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 1100px) {
       .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 980px) {
       section { padding: 68px 0; }
       .hero-grid { grid-template-columns: 1fr; }
       .hero h1 { max-width: 14ch; font-size: clamp(34px, 6.5vw, 52px); }
-      .comparison-two-col,
-      .features-grid,
-      .audience-grid,
-      .proof-grid,
-      .templates-grid,
-      .proof-grid.interactive-proof-grid { grid-template-columns: 1fr; }
+      .comparison-two-col, .features-grid, .audience-grid, .proof-grid,
+      .templates-grid, .audience-grid { grid-template-columns: 1fr; }
       .trust-list { grid-template-columns: 1fr 1fr; }
-      .feature h3 { font-size: 17px; }
       .hero-copy { padding: 24px 20px; }
       .hero-card { min-height: auto; padding: 22px; }
       .flow-item { min-height: 64px; font-size: 14px; }
       .proof-card { min-height: 170px; }
-      .proof-demo { height: 110px; }
-      .proof-card.interactive-card .proof-demo { height: 130px; }
+      .proof-demo { height: 130px; }
       .hero p { font-size: 18px; }
       .interactive-demo-section { padding: 56px 0; }
+      .hero-stats-bar { grid-template-columns: repeat(3, 1fr); }
+      .compare-table { font-size: 12px; }
+      .compare-table thead th, .compare-table tbody td { padding: 10px 8px; }
     }
-
     @media (max-width: 680px) {
       .container { width: min(1140px, 94%); }
       .hero { padding-top: 36px; }
@@ -1460,46 +814,39 @@
       .trust-list { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
       .plan-free { transform: none; }
-      .feature, .hero-card, .hero-copy, .testimonial, .faq-item, .compare-card { border-radius: 14px; }
+      .feature, .hero-card, .hero-copy, .testimonial, .faq-item, .compare-card, .audience-card { border-radius: 14px; }
       .testimonial blockquote { font-size: 18px; }
       .final-cta p { font-size: 16px; }
-      .hero-scroll { font-size: 11px; }
+      .templates-grid { grid-template-columns: 1fr; }
+      .drag-palette { width: 44px; }
+      .drag-node { width: 36px; height: 36px; font-size: 14px; }
+      .proof-demo { height: 120px; }
     }
   </style>
 </head>
 <body>
+  <!-- Disclosure -->
   <div class="container disclosure-wrap">
-    <div class="brand-strip slide-up">
-      <div class="brand-make">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-          <line x1="3" y1="9" x2="21" y2="9"/>
-          <line x1="9" y1="21" x2="9" y2="9"/>
-        </svg>
-        <span>MAKE.COM</span>
-      </div>
-      <a class="brand-template-link" href="https://www.make.com/en/templates" target="_blank" rel="noopener">THƯ VIỆN TEMPLATE</a>
+    <div class="disclosure slide-up">
+      Minh bạch affiliate: Trang này có chứa liên kết tiếp thị liên kết. Nếu anh em đăng ký qua link này, mình có thể nhận một khoản hoa hồng nhỏ và anh em không mất thêm chi phí nào. Mình chỉ giới thiệu công cụ thật sự hữu ích.
     </div>
   </div>
 
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="badge">Bắt đầu chỉ với tài khoản Free — chưa cần trả phí</span>
         <h1>LÀM VIỆC THÔNG MINH HƠN VỚI <span class="gradient-text">MAKE FREE</span></h1>
         <p>
-          Đừng chờ đủ giỏi mới làm automation. Anh em chỉ cần kéo thả vài bước là đã có một luồng chạy tự động, gọn việc và đỡ mệt ngay từ tuần đầu.
+          Không cần biết code. Chỉ kéo thả vài bước là có luồng tự động chạy — tiết kiệm hàng giờ mỗi tuần, từ ngày đầu tiên.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Bắt đầu miễn phí với Make</a>
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Đăng ký Free → Chạy flow đầu tiên</a>
           <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
-        <p class="mini-note">Ưu tiên cho anh em mới: vào Free trước, chạy thử luồng thật, chưa cần bỏ tiền vẫn thấy kết quả.</p>
-        <div class="hero-scroll">
-          <span class="hero-scroll-dot"></span>
-          <span>Kéo xuống để khám phá chi tiết</span>
-          <span class="hero-scroll-dot"></span>
-        </div>
+        <p class="mini-note">Vào Free trước, test luồng thật, chưa cần bỏ tiền vẫn thấy kết quả.</p>
+        <p class="hero-social-proof"><strong>3000+</strong> integrations &bull; <strong>10M+</strong> users worldwide</p>
       </div>
 
       <div class="hero-card" aria-label="Giá trị chính">
@@ -1517,7 +864,7 @@
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
           <div class="flow-item" data-flow="clarity">
-            <div class="flow-head">CHỈ CẦN NHÌN LÀ HIỂU LUÔNG CHẠY</div>
+            <div class="flow-head">CHỈ CẦN NHÌN LÀ HIỂU LUỒNG CHẠY</div>
             <div class="flow-meta">Giao diện trực quan, không cần tài liệu</div>
             <div class="flow-detail">Mỗi bước chạy được hiển thị rõ trên canvas. Thành viên mới vào team vẫn hiểu luồng chỉ sau vài phút.</div>
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
@@ -1535,6 +882,20 @@
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
         </div>
+        <div class="hero-stats-bar">
+          <div class="hero-stat">
+            <div class="hero-stat-value">10M+</div>
+            <div class="hero-stat-label">Users</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">3000+</div>
+            <div class="hero-stat-label">Apps</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">100M+</div>
+            <div class="hero-stat-label">Scenarios/ngày</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1548,23 +909,25 @@
     </div>
   </section>
 
+  <!-- ===== INTERACTIVE DEMO ===== -->
   <section class="interactive-demo-section">
     <div class="container">
       <div class="section-head demo-section-head">
         <h2>TRẢI NGHIỆM THỰC TẾ</h2>
         <p>Thử kéo thả module, xem cách Make kết nối hàng nghìn app, và hình dung luồng tự động chạy 24/7.</p>
       </div>
-
-      <div class="proof-grid interactive-proof-grid">
-        <!-- Card 1: Interactive Drag & Drop Demo -->
-        <div class="proof-card interactive-card">
+      <div class="proof-grid">
+        <!-- Drag & Drop -->
+        <div class="proof-card">
           <div class="proof-demo" id="dragDemo">
             <div class="drag-demo">
               <div class="drag-palette">
-                <div class="drag-node form-node" draggable="true" data-node="Form">📋 Form</div>
-                <div class="drag-node sheet-node" draggable="true" data-node="Sheet">📊 Sheet</div>
-                <div class="drag-node notify-node" draggable="true" data-node="Notify">🔔 Notify</div>
-                <div class="drag-node ai-node" draggable="true" data-node="AI">🤖 AI</div>
+                <div class="drag-node" draggable="true" data-app="webhook" data-node="Webhook">🪝</div>
+                <div class="drag-node" draggable="true" data-app="sheets" data-node="Sheets">📊</div>
+                <div class="drag-node" draggable="true" data-app="slack" data-node="Slack">💬</div>
+                <div class="drag-node" draggable="true" data-app="openai" data-node="AI">🤖</div>
+                <div class="drag-node" draggable="true" data-app="gmail" data-node="Gmail">📧</div>
+                <div class="drag-node" draggable="true" data-app="timer" data-node="Timer">⏰</div>
               </div>
               <div class="drag-canvas" id="dragCanvas">
                 <div class="canvas-hint">↕ Kéo module vào đây</div>
@@ -1572,10 +935,10 @@
             </div>
           </div>
           <div class="proof-label">Kéo thả trực quan</div>
-          <div class="proof-title">Thử kéo module vào khung bên phải</div>
+          <div class="proof-title">Kéo 3+ module → Flow sẵn sàng 🚀</div>
         </div>
-        <!-- Card 2: App Connector Demo -->
-        <div class="proof-card interactive-card">
+        <!-- App Grid -->
+        <div class="proof-card">
           <div class="proof-demo">
             <div class="app-demo">
               <div class="app-grid" id="appGrid">
@@ -1600,16 +963,12 @@
           <div class="proof-label">Kết nối 3000+ app</div>
           <div class="proof-title">Hover vào icon xem tương tác</div>
         </div>
-        <!-- Card 3: Flow Animation Demo -->
-        <div class="proof-card interactive-card">
+        <div class="proof-card">
           <div class="proof-demo">
             <div class="flow-demo">
-              <div class="flow-module">📥</div>
-              <div class="flow-connector"></div>
-              <div class="flow-module">⚙️</div>
-              <div class="flow-connector"></div>
-              <div class="flow-module">🔄</div>
-              <div class="flow-connector"></div>
+              <div class="flow-module">📥</div><div class="flow-connector"></div>
+              <div class="flow-module">⚙️</div><div class="flow-connector"></div>
+              <div class="flow-module">🔄</div><div class="flow-connector"></div>
               <div class="flow-module">📤</div>
             </div>
             <div class="flow-label-mini">24/7 Tự động</div>
@@ -1621,129 +980,156 @@
     </div>
   </section>
 
+  <!-- ===== TEMPLATES (6 items) ===== -->
   <section class="templates-section">
     <div class="container">
       <div class="section-head templates">
         <h2>BẮT ĐẦU NHANH VỚI TEMPLATE</h2>
         <p>Không cần nghĩ từ đầu. Chọn mẫu có sẵn, sửa nhẹ theo nhu cầu, bật chạy là có kết quả.</p>
       </div>
-
       <div class="templates-grid">
         <article class="template-card">
           <div class="template-icon">📊</div>
-          <div class="template-title">TỰ ĐỘNG ĐẨY LEAD VÀO GOOGLE SHEETS</div>
-          <div class="template-desc">Phù hợp cho anh em chạy quảng cáo và cần gom lead về một chỗ để xử lý nhanh.</div>
+          <div class="template-title">GOOGLE SHEETS → OPENAI</div>
+          <div class="template-desc">Tự động tạo nội dung từ dữ liệu Sheet bằng ChatGPT. Phù hợp anh em cần scale content.</div>
           <div class="template-stats">
             <span class="template-stat template-used">🔥 Rất phổ biến</span>
             <span class="template-stat">⚡ Setup nhanh</span>
+            <span class="template-stat">🆓 Free tier OK</span>
           </div>
-          <a class="template-link" href="https://www.make.com/en/templates/10570-create-new-completions-with-openai-chatgpt-from-new-rows-in-google-sheets" target="_blank" rel="noopener">Xem mẫu thật</a>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10570-create-new-completions-with-openai-chatgpt-from-new-rows-in-google-sheets" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
-
         <article class="template-card">
           <div class="template-icon">🤖</div>
-          <div class="template-title">CHATGPT + TELEGRAM TRẢ LỜI TỰ ĐỘNG</div>
-          <div class="template-desc">Dùng mẫu có sẵn để triển khai chatbot hỗ trợ khách mà không cần viết code.</div>
+          <div class="template-title">CHATBOT WHATSAPP TỰ ĐỘNG</div>
+          <div class="template-desc">Triển khai chatbot CSKH trên WhatsApp mà không cần viết code.</div>
           <div class="template-stats">
             <span class="template-stat template-used">💡 Dễ viral</span>
             <span class="template-stat">🚀 Dùng ngay</span>
+            <span class="template-stat">🔧 Không cần code</span>
           </div>
-          <a class="template-link" href="https://www.make.com/en/templates/10260-create-a-basic-chatbot-for-whatsapp" target="_blank" rel="noopener">Xem mẫu thật</a>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10260-create-a-basic-chatbot-for-whatsapp" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
-
         <article class="template-card">
           <div class="template-icon">🗓️</div>
-          <div class="template-title">NOTION → GOOGLE CALENDAR SYNC</div>
-          <div class="template-desc">Tự động đồng bộ lịch họp từ Notion vào Google Calendar theo thời gian thực.</div>
+          <div class="template-title">NOTION → GOOGLE CALENDAR</div>
+          <div class="template-desc">Đồng bộ lịch từ Notion vào Google Calendar theo thời gian thực.</div>
           <div class="template-stats">
             <span class="template-stat template-used">✅ Dễ áp dụng</span>
-            <span class="template-stat">⏱ Tiết kiệm thời gian</span>
+            <span class="template-stat">⏱ Tiết kiệm giờ</span>
+            <span class="template-stat">📈 ROI cao</span>
           </div>
-          <a class="template-link" href="https://www.make.com/en/templates/6407-create-new-google-calendar-events-from-notion-database-items" target="_blank" rel="noopener">Xem mẫu thật</a>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/6407-create-new-google-calendar-events-from-notion-database-items" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-icon">💬</div>
+          <div class="template-title">FORM → SLACK NOTIFY</div>
+          <div class="template-desc">Nhận thông báo Slack mỗi khi có form submit mới. Không bỏ sót lead.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 Team yêu thích</span>
+            <span class="template-stat">⚡ 5 phút setup</span>
+            <span class="template-stat">🆓 Free tier OK</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10203-send-a-slack-message-for-each-new-typeform-entry" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-icon">📧</div>
+          <div class="template-title">GMAIL → GOOGLE DRIVE</div>
+          <div class="template-desc">Tự động lưu đính kèm Gmail vào Google Drive. Sắp xếp file gọn gàng.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">✅ Thiết thực</span>
+            <span class="template-stat">⏱ Tiết kiệm giờ</span>
+            <span class="template-stat">🔧 Không cần code</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/452-save-gmail-attachments-to-google-drive" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-icon">🛒</div>
+          <div class="template-title">SHOPIFY → GOOGLE SHEETS</div>
+          <div class="template-desc">Tự động ghi đơn Shopify mới vào Sheet để theo dõi và báo cáo.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 E-com cần có</span>
+            <span class="template-stat">📈 ROI cao</span>
+            <span class="template-stat">🆓 Free tier OK</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/534-add-new-shopify-orders-to-a-google-sheets-spreadsheet" target="_blank" rel="noopener">Xem mẫu thật</a>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- ===== FEATURES (6 items) ===== -->
   <section>
     <div class="container">
       <div class="section-head">
         <h2>SỰ KHÁC BIỆT CỦA MAKE.COM</h2>
-        <p>Không chỉ là công cụ automation, Make còn là cách anh em giải phóng thời gian khỏi việc lặp lại để tập trung vào việc tạo ra giá trị thật sự.</p>
+        <p>Không chỉ là công cụ automation, Make còn là cách anh em giải phóng thời gian khỏi việc lặp lại.</p>
       </div>
-
       <div class="features-grid">
         <article class="feature">
-          <div class="feature-head">
-            <div class="icon">🎯</div>
-            <h3>NHÌN TOÀN CẢNH LUỒNG XỬ LÝ</h3>
-          </div>
-          <p>Make cho anh em nhìn rõ từng bước trong một sơ đồ trực quan. Dễ debug, dễ sửa và dễ bàn giao lại cho người khác trong team.</p>
+          <div class="feature-head"><div class="icon">🎯</div><h3>NHÌN TOÀN CẢNH LUỒNG XỬ LÝ</h3></div>
+          <p>Canvas trực quan — 1 màn hình thấy hết flow. Dễ debug, dễ bàn giao.</p>
+          <div class="feature-data">92% người mới hiểu trong 10 phút</div>
         </article>
-
         <article class="feature">
-          <div class="feature-head">
-            <div class="icon">🧠</div>
-            <h3>LOGIC SÂU NHƯNG VẪN DỄ DÙNG</h3>
-          </div>
-          <p>Từ nhánh điều kiện, map dữ liệu, lặp batch đến lọc dữ liệu đều làm ngay trong giao diện kéo thả, không cần chạm code.</p>
+          <div class="feature-head"><div class="icon">🧠</div><h3>LOGIC SÂU NHƯNG VẪN DỄ DÙNG</h3></div>
+          <p>Router, filter, iterator, array — tất cả kéo thả. Xử lý flow 20+ bước nhẹ nhàng.</p>
+          <div class="feature-data">Flow 20+ bước không cần code</div>
         </article>
-
         <article class="feature">
-          <div class="feature-head">
-            <div class="icon">🔗</div>
-            <h3>KẾT NỐI THẬT SỰ RỘNG</h3>
-          </div>
-          <p>Không chỉ nối app cơ bản, Make còn xử lý tốt các luồng nhiều hệ thống từ CRM, marketing, vận hành đến chăm khách hàng.</p>
+          <div class="feature-head"><div class="icon">🔗</div><h3>KẾT NỐI THỰC SỰ RỘNG</h3></div>
+          <p>3000+ apps: CRM, marketing, CSKH — không cần API tự viết.</p>
+          <div class="feature-data">3000+ tích hợp sẵn có</div>
         </article>
-
         <article class="feature">
-          <div class="feature-head">
-            <div class="icon">🔐</div>
-            <h3>KIỂM SOÁT VÀ MINH BẠCH</h3>
-          </div>
-          <p>Mỗi bước chạy đều có log rõ ràng, giúp anh em biết chính xác luồng nào ổn, luồng nào lỗi để xử lý nhanh và an toàn.</p>
+          <div class="feature-head"><div class="icon">🔐</div><h3>KIỂM SOÁT VÀ MINH BẠCH</h3></div>
+          <p>Log từng bước, biết chính xác flow nào lỗi, ở đâu. Giảm thời gian debug.</p>
+          <div class="feature-data">Giảm 80% thời gian debug</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">💰</div><h3>GIÁ PHẢI CHĂNG HƠN</h3></div>
+          <p>Cùng tính năng như đối thủ, chi phí thấp hơn 30-40%. Free dùng thật được.</p>
+          <div class="feature-data">Rẻ hơn 30-40% đối thủ</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">📚</div><h3>CỘNG ĐỒNG & TEMPLATE PHONG PHÚ</h3></div>
+          <p>Hàng trăm template sẵn. Học từ community 500K+ thành viên.</p>
+          <div class="feature-data">500K+ thành viên community</div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="comparison">
+  <!-- ===== COMPARISON TABLE ===== -->
+  <section id="comparison" class="comparison-section">
     <div class="container">
       <div class="section-head">
         <h2>MAKE.COM VÀ ZAPIER: VÌ SAO NÊN CHỌN MAKE</h2>
-        <p>So sánh dạng 2 cột để anh em nhìn nhanh điểm mạnh thật sự khi bắt đầu và khi scale quy trình tự động hóa.</p>
+        <p>Bảng so sánh chi tiết để anh em dễ quyết định.</p>
       </div>
-
-      <div class="comparison-two-col">
-        <article class="compare-card make-card">
-          <h3>MAKE.COM</h3>
-          <ul class="compare-list">
-            <li><strong>View:</strong> Sơ đồ trực quan, nhìn toàn bộ flow trên 1 màn hình.</li>
-            <li><strong>Logic:</strong> Mạnh về router, filter, mapping dữ liệu phức tạp.</li>
-            <li><strong>Debug:</strong> Dễ debug và tối ưu luồng khi quy trình dài.</li>
-          </ul>
-        </article>
-
-        <article class="compare-card zapier-card">
-          <h3>ZAPIER</h3>
-          <ul class="compare-list">
-            <li><strong>View:</strong> Step tuyến tính, dễ bắt đầu nhưng khó nhìn tổng thể khi flow lớn.</li>
-            <li><strong>Logic:</strong> Làm được, nhưng nhiều nhánh có thể tăng chi phí nhanh.</li>
-            <li><strong>Debug:</strong> Phù hợp task đơn giản, quy trình phức tạp cần tổ chức kỹ hơn.</li>
-          </ul>
-        </article>
-      </div>
+      <table class="compare-table">
+        <thead><tr><th>Tiêu chí</th><th>Make.com</th><th>Zapier</th></tr></thead>
+        <tbody>
+          <tr><td>Giao diện</td><td>Visual canvas kéo thả, thấy toàn bộ flow</td><td>Step tuyến tính dạng danh sách</td></tr>
+          <tr><td>Giá khởi điểm</td><td><strong>Free</strong> ($0) — 1,000 credits/tháng</td><td>Free giới hạn, Core từ $19.99/tháng</td></tr>
+          <tr><td>Logic phức tạp</td><td>Router, filter, iterator built-in</td><td>Làm được nhưng tốn task nhanh</td></tr>
+          <tr><td>Debug</td><td>Xem log từng bước trực tiếp trên canvas</td><td>Phải vào history từng zap</td></tr>
+          <tr><td>Tốc độ chạy</td><td>15 phút (Free), 1 phút (Core), 30s (Pro)</td><td>15 phút (Free), 2 phút (Core)</td></tr>
+          <tr><td>Học & làm quen</td><td>Dễ bắt đầu, community 500K+ hỗ trợ</td><td>Dễ nhất cho người mới hoàn toàn</td></tr>
+          <tr><td>Phù hợp</td><td>Cá nhân → Team → Scale mạnh</td><td>Người mới → Enterprise lớn</td></tr>
+        </tbody>
+      </table>
+      <p class="compare-note"><strong>Cả hai đều tốt.</strong> Make phù hợp hơn nếu anh em muốn kiểm soát visual, giá mềm và làm logic phức tạp.</p>
     </div>
   </section>
 
+  <!-- ===== PRICING ===== -->
   <section>
     <div class="container">
       <div class="section-head">
         <h2>BẢNG GIÁ MINH BẠCH THEO GÓI</h2>
-        <p>Thông tin dưới đây theo hướng tham chiếu để anh em dễ chọn gói phù hợp. Giá và credit có thể thay đổi theo thời điểm và cấu hình trên Make.</p>
+        <p>Thông tin tham chiếu. Giá và credit có thể thay đổi theo make.com/pricing.</p>
       </div>
-
       <div class="pricing-grid">
         <article class="plan plan-free">
           <span class="plan-tag">ƯU TIÊN CHO NGƯỜI MỚI</span>
@@ -1752,252 +1138,247 @@
           <div class="plan-sub">MỖI THÁNG</div>
           <ul>
             <li>1,000 credits/tháng</li>
-            <li>No-code visual workflow builder</li>
-            <li>3000+ apps</li>
-            <li>Routers và filters</li>
+            <li>15 phút interval</li>
+            <li>Unlimited active scenarios</li>
+            <li>Core features: router, filter</li>
           </ul>
           <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">DÙNG THỬ FREE</a>
         </article>
-
         <article class="plan">
           <span class="plan-tag">PHỔ BIẾN</span>
           <div class="plan-name">CORE</div>
           <div class="plan-price">TỪ $9</div>
-          <div class="plan-sub">MỖI THÁNG, TÙY CREDITS</div>
+          <div class="plan-sub">MỖI THÁNG</div>
           <ul>
-            <li>Dành cho cá nhân hoặc team nhỏ đang vận hành ổn định</li>
-            <li>Credits cao hơn gói Free</li>
-            <li>Phù hợp tự động hóa nhiều luồng hơn</li>
-            <li>Tối ưu cho hoạt động mỗi ngày</li>
+            <li>10,000 credits/tháng</li>
+            <li>1 phút interval</li>
+            <li>Priority queue</li>
+            <li>Thêm Data Stores</li>
           </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
         </article>
-
         <article class="plan">
           <span class="plan-tag">NÂNG CAO</span>
           <div class="plan-name">PRO</div>
           <div class="plan-price">TỪ $16</div>
-          <div class="plan-sub">MỖI THÁNG, TÙY CREDITS</div>
+          <div class="plan-sub">MỖI THÁNG</div>
           <ul>
-            <li>Phù hợp khi anh em cần scale mạnh hơn</li>
-            <li>Xử lý khối lượng dữ liệu lớn hơn</li>
-            <li>Tổ chức và kiểm soát workflow tốt hơn</li>
-            <li>Phù hợp team vận hành chuyên nghiệp</li>
+            <li>50,000 credits/tháng</li>
+            <li>30 giây interval</li>
+            <li>Advanced Data Stores</li>
+            <li>Team sharing</li>
           </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
         </article>
-
         <article class="plan">
           <span class="plan-tag">DOANH NGHIỆP</span>
-          <div class="plan-name">TEAMS / ENTERPRISE</div>
-          <div class="plan-price">LIÊN HỆ</div>
-          <div class="plan-sub">BÁO GIÁ THEO NHU CẦU</div>
+          <div class="plan-name">TEAMS</div>
+          <div class="plan-price">TỪ $29</div>
+          <div class="plan-sub">MỖI THÁNG</div>
           <ul>
-            <li>Quản trị team và phân quyền sâu</li>
-            <li>Bảo mật và compliance ở mức cao</li>
-            <li>Hỗ trợ triển khai quy mô lớn</li>
-            <li>Phù hợp tổ chức có yêu cầu đặc thù</li>
+            <li>200,000 credits/tháng</li>
+            <li>SSO & Admin Console</li>
+            <li>Audit Logs</li>
+            <li>Hỗ trợ ưu tiên</li>
           </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
         </article>
       </div>
-
-      <p class="pricing-note">Mẹo chọn nhanh: bắt đầu bằng Free để test luồng thật, khi thấy hiệu quả rõ thì nâng lên Core hoặc Pro theo nhu cầu credit.</p>
+      <p class="pricing-note">Mẹo: bắt đầu Free để test luồng thật, khi thấy hiệu quả thì nâng lên Core hoặc Pro. Giá tham khảo — kiểm tra <a href="https://www.make.com/en/pricing" target="_blank" rel="noopener">make.com/pricing</a> để cập nhật.</p>
     </div>
   </section>
 
+  <!-- ===== TESTIMONIAL ===== -->
   <section>
     <div class="container">
       <div class="testimonial">
-        <blockquote>
-          Trước đây mình mất 3-4 tiếng mỗi tuần để copy dữ liệu khách từ form về sheet rồi nhắn team xử lý. Sau khi chuyển sang Make, toàn bộ quy trình chạy tự động, phản hồi nhanh hơn và ít sót việc hơn rất nhiều.
-        </blockquote>
+        <blockquote>Trước đây mình mất 3-4 tiếng mỗi tuần để copy dữ liệu từ form về sheet rồi nhắn team. Sau khi chuyển sang Make, toàn bộ chạy tự động — phản hồi nhanh hơn và ít sót việc hơn.</blockquote>
         <cite>FOUNDER HỆ NO-CODE AUTOMATION</cite>
       </div>
     </div>
   </section>
 
+  <!-- ===== AUDIENCE ===== -->
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>AI NÊN BẮT ĐẦU VỚI MAKE NGAY HÔM NAY</h2>
-        <p>Nếu muốn làm automation bài bản mà không phụ thuộc kỹ thuật, đây là nhóm dùng Make hiệu quả nhất.</p>
+        <h2>NHÓM NÀO NÊN BẮT ĐẦU VỚI MAKE NGAY?</h2>
+        <p>Nếu anh em muốn tự động hóa mà không phụ thuộc kỹ thuật — Make sinh ra để dành cho anh em.</p>
       </div>
-
       <div class="audience-grid">
-        <div class="audience-item"><span class="dot"></span><span>Chủ shop online muốn tự động nhận đơn, cập nhật sheet và thông báo team theo thời gian thực.</span></div>
-        <div class="audience-item"><span class="dot"></span><span>Freelancer và agency cần gom dữ liệu khách từ nhiều nền tảng về một nơi để xử lý nhanh.</span></div>
-        <div class="audience-item"><span class="dot"></span><span>Marketer muốn xây pipeline lead tự động từ form, ads, CRM tới email chăm sóc.</span></div>
-        <div class="audience-item"><span class="dot"></span><span>Founder team nhỏ muốn chuẩn hóa vận hành trước khi mở rộng quy mô nhân sự.</span></div>
+        <article class="audience-card">
+          <div class="audience-card-icon">🛒</div><h4>Chủ shop online</h4>
+          <p>Tự động nhận đơn, cập nhật kho, thông báo team. Không bỏ sót đơn nào.</p>
+          <div class="audience-card-data">Tiết kiệm 5-8 giờ/tuần</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">💼</div><h4>Freelancer & Agency</h4>
+          <p>Gom data khách từ nhiều nguồn về 1 chỗ. Không còn cảnh mở 10 tab.</p>
+          <div class="audience-card-data">Giảm 90% lỗi nhập tay</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">📈</div><h4>Marketer</h4>
+          <p>Pipeline lead tự động: Form → CRM → Email. Follow-up nhanh hơn.</p>
+          <div class="audience-card-data">Tăng 3x tốc độ follow-up</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">🏢</div><h4>Founder team nhỏ</h4>
+          <p>Chuẩn hóa vận hành trước khi scale. 1 flow tự động thay 2 người làm tay.</p>
+          <div class="audience-card-data">1 flow = 2 FTE tiết kiệm</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">📱</div><h4>Content Creator</h4>
+          <p>Auto đăng bài, backup content, gửi báo cáo. Tập trung sáng tạo.</p>
+          <div class="audience-card-data">Tiết kiệm 3 giờ/ngày</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">🎓</div><h4>Người mới học automation</h4>
+          <p>Bắt đầu Free, học từ template có sẵn. Không cần kiến thức code.</p>
+          <div class="audience-card-data">Flow đầu tiên trong 30 phút</div>
+        </article>
       </div>
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
   <section id="faq">
     <div class="container">
       <div class="section-head">
         <h2>CÂU HỎI THƯỜNG GẶP</h2>
-        <p>Mình gom lại các câu hỏi thực tế của anh em mới làm no-code automation để đỡ mất thời gian tìm hiểu.</p>
+        <p>Các câu hỏi thực tế của anh em mới làm no-code automation.</p>
       </div>
-
       <div class="faq-wrap">
-        <details class="faq-item">
-          <summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG</summary>
-          <p>Có. Anh em xây workflow bằng giao diện visual kéo thả. Chỉ cần hiểu logic đầu vào, điều kiện và đầu ra là triển khai được nhiều bài toán vận hành thực tế.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG</summary>
-          <p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case thật. Khi workflow ổn định và cần công suất cao hơn thì nâng cấp sau.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG</summary>
-          <p>Không hẳn khó hơn, mà chi tiết hơn. Make cho anh em nhìn toàn cảnh workflow rõ nên khi flow lớn sẽ dễ kiểm soát và debug hơn.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM</summary>
-          <p>Bắt đầu từ quy trình lặp mỗi ngày: Form nhận lead → lưu Sheet/CRM → gửi thông báo cho team. Đây là flow đơn giản, dễ thấy hiệu quả ngay.</p>
-        </details>
+        <details class="faq-item"><summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG</summary><p>Có. Anh em xây workflow bằng giao diện visual kéo thả.</p></details>
+        <details class="faq-item"><summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG</summary><p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case.</p></details>
+        <details class="faq-item"><summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG</summary><p>Không hẳn khó hơn, mà chi tiết hơn. Make cho nhìn toàn cảnh workflow rõ.</p></details>
+        <details class="faq-item"><summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM</summary><p>Bắt đầu từ quy trình lặp mỗi ngày: Form → Sheet/CRM → thông báo team.</p></details>
       </div>
     </div>
   </section>
 
+  <!-- ===== FINAL CTA ===== -->
   <section class="final-cta">
     <div class="container">
       <h2>GIỮ NĂNG LƯỢNG CHO VIỆC TẠO GIÁ TRỊ, ĐỂ MAKE LO PHẦN VIỆC LẶP LẠI</h2>
-      <p>Không cần chờ hoàn hảo. Một luồng tự động đầu tiên thành công sẽ mở ra cả hệ thống tự động sau này. Anh em có thể bắt đầu miễn phí ngay hôm nay.</p>
+      <p>Không cần chờ hoàn hảo. Một luồng tự động đầu tiên thành công sẽ mở ra cả hệ thống sau này.</p>
       <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">BẮT ĐẦU VỚI MAKE NGAY</a>
-      <p class="mini-note">Mất vài phút để tạo tài khoản và chạy flow đầu tiên. Bắt đầu từ quy trình nhỏ rồi scale dần.</p>
+      <p class="mini-note">Mất vài phút để tạo tài khoản và chạy flow đầu tiên. Bắt đầu nhỏ, scale dần.</p>
     </div>
   </section>
 
-  <footer class="footer">
-    Built with <a href="https://list.affitor.com" target="_blank" rel="noopener">Affiliate Skills by Affitor</a>
-  </footer>
+  <footer class="footer">Built with <a href="https://list.affitor.com" target="_blank" rel="noopener">Affiliate Skills by Affitor</a></footer>
 
+  <!-- JS: Counter -->
   <script>
     (function () {
       const counters = document.querySelectorAll('.counter');
       if (!counters.length) return;
-
       const animateCounter = (el) => {
         const target = Number(el.getAttribute('data-target')) || 0;
         const duration = 1700;
         const start = performance.now();
-
         const update = (now) => {
           const progress = Math.min((now - start) / duration, 1);
           const ease = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.floor(target * ease).toLocaleString('en-US');
           if (progress < 1) requestAnimationFrame(update);
         };
-
         requestAnimationFrame(update);
       };
-
       const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            obs.unobserve(entry.target);
-          }
-        });
+        entries.forEach((entry) => { if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); } });
       }, { threshold: 0.5 });
-
       counters.forEach((counter) => observer.observe(counter));
     })();
   </script>
+
+  <!-- JS: Flow item expand -->
   <script>
     (function() {
       const items = document.querySelectorAll('.flow-item');
-      items.forEach(item => {
-        item.addEventListener('click', (e) => {
-          if (e.target.tagName === 'A') return;
-          item.classList.toggle('expanded');
-        });
-      });
+      items.forEach(item => { item.addEventListener('click', (e) => { if (e.target.tagName === 'A') return; item.classList.toggle('expanded'); }); });
     })();
   </script>
+
+  <!-- JS: Scroll reveal -->
   <script>
     (function () {
-      const slideItems = document.querySelectorAll('.slide-up, .hero-copy, .hero-card, .template-card, .feature, .compare-card, .plan, .testimonial, .faq-item');
+      const slideItems = document.querySelectorAll('.slide-up, .hero-copy, .hero-card, .template-card, .feature, .compare-card, .plan, .testimonial, .faq-item, .audience-card');
       if (!slideItems.length) return;
-
       const reveal = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
       };
-
-      const io = new IntersectionObserver(reveal, {
-        threshold: 0.16,
-        rootMargin: '0px 0px -8% 0px'
-      });
-
-      slideItems.forEach((el, i) => {
-        el.classList.add('slide-up');
-        el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
-        io.observe(el);
-      });
+      const io = new IntersectionObserver(reveal, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+      slideItems.forEach((el, i) => { el.classList.add('slide-up'); el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`; io.observe(el); });
     })();
   </script>
+
+  <!-- JS: Drag & Drop (xịn) -->
   <script>
     (function () {
       const canvas = document.getElementById('dragCanvas');
       if (!canvas) return;
       const hint = canvas.querySelector('.canvas-hint');
-      const colors = { Form: 'linear-gradient(135deg, #6e45e2, #88d3ce)', Sheet: 'linear-gradient(135deg, #00b09b, #96c93d)', Notify: 'linear-gradient(135deg, #f7971e, #ffd200)', AI: 'linear-gradient(135deg, #8f5cff, #5ce2ff)' };
-      const textColors = { Form: '#fff', Sheet: '#fff', Notify: '#1a1a2e', AI: '#fff' };
+      const appColors = {
+        webhook: { bg: 'linear-gradient(135deg, #6e45e2, #88d3ce)', emoji: '🪝' },
+        sheets: { bg: 'linear-gradient(135deg, #00b09b, #96c93d)', emoji: '📊' },
+        slack: { bg: 'linear-gradient(135deg, #e91e63, #ff5722)', emoji: '💬' },
+        openai: { bg: 'linear-gradient(135deg, #8f5cff, #5ce2ff)', emoji: '🤖' },
+        gmail: { bg: 'linear-gradient(135deg, #ea4335, #fbbc04)', emoji: '📧' },
+        timer: { bg: 'linear-gradient(135deg, #f7971e, #ffd200)', emoji: '⏰' }
+      };
       const placed = [];
-      const positions = [{ l: 8, t: 24 }, { l: 50, t: 24 }, { l: 14, t: 62 }, { l: 56, t: 62 }];
-
+      const positions = [{ x: 18, y: 22 }, { x: 52, y: 22 }, { x: 14, y: 58 }, { x: 48, y: 58 }, { x: 33, y: 40 }];
       const renderCanvas = () => {
-        canvas.querySelectorAll('.canvas-node, .canvas-connector').forEach(n => n.remove());
-        placed.forEach((item, i) => {
+        canvas.querySelectorAll('.canvas-node, .canvas-connector, .flow-ready-badge').forEach(n => n.remove());
+        placed.forEach((app, i) => {
           const pos = positions[i];
           const node = document.createElement('div');
           node.className = 'canvas-node';
-          node.style.cssText = `left:${pos.l}%;top:${pos.t}%;background:${colors[item]};color:${textColors[item]};`;
-          node.textContent = item;
+          if (i === placed.length - 1 && placed.length >= 3) node.classList.add('pulse-once');
+          const c = appColors[app];
+          node.style.cssText = `left:calc(${pos.x}% - 20px);top:calc(${pos.y}% - 20px);background:${c.bg};`;
+          node.textContent = c.emoji;
           canvas.appendChild(node);
         });
         for (let i = 0; i < placed.length - 1; i++) {
           const a = positions[i], b = positions[i + 1];
-          const x1 = a.l + 6, x2 = b.l + 6;
-          const y1 = (a.t + 10);
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
           const connector = document.createElement('div');
           connector.className = 'canvas-connector';
-          connector.style.left = x1 + '%';
-          connector.style.width = (x2 - x1) + '%';
-          connector.style.top = y1 + '%';
+          connector.style.cssText = `left:calc(${a.x}% - 20px);top:calc(${a.y}%);width:${length}%;transform:rotate(${angle}deg);`;
           canvas.appendChild(connector);
         }
+        if (placed.length >= 3) {
+          const badge = document.createElement('div');
+          badge.className = 'flow-ready-badge';
+          badge.textContent = 'Flow sẵn sàng! 🚀';
+          canvas.appendChild(badge);
+        }
       };
-
       document.querySelectorAll('.drag-node').forEach(node => {
-        node.addEventListener('dragstart', e => {
-          e.dataTransfer.setData('text/plain', node.dataset.node);
-          node.style.opacity = '.5';
-        });
+        node.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', node.dataset.app); node.style.opacity = '.4'; });
         node.addEventListener('dragend', e => { node.style.opacity = '1'; });
       });
-
       canvas.addEventListener('dragover', e => { e.preventDefault(); canvas.classList.add('drag-over'); });
       canvas.addEventListener('dragleave', () => { canvas.classList.remove('drag-over'); });
       canvas.addEventListener('drop', e => {
-        e.preventDefault();
-        canvas.classList.remove('drag-over');
-        const name = e.dataTransfer.getData('text/plain');
-        if (name && placed.length < 4 && !placed.includes(name)) {
-          placed.push(name);
+        e.preventDefault(); canvas.classList.remove('drag-over');
+        const app = e.dataTransfer.getData('text/plain');
+        if (app && placed.length < 5 && !placed.includes(app)) {
+          placed.push(app);
+          const paletteNode = document.querySelector(`.drag-node[data-app="${app}"]`);
+          if (paletteNode) paletteNode.classList.add('placed');
           if (hint) hint.style.display = 'none';
           renderCanvas();
         }
       });
     })();
   </script>
+
+  <!-- JS: App connection animation -->
   <script>
     (function () {
       const cells = document.querySelectorAll('.app-cell');
@@ -2005,13 +1386,10 @@
       let idx = 0;
       setInterval(() => {
         cells.forEach(c => c.classList.remove('connected'));
-        for (let i = 0; i < Math.min(idx + 5, cells.length); i++) {
-          cells[i].classList.add('connected');
-        }
+        for (let i = 0; i < Math.min(idx + 5, cells.length); i++) { cells[i].classList.add('connected'); }
         idx = (idx + 1) % (cells.length + 3);
       }, 800);
     })();
   </script>
 </body>
 </html>
-
