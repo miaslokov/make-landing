@@ -1485,13 +1485,18 @@
         });
 
         if (placed.length > 1 && svg) {
-          const svgRect = svg.getBoundingClientRect();
+          const canvasRect = canvas.getBoundingClientRect();
+          if (canvasRect.width === 0 || canvasRect.height === 0) {
+            requestAnimationFrame(() => renderCanvas());
+            return;
+          }
           for (let i = 0; i < placed.length - 1; i++) {
             const a = positions[i], b = positions[i + 1];
-            const x1 = (a.x / 100) * svgRect.width + 32;
-            const y1 = (a.y / 100) * svgRect.height + 24;
-            const x2 = (b.x / 100) * svgRect.width + 32;
-            const y2 = (b.y / 100) * svgRect.height + 24;
+            // Tính tâm module (80px rộng, ~80px cao cả icon + label)
+            const x1 = (a.x / 100) * canvasRect.width + 40;
+            const y1 = (a.y / 100) * canvasRect.height + 35;
+            const x2 = (b.x / 100) * canvasRect.width + 40;
+            const y2 = (b.y / 100) * canvasRect.height + 35;
 
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path.setAttribute('d', bezierPath(x1, y1, x2, y2));
