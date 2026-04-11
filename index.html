@@ -473,12 +473,35 @@
       font-size: 15px;
       font-weight: 700;
       color: #f8f5ff;
-      gap: 12px;
       position: relative;
       overflow: hidden;
       min-height: 78px;
       cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .flow-item.expanded {
+      min-height: 140px;
+      border-color: rgba(126,240,255,.62);
+      box-shadow: 0 12px 32px rgba(143,92,255,.28);
+    }
+
+    .flow-expand-trigger {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-size: 11px;
+      color: #b9b3d4;
+      background: rgba(0,0,0,.3);
+      border-radius: 999px;
+      padding: 4px 8px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .flow-item:hover .flow-expand-trigger {
+      opacity: 1;
     }
 
     .flow-head {
@@ -495,6 +518,30 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .04em;
+    }
+
+    .flow-detail {
+      margin-top: 10px;
+      display: none;
+      border-top: 1px dashed rgba(255,255,255,.2);
+      padding-top: 10px;
+      color: #e9e4ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .flow-item.expanded .flow-detail {
+      display: block;
+    }
+
+    .flow-gif {
+      margin-top: 8px;
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.24);
     }
 
     .flow-item:hover {
@@ -1151,25 +1198,36 @@
 
       <div class="hero-card" aria-label="Giá trị chính">
         <div class="flow">
-          <div class="flow-item">
+          <div class="flow-item" data-flow="time">
             <div class="flow-head">TIẾT KIỆM 5 GIỜ/TUẦN CHO VIỆC QUAN TRỌNG</div>
             <div class="flow-meta">Thay vì copy paste thủ công</div>
+            <div class="flow-detail">Ví dụ thực tế: 1 lead mới sẽ tự đi qua Form → Sheet → thông báo team. Mỗi ngày tiết kiệm hàng chục thao tác tay lặp lại.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
-          <div class="flow-item">
+          <div class="flow-item" data-flow="error">
             <div class="flow-head">GIẢM 90% SAI SÓT KHI XỬ LÝ DỮ LIỆU</div>
             <div class="flow-meta">Tự động hóa giúp loại bỏ lỗi do tay</div>
+            <div class="flow-detail">Dữ liệu được map theo rule cố định nên giảm lỗi nhập nhầm, quên cột hoặc gửi sai người nhận.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
-          <div class="flow-item">
+          <div class="flow-item" data-flow="clarity">
             <div class="flow-head">CHỈ CẦN NHÌN LÀ HIỂU LUÔNG CHẠY</div>
             <div class="flow-meta">Giao diện trực quan, không cần tài liệu</div>
+            <div class="flow-detail">Mỗi bước chạy được hiển thị rõ trên canvas. Thành viên mới vào team vẫn hiểu luồng chỉ sau vài phút.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
-          <div class="flow-item">
+          <div class="flow-item" data-flow="scale">
             <div class="flow-head">TĂNG GẤP 3 LẦN KHỐI LƯỢNG CÔNG VIỆC</div>
             <div class="flow-meta">Mà không cần tăng nhân sự</div>
+            <div class="flow-detail">Khi flow ổn định, anh em có thể nhân bản và tái sử dụng cho nhiều campaign cùng lúc.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
-          <div class="flow-item">
+          <div class="flow-item" data-flow="nocode">
             <div class="flow-head">KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</div>
             <div class="flow-meta">Không cần đội kỹ thuật riêng</div>
+            <div class="flow-detail">Dựa trên thư viện module có sẵn, anh em thao tác kéo thả để build luồng. Không phải viết script từ đầu.</div>
+            <img class="flow-gif" src="https://www.make.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fun655fb9wln6%2F1o55lpuiX3hCRQpLoxYJYo%2Ff95d0ae5dde450f5259cd27ee0818768%2FIconWrapper__5_.png&w=3840&q=75" alt="Minh họa kéo thả Make" loading="lazy" />
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
           </div>
         </div>
 
@@ -1492,6 +1550,15 @@
       }, { threshold: 0.5 });
 
       counters.forEach((counter) => observer.observe(counter));
+    })();
+  <script>
+    (function() {
+      const items = document.querySelectorAll('.flow-item');
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          item.classList.toggle('expanded');
+        });
+      });
     })();
   </script>
 </body>
