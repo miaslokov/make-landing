@@ -1483,6 +1483,8 @@ function updateStatus(){
     hint.style.opacity="0";
   }else{
     // Check logic: slot 0 must be a Trigger
+    // Sort placed by slotIndex to ensure placed[0] is actually the first slot
+    placed.sort(function(a,b){return a.slotIndex-b.slotIndex;});
     var firstApp=placed[0].app;
     var firstIsTrigger=appInfo[firstApp]&&appInfo[firstApp].isTrigger;
     if(firstIsTrigger){
@@ -1540,6 +1542,7 @@ function renderCanvas(){
     if(i===placed.length-1&&placed.length>=3)icon.classList.add("pulse-once");
   }
   if(placed.length>=3){
+    placed.sort(function(a,b){return a.slotIndex-b.slotIndex;});
     var firstIsTrigger=appInfo[placed[0].app]&&appInfo[placed[0].app].isTrigger;
     var fp=document.createElement("div");
     fp.className="flow-status";
@@ -1548,10 +1551,26 @@ function renderCanvas(){
       var apps=placed.map(function(p){return appInfo[p.app].name;}).join(" \u2192 ");
       fp.innerHTML='<div class="flow-status-inner"><div class="flow-status-icon">\ud83d\ude80</div><div><div class="flow-status-text">Flow h\u1ee3p l\u1ec7 \u2014 s\u1eb5n s\u00e0ng ch\u1ea1y</div><div class="flow-status-sub">'+apps+'</div><div class="flow-status-sub">'+flowDescs[fi]+'</div></div></div>';
     }else{
-      fp.innerHTML='<div class="flow-status-inner" style="border-color:rgba(231,76,60,.5)"><div class="flow-status-icon">\u274c</div><div><div class="flow-status-text" style="color:#ff6b6b">Sai quy tr\u00ecnh</div><div class="flow-status-sub">B\u01b0\u1edbc 1 ph\u1ea3i l\u00e0 Trigger (Webhook ho\u1eb7c Timer). K\u00e9o l\u1ea1i \u0111\u1ec3 \u0111\u1ecbnh tuy\u1ebfn \u0111\u00fang.</div></div></div>';
+      var apps=placed.map(function(p){return appInfo[p.app].name;}).join(" \u2192 ");
+      fp.innerHTML='<div class="flow-status-inner" style="border-color:rgba(231,76,60,.5)"><div class="flow-status-icon">\u26a0\ufe0f</div><div><div class="flow-status-text" style="color:#ff6b6b">B\u01b0\u1edbc 1 kh\u00f4ng ph\u1ea3i Trigger</div><div class="flow-status-sub">'+apps+' \u2014 thay \u00f4 \u0111\u1ea7u b\u1eb1ng Webhook ho\u1eb7c Timer.</div></div></div>';
     }
     canvas.appendChild(fp);
   }
+}
+
+// Play button -> opens Make.com with affiliate link
+if(playBtn){
+  playBtn.addEventListener("click",function(){
+    var firstApp=placed[0].app;
+    var firstIsTrigger=appInfo[firstApp]&&appInfo[firstApp].isTrigger;
+    if(firstIsTrigger&&placed.length>=3){
+      // Animate play button
+      playBtn.style.transform="scale(1.2)";
+      setTimeout(function(){playBtn.style.transform="";},300);
+      window.open("https://www.make.com/en/register?pc=makeitwithmiasan","_blank");
+    }
+  });
+  playBtn.title="Mở Make.com để bắt đầu automation";
 }
 
 var nodes=document.querySelectorAll(".drag-node");
