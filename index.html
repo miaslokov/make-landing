@@ -3,220 +3,1631 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Make Automation Hub | Tối ưu quy trình trong vài phút</title>
-  <meta name="description" content="Tối ưu workflow với Make: tự động hóa không code, tiết kiệm thời gian, tăng hiệu suất cho cá nhân và doanh nghiệp." />
+  <title>MAKE.COM CHO ANH EM NO-CODE: TỰ ĐỘNG HÓA KÉO THẢ, GỌN VIỆC MỖI NGÀY</title>
+  <meta name="description" content="Landing page Make.com cho anh em muốn tự động hóa no-code: giao diện kéo thả, so sánh Make và Zapier rõ ràng, bảng giá nhiều gói minh bạch." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #111936;
-      --card: rgba(255,255,255,0.06);
-      --stroke: rgba(255,255,255,0.14);
-      --text: #eaf1ff;
-      --muted: #b8c6ea;
-      --primary: #7c5cff;
-      --primary-2: #33d6ff;
-      --ok: #26d07c;
-      --warning: #ffcc5c;
-      --radius: 18px;
-      --shadow: 0 20px 60px rgba(6, 10, 30, 0.45);
+      --bg: #07060d;
+      --bg-soft: #100d1f;
+      --surface: rgba(255, 255, 255, 0.05);
+      --surface-strong: rgba(255, 255, 255, 0.09);
+      --text: #f8f7ff;
+      --text-soft: #cac5e6;
+      --primary: #8f5cff;
+      --primary-2: #5ce2ff;
+      --accent: #ff5fa2;
+      --ok: #47e7aa;
+      --warn: #ffd166;
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: radial-gradient(1100px 550px at 80% -10%, rgba(124,92,255,0.26), transparent 60%), radial-gradient(900px 450px at -10% 10%, rgba(51,214,255,0.2), transparent 60%), var(--bg); color: var(--text); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      background:
+        radial-gradient(1200px 700px at 10% -20%, rgba(143,92,255,.25), transparent 62%),
+        radial-gradient(900px 560px at 100% 10%, rgba(92,226,255,.16), transparent 58%),
+        radial-gradient(700px 400px at 50% 130%, rgba(255,95,162,.12), transparent 72%),
+        linear-gradient(180deg, #090811 0%, #07060d 35%, #06040e 100%);
+    }
+
     a { color: inherit; text-decoration: none; }
 
-    .container { width: min(1140px, 92vw); margin: 0 auto; }
+    .container { width: min(1140px, 92%); margin: 0 auto; }
+    section { padding: 84px 0; }
 
-    .nav {
-      position: sticky; top: 0; z-index: 20;
+    h1, h2, h3 { text-transform: uppercase; letter-spacing: .02em; line-height: 1.2; }
+
+    .glass {
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
       backdrop-filter: blur(10px);
-      background: rgba(11,16,32,0.65);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
-    .brand { font-weight: 800; letter-spacing: .2px; display: flex; gap: 10px; align-items: center; }
-    .brand-dot { width: 11px; height: 11px; border-radius: 50%; background: linear-gradient(140deg, var(--primary), var(--primary-2)); box-shadow: 0 0 16px rgba(124,92,255,.8); }
-
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: 12px; border: 1px solid transparent; font-weight: 700; cursor: pointer; transition: .25s ease; }
-    .btn-primary { background: linear-gradient(135deg, var(--primary), #5766ff 45%, var(--primary-2)); color: #fff; box-shadow: 0 10px 30px rgba(80,92,255,.38); }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
-    .btn-ghost { border-color: var(--stroke); color: var(--text); background: rgba(255,255,255,.02); }
-    .btn-ghost:hover { background: rgba(255,255,255,.07); }
-
-    .hero { padding: 68px 0 38px; }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: center; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #d8e2ff; background: rgba(124,92,255,.16); border: 1px solid rgba(124,92,255,.4); padding: 8px 12px; border-radius: 999px; }
-    h1 { margin: 16px 0 14px; font-size: clamp(32px, 5vw, 56px); line-height: 1.08; letter-spacing: -.6px; }
-    .lead { color: var(--muted); font-size: clamp(15px, 2vw, 19px); line-height: 1.7; margin-bottom: 26px; max-width: 62ch; }
-
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .proof { margin-top: 14px; color: #c8d4f5; font-size: 14px; }
-
-    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04)); border: 1px solid var(--stroke); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
-    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    .kpi { background: rgba(14,23,51,.64); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px; }
-    .kpi b { font-size: 23px; display: block; margin-bottom: 4px; }
-    .kpi span { color: var(--muted); font-size: 13px; }
-
-    .section { padding: 26px 0 8px; }
-    .section h2 { font-size: clamp(26px, 4vw, 36px); margin: 0 0 10px; }
-    .section p.desc { color: var(--muted); max-width: 76ch; line-height: 1.7; margin: 0 0 20px; }
-
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: 16px;
-      padding: 18px;
-      transition: .22s ease;
-    }
-    .card:hover { transform: translateY(-4px); border-color: rgba(124,92,255,.45); }
-    .card h3 { margin: 10px 0 8px; }
-    .card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 15px; }
-    .icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: inline-grid; place-items: center;
-      background: linear-gradient(145deg, rgba(124,92,255,.24), rgba(51,214,255,.22));
-      border: 1px solid rgba(255,255,255,.16);
-      font-size: 18px;
+      box-shadow: var(--shadow);
     }
 
-    .workflow {
-      margin-top: 12px;
-      border: 1px solid var(--stroke);
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255,255,255,.03);
-    }
-    .flow-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; padding: 16px; align-items: center; }
-    .pill { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); padding: 12px 14px; border-radius: 12px; font-weight: 600; text-align: center; }
-    .arrow { opacity: .7; }
-
-    .cta-box {
-      margin: 34px 0 70px;
-      background: linear-gradient(135deg, rgba(124,92,255,.24), rgba(51,214,255,.17));
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 20px;
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
+    /* Badge */
+    .badge {
+      position: relative;
+      display: inline-flex;
       align-items: center;
+      gap: 10px;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 800;
+      color: #f8f4ff;
+      border: 1px solid rgba(255,255,255,.24);
+      background: linear-gradient(120deg, rgba(143,92,255,.40), rgba(92,226,255,.28), rgba(255,95,162,.26));
+      border-radius: 999px;
+      padding: 13px 24px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 12px 34px rgba(143,92,255,.30);
+      overflow: hidden;
+      isolation: isolate;
+      animation: badgePulse 2.8s ease-in-out infinite;
     }
-    .cta-box h3 { margin: 0 0 8px; font-size: clamp(24px, 3.6vw, 34px); }
-    .cta-box p { margin: 0; color: #d8e3ff; line-height: 1.65; }
+    .badge::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(110deg, transparent 10%, rgba(255,255,255,.25) 50%, transparent 90%);
+      transform: translateX(-120%);
+      animation: shine 3.8s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes badgePulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 12px 34px rgba(143,92,255,.30); }
+      50% { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(92,226,255,.32); }
+    }
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      45%, 100% { transform: translateX(120%); }
+    }
 
-    footer { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0 30px; color: #9fb0d8; font-size: 14px; }
+    /* Buttons */
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      border: 0; cursor: pointer; font-weight: 800; font-size: 16px;
+      border-radius: 12px; padding: 14px 22px;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+      text-align: center; text-transform: uppercase; letter-spacing: .02em;
+    }
+    .btn-primary {
+      color: #0d0520;
+      background: linear-gradient(135deg, #b697ff, #78e9ff 55%, #5ce2ff);
+      box-shadow: 0 12px 30px rgba(92,226,255,.28);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(143,92,255,.38); }
+    .btn-ghost {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .btn-pill {
+      display: inline-flex; justify-content: center; align-items: center;
+      background: rgba(143,92,255,.15);
+      border: 1px solid rgba(143,92,255,.35);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #c9b8ff;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      margin-top: 12px;
+      width: fit-content;
+    }
+    .btn-pill:hover {
+      background: rgba(143,92,255,.28);
+      border-color: rgba(143,92,255,.55);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(143,92,255,.2);
+    }
 
+    /* Slide-up reveal */
+    .slide-up {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .slide-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Disclosure */
+    .disclosure-wrap { padding-top: 16px; }
+    .disclosure {
+      width: min(980px, 100%); margin: 0 auto;
+      border: 1px solid rgba(143,92,255,.35);
+      background: linear-gradient(135deg, rgba(143,92,255,.12), rgba(92,226,255,.10));
+      color: #eee9ff; border-radius: 12px; padding: 14px 16px; font-size: 13px;
+    }
+
+    /* ===== HERO ===== */
+    .hero { position: relative; padding-top: 48px; overflow: hidden; }
+    .hero::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 18px; height: 110px;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(7,6,13,.95) 100%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px;
+      align-items: stretch; position: relative; z-index: 1;
+    }
+    .hero-copy {
+      border: 1px solid rgba(255,255,255,.18); border-radius: 24px;
+      background: linear-gradient(150deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+      padding: 32px 28px; display: flex; flex-direction: column;
+      justify-content: center; gap: 4px; box-shadow: var(--shadow);
+      position: relative; overflow: hidden; isolation: isolate;
+    }
+    .hero-copy::before {
+      content: ""; position: absolute; top: -40%; right: -30%;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,226,255,.28), transparent 60%);
+      filter: blur(24px); z-index: -1;
+    }
+    .hero-copy::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
+      background: linear-gradient(135deg, rgba(143,92,255,.12), transparent 40%, rgba(92,226,255,.08));
+      z-index: -1; pointer-events: none;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 5.4vw, 68px); margin: 14px 0 14px;
+      max-width: 11.8ch; line-height: 1.12; text-wrap: balance;
+    }
+    .hero p {
+      color: #e3def5; max-width: 54ch; font-size: 19.5px;
+      margin-bottom: 18px; line-height: 1.55; font-weight: 500;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero .btn-primary {
+      font-size: 18px; padding: 16px 28px;
+      animation: glowCta 2.4s ease-in-out infinite alternate;
+      box-shadow: 0 12px 32px rgba(92,226,255,.32);
+    }
+    @keyframes glowCta {
+      from { box-shadow: 0 12px 32px rgba(92,226,255,.32); }
+      to { box-shadow: 0 18px 48px rgba(143,92,255,.46); transform: translateY(-1.5px); }
+    }
+    .hero .btn-ghost { font-size: 15px; padding: 14px 18px; border-color: rgba(255,255,255,.22); }
+    .mini-note {
+      margin-top: 10px; color: #e8e1ff; font-size: 14.5px; font-weight: 700;
+      border-left: 3px solid rgba(126,240,255,.65); padding-left: 10px; max-width: 52ch;
+    }
+    .hero-social-proof {
+      margin-top: 12px; font-size: 13px; color: #b9b3d4; font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .hero-social-proof strong { color: #c9b8ff; }
+
+    /* Hero card */
+    .hero-card {
+      border: 1px solid rgba(143,92,255,.42);
+      background: linear-gradient(155deg, rgba(143,92,255,.24), rgba(92,226,255,.14), rgba(255,255,255,.04));
+      border-radius: var(--radius-xl); padding: 28px;
+      box-shadow: var(--shadow); backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ""; position: absolute; inset: -2px; border-radius: inherit;
+      background: linear-gradient(135deg, rgba(143,92,255,.62), rgba(92,226,255,.42), rgba(255,95,162,.42));
+      z-index: -1; filter: blur(20px); opacity: .48;
+    }
+    .hero-card::after {
+      content: ""; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(92,226,255,.18) 0%, transparent 70%);
+      pointer-events: none; animation: rotateBg 12s linear infinite; z-index: -1;
+    }
+    @keyframes rotateBg { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* Flow items (hero right) */
+    .flow { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    .flow-item {
+      border: 1px solid rgba(143,92,255,.46); border-radius: 14px;
+      background: linear-gradient(120deg, rgba(16,14,30,.94), rgba(24,20,45,.84));
+      padding: 16px 16px; display: block; font-size: 15px; font-weight: 700;
+      color: #f8f5ff; position: relative; overflow: hidden;
+      min-height: 78px; cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .flow-item.expanded {
+      min-height: 140px; border-color: rgba(126,240,255,.62);
+      box-shadow: 0 12px 32px rgba(143,92,255,.28);
+    }
+    .flow-expand-trigger {
+      position: absolute; bottom: 8px; right: 10px; font-size: 11px;
+      color: #b9b3d4; background: rgba(0,0,0,.3); border-radius: 999px;
+      padding: 4px 8px; pointer-events: none; opacity: 0;
+      transition: opacity .2s ease;
+    }
+    .flow-item:hover .flow-expand-trigger { opacity: 1; }
+    .flow-head { display: block; font-size: 15px; line-height: 1.45; letter-spacing: .01em; }
+    .flow-meta {
+      margin-top: 7px; font-size: 12.5px; color: #c8c2e4;
+      font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .flow-detail {
+      margin-top: 10px; display: none; border-top: 1px dashed rgba(255,255,255,.2);
+      padding-top: 10px; color: #e9e4ff; font-size: 13px; line-height: 1.5;
+    }
+    .flow-item.expanded .flow-detail { display: block; }
+    .flow-item:hover {
+      transform: translateY(-2px); border-color: rgba(126,240,255,.58);
+      box-shadow: 0 12px 28px rgba(92,226,255,.18);
+    }
+    .flow-item:active { transform: translateY(0); }
+    .flow-item::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(92,226,255,.18), transparent);
+      transform: translateX(-100%); animation: shimmerFlow 2.8s infinite; pointer-events: none;
+    }
+    .flow-item::after {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #7ef0ff, #8f5cff, #ff9bc6);
+      box-shadow: 0 0 14px rgba(126,240,255,.55);
+    }
+    @keyframes shimmerFlow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+    /* Hero stats bar */
+    .hero-stats-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-top: 18px;
+    }
+    .hero-stat {
+      border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
+      background: rgba(255,255,255,.04); padding: 10px 8px; text-align: center;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .hero-stat:hover {
+      border-color: rgba(126,240,255,.35);
+      background: rgba(92,226,255,.06);
+    }
+    .hero-stat-value {
+      font-size: 18px; font-weight: 900; color: #fff;
+      background: linear-gradient(135deg, #b697ff, #5ce2ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-stat-label { font-size: 10px; color: #b9b3d4; text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; font-weight: 700; }
+
+    /* Trust bar */
+    .trust {
+      margin-top: 38px;
+      border-top: 1px solid rgba(143,92,255,.35);
+      border-bottom: 1px solid rgba(92,226,255,.28);
+      background: linear-gradient(90deg, rgba(143,92,255,.12), rgba(92,226,255,.10), rgba(255,95,162,.10));
+      box-shadow: 0 8px 30px rgba(143,92,255,.18) inset;
+    }
+    .trust-list {
+      min-height: 96px; display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px; align-items: center; text-align: center;
+      color: #f0eaff; font-size: 15px; font-weight: 700; padding: 12px 0;
+    }
+    .trust-item {
+      border: 1px solid rgba(255,255,255,.12); border-radius: 14px;
+      background: rgba(8,6,16,.26); min-height: 64px;
+      display: grid; place-items: center; position: relative; overflow: hidden;
+      padding: 12px 10px;
+      transition: color .3s ease, transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      cursor: default;
+    }
+    .trust-item::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(92,226,255,.10), rgba(143,92,255,.08));
+      opacity: 0; transition: opacity .35s ease; z-index: 0;
+    }
+    .trust-item:hover::before { opacity: 1; }
+    .trust-item:hover {
+      color: #78e9ff; transform: translateY(-3px) scale(1.03);
+      border-color: rgba(126,240,255,.35);
+      box-shadow: 0 10px 28px rgba(92,226,255,.18);
+    }
+    .trust-item > span { position: relative; z-index: 1; }
+    .counter {
+      font-size: 18px; font-weight: 800; color: #ffec8b;
+      display: inline-block; min-width: 56px; text-align: right;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #ffd966, #ffb76b 20%, #ff9494 40%, #a4d7ff 60%, #c9b3ff 80%, #d8c9ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 900; text-shadow: 0 0 20px rgba(255,217,102,.28);
+    }
+
+    /* Section heads */
+    .section-head { text-align: center; margin-bottom: 42px; }
+    .section-head h2 {
+      font-size: clamp(30px, 4.2vw, 48px); margin-bottom: 12px;
+      background: linear-gradient(135deg, #b697ff, #78e9ff 40%, #5ce2ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 900;
+    }
+    .section-head p { color: var(--text-soft); width: min(760px, 94%); margin: 0 auto; }
+    .section-head.demo-section-head { margin-bottom: 36px; }
+
+    /* ===== INTERACTIVE DEMO SECTION ===== */
+    .interactive-demo-section { padding: 72px 0; position: relative; }
+    .interactive-demo-section::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(600px 400px at 20% 30%, rgba(143,92,255,.10), transparent 60%),
+        radial-gradient(500px 300px at 80% 70%, rgba(92,226,255,.08), transparent 55%);
+      pointer-events: none;
+    }
+
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px; margin-top: 16px;
+    }
+    .proof-card {
+      border: 1px solid rgba(143,92,255,.22); border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
+      padding: 14px; min-height: 260px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .proof-card:hover {
+      transform: translateY(-6px); box-shadow: 0 16px 48px rgba(143,92,255,.18);
+      border-color: rgba(143,92,255,.4);
+    }
+    .proof-demo {
+      border: 1px solid rgba(255,255,255,.16); border-radius: 10px;
+      background: linear-gradient(140deg, rgba(11,10,20,.95), rgba(27,22,45,.88));
+      height: 180px; padding: 0; position: relative; overflow: hidden;
+    }
+    .proof-demo::after {
+      content: ""; position: absolute; top: 0; left: -120%;
+      width: 120%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(126,240,255,.18), transparent);
+      animation: proofScan 2.6s infinite; pointer-events: none;
+    }
+    @keyframes proofScan { 0% { left: -120%; } 100% { left: 120%; } }
+    .proof-label {
+      font-size: 12px; color: #c8c2e4; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 700;
+    }
+    .proof-title { font-size: 15px; font-weight: 800; color: #f6f2ff; line-height: 1.35; }
+
+    /* Drag & Drop demo - Make.com style */
+    .drag-drop-section { padding: 72px 0; position: relative; }
+    .drag-drop-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(800px 500px at 50% 30%, rgba(143,92,255,.08), transparent 60%); pointer-events: none; }
+    .drag-drop-container { width: min(1100px, 96%); margin: 0 auto; }
+    .drag-drop-card-full { border: 1px solid rgba(143,92,255,.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.3); background: #0d0b1a; }
+    .drag-demo { display: flex; flex-direction: column; min-height: 340px; }
+    .drag-toolbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: #1a1630; border-bottom: 1px solid rgba(143,92,255,.15); flex-shrink: 0; }
+    .drag-toolbar-logo { font-size: 16px; font-weight: 900; color: #c9b8ff; letter-spacing: .02em; margin-right: 16px; }
+    .drag-toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,.1); }
+    .drag-toolbar-title { font-size: 13px; font-weight: 700; color: #e0dbf5; flex: 1; }
+    .drag-toolbar-status { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; transition: color .3s; }
+    .drag-toolbar-dot { width: 7px; height: 7px; border-radius: 50%; background: #47e7aa; box-shadow: 0 0 6px rgba(72,229,169,.5); }
+    .drag-toolbar-btn { width: 32px; height: 32px; border-radius: 8px; background: rgba(143,92,255,.15); border: 1px solid rgba(143,92,255,.25); display: grid; place-items: center; font-size: 14px; color: #c9b8ff; }
+    .drag-toolbar-btn.play-btn { background: linear-gradient(135deg, #47e7aa, #5ce2ff); border-color: transparent; color: #0d0b1a; font-size: 12px; }
+    .drag-palette-row { display: flex; gap: 8px; padding: 12px 16px; background: #13112a; border-bottom: 1px solid rgba(255,255,255,.06); flex-shrink: 0; flex-wrap: wrap; justify-content: center; }
+    .drag-palette-label { font-size: 9px; color: #6b6394; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; width: 100%; text-align: center; margin-bottom: 2px; }
+    .drag-node { width: 76px; height: 58px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: grab; user-select: none; transition: transform .15s ease, box-shadow .15s ease; border: 1px solid rgba(255,255,255,.12); flex-shrink: 0; }
+    .drag-node:hover { transform: scale(1.06); box-shadow: 0 4px 16px rgba(0,0,0,.3); }
+    .drag-node:active { cursor: grabbing; transform: scale(1.1); }
+    .drag-node.placed { opacity: .25; pointer-events: none; }
+    .drag-node .node-emoji { font-size: 20px; }
+    .drag-node .node-label { font-size: 8px; color: #fff; font-weight: 800; text-transform: uppercase; }
+    .drag-node[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
+    .drag-node[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .drag-node[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); }
+    .drag-node[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
+    .drag-node[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
+    .drag-node[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .drag-canvas { flex: 1; position: relative; overflow: hidden; background: #0f0d1f; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 24px 24px; transition: background-color .2s ease; min-height: 220px; display: flex; align-items: center; justify-content: center; }
+    .canvas-flex { display: flex; align-items: center; gap: 16px; position: relative; z-index: 2; }
+    .canvas-slot { width: 96px; height: 96px; border-radius: 14px; border: 2px dashed rgba(143,92,255,.25); background: rgba(143,92,255,.03); transition: border-color .2s, background .2s; flex-shrink: 0; }
+    .canvas-slot.occupied { border-color: transparent; background: transparent; }
+    .canvas-slot.highlight { border-color: rgba(92,226,255,.5); background: rgba(92,226,255,.08); }
+    .slot-connector { display: flex; align-items: center; justify-content: center; width: 28px; flex-shrink: 0; }
+    .slot-connector svg { width: 28px; height: 14px; }
+    .slot-connector .conn-path { stroke: url(#connGrad); stroke-width: 2; fill: none; filter: drop-shadow(0 0 3px rgba(92,226,255,.3)); }
+    .slot-connector .conn-dot { fill: #5ce2ff; filter: drop-shadow(0 0 4px rgba(92,226,255,.4)); animation: dotPulse 1.5s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{r:2.5;opacity:.6}50%{r:4;opacity:1} }
+    .drag-canvas.drag-over { background-color: rgba(92,226,255,.04); box-shadow: inset 0 0 0 2px rgba(92,226,255,.2); }
+    .canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
+    .canvas-module { width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px; animation: modAppear .4s cubic-bezier(.34,1.56,.64,1); z-index: 3; flex-shrink: 0; }
+    @keyframes modAppear { from { transform: scale(0) translateY(-8px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+    .canvas-mod-wrapper { position: relative; }
+    .canvas-mod-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid rgba(255,255,255,.15); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+    .canvas-mod-icon.pulse-once { animation: pulseOk .6s ease-out; }
+    @keyframes pulseOk { 0% { box-shadow: 0 0 0 0 rgba(72,229,169,.6); } 50% { box-shadow: 0 0 0 14px rgba(72,229,169,0); } 100% { box-shadow: 0 0 0 0 rgba(72,229,169,0); } }
+    .canvas-mod-icon[data-app="webhook"] { background: linear-gradient(135deg, #6e45e2, #88d3ce); }
+    .canvas-mod-icon[data-app="sheets"] { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .canvas-mod-icon[data-app="slack"] { background: linear-gradient(135deg, #e91e63, #ff5722); }
+    .canvas-mod-icon[data-app="openai"] { background: linear-gradient(135deg, #8f5cff, #5ce2ff); }
+    .canvas-mod-icon[data-app="gmail"] { background: linear-gradient(135deg, #ea4335, #fbbc04); }
+    .canvas-mod-icon[data-app="timer"] { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .canvas-mod-btn-del { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #e74c3c; color: #fff; border: 2px solid #0d0b1a; font-size: 12px; line-height: 16px; text-align: center; cursor: pointer; opacity: 0; transition: opacity .15s; z-index: 5; }
+    .canvas-mod-wrapper:hover .canvas-mod-btn-del { opacity: 1; }
+    .canvas-mod-name { font-size: 9px; color: #d5d0ec; font-weight: 800; text-transform: uppercase; text-align: center; white-space: nowrap; margin-top: 2px; }
+    .canvas-mod-type { font-size: 8px; color: #6b6394; font-weight: 600; }
+    .canvas-svg { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .canvas-svg path { stroke: url(#connGrad); stroke-width: 2.5; fill: none; filter: drop-shadow(0 0 4px rgba(92,226,255,.3)); }
+    .canvas-svg circle { fill: #5ce2ff; filter: drop-shadow(0 0 6px rgba(92,226,255,.5)); animation: dotMove 1.5s ease-in-out infinite; }
+    @keyframes dotMove { 0%, 100% { r: 3; opacity: .6; } 50% { r: 5; opacity: 1; } }
+    .flow-status { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 5; animation: flowPop .4s cubic-bezier(.34,1.56,.64,1); max-width: 90%; }
+    .flow-status-inner { background: rgba(13,11,26,.92); border: 1px solid rgba(72,229,169,.4); border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,.4); white-space: nowrap; }
+    .flow-status-icon { font-size: 20px; }
+    .flow-status-text { font-size: 11px; color: #e7fff9; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+    .flow-status-sub { font-size: 10px; color: #8a82a8; font-weight: 600; margin-top: 2px; }
+    @keyframes flowPop { from { transform: translateX(-50%) scale(0); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
+
+    /* App connector demo */
+    .app-demo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 8px; }
+    .app-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(3, 1fr);
+      gap: 5px; width: 100%; height: 100%;
+    }
+    .app-cell {
+      border-radius: 6px; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1); display: flex;
+      align-items: center; justify-content: center; font-size: 10px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      cursor: default; position: relative;
+    }
+    .app-cell:hover {
+      background: rgba(143,92,255,.2); border-color: rgba(143,92,255,.4);
+      transform: scale(1.12); z-index: 2;
+    }
+    .app-cell.connected {
+      border-color: rgba(72,229,169,.5); background: rgba(72,229,169,.12);
+      box-shadow: 0 0 8px rgba(72,229,169,.2);
+    }
+    .app-cell .app-icon { font-size: 12px; }
+
+    /* Flow animation demo */
+    .flow-demo {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center; gap: 10px; padding: 12px;
+    }
+    .flow-module {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(143,92,255,.3), rgba(92,226,255,.2));
+      border: 1px solid rgba(143,92,255,.4); display: flex;
+      align-items: center; justify-content: center; font-size: 14px;
+      animation: flowPulse 2.4s ease-in-out infinite; position: relative; flex-shrink: 0;
+    }
+    .flow-module:nth-child(2) { animation-delay: .4s; }
+    .flow-module:nth-child(4) { animation-delay: .8s; }
+    .flow-module:nth-child(6) { animation-delay: 1.2s; }
+    @keyframes flowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(92,226,255,.3); }
+      50% { box-shadow: 0 0 0 6px rgba(92,226,255,0); }
+    }
+    .flow-connector {
+      width: 18px; height: 2px;
+      background: linear-gradient(90deg, rgba(143,92,255,.4), rgba(92,226,255,.4));
+      border-radius: 2px; position: relative; flex-shrink: 0;
+    }
+    .flow-connector::after {
+      content: ""; position: absolute; top: -3px; left: -4px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #5ce2ff; box-shadow: 0 0 10px rgba(92,226,255,.6);
+      animation: dataFlow 1.2s ease-in-out infinite;
+    }
+    .flow-label-mini {
+      position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 8px; color: rgba(255,255,255,.4); text-transform: uppercase;
+      font-weight: 700; letter-spacing: .04em; white-space: nowrap;
+    }
+
+    /* ===== TEMPLATES ===== */
+    .templates-section { padding-top: 42px; padding-bottom: 28px; }
+    .section-head.templates { margin-bottom: 28px; }
+    .templates-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; align-items: stretch;
+    }
+    .template-card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: linear-gradient(155deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding: 18px; transition: transform .2s ease, border-color .2s ease;
+      position: relative; overflow: hidden;
+      min-width: 0;
+    }
+    .template-card::before {
+      content: ""; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(143,92,255,.12), transparent);
+      animation: templateShine 2.8s infinite;
+    }
+    @keyframes templateShine { 0% { left: -100%; } 100% { left: 100%; } }
+    .template-card:hover { transform: translateY(-4px); border-color: rgba(143,92,255,.56); }
+    .template-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .tmpl-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: grid; place-items: center; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
+      border: 1px solid rgba(255,255,255,.15); font-size: 16px;
+    }
+    .tmpl-title {
+      font-size: 14px; font-weight: 800; color: #f0ecff;
+      line-height: 1.35;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      min-width: 0;
+      margin: 0;
+    }
+    .template-desc {
+      font-size: 13px; color: var(--text-soft); margin-bottom: 10px;
+      line-height: 1.45; flex: 1;
+    }
+    .template-stats { display: flex; gap: 8px; font-size: 11.5px; color: #b9b3d4; flex-wrap: wrap; }
+    .template-stat { display: flex; align-items: center; gap: 3px; }
+    .template-used { color: #78e9ff; }
+    .template-link {
+      display: block; text-align: center; margin-top: 14px;
+      font-size: 12px; color: #c9b8ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .template-link-pill {
+      display: block; text-align: center; margin-top: 14px;
+      background: rgba(143,92,255,.12); border: 1px solid rgba(143,92,255,.3);
+      border-radius: 999px; padding: 8px 16px;
+      font-size: 12px; color: #c9b8ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .template-link-pill:hover {
+      background: rgba(143,92,255,.25); border-color: rgba(143,92,255,.5);
+      transform: translateY(-2px); box-shadow: 0 6px 16px rgba(143,92,255,.15);
+    }
+
+    /* ===== FEATURES (6 items) ===== */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; width: min(1080px, 100%); margin: 0 auto;
+    }
+    .feature {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      padding: 22px 20px; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-4px); border-color: rgba(143,92,255,.5);
+      box-shadow: 0 12px 36px rgba(143,92,255,.15);
+    }
+    .feature-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; min-height: 48px; }
+    .feature .icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(143,92,255,.35), rgba(92,226,255,.25));
+      border: 1px solid rgba(255,255,255,.15); font-size: 20px; flex: 0 0 auto;
+    }
+    .feature h3 { font-size: clamp(12px, 1.6vw, 15px); margin: 0; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .feature p { color: var(--text-soft); font-size: 14px; margin: 0; }
+    .feature-data {
+      margin-top: 8px; font-size: 12px; color: #78e9ff; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .03em;
+    }
+
+    /* ===== COMPARISON TABLE ===== */
+    .comparison-section { overflow-x: visible; }
+    .compare-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 900px; margin: 0 auto 32px;
+    }
+    .compare-brand {
+      text-align: center; padding: 20px 16px; border-radius: 16px;
+      position: relative; overflow: hidden;
+    }
+    .compare-brand.make-brand {
+      border: 1px solid rgba(143,92,255,.35);
+      background: linear-gradient(145deg, rgba(143,92,255,.12), rgba(92,226,255,.06));
+    }
+    .compare-brand.zapier-brand {
+      border: 1px solid rgba(255,132,90,.25);
+      background: linear-gradient(145deg, rgba(255,132,90,.08), rgba(255,217,102,.04));
+    }
+    .compare-brand h3 {
+      font-size: 24px; font-weight: 900; margin: 0 0 4px;
+    }
+    .compare-brand.make-brand h3 { color: #c9b8ff; text-shadow: 0 0 20px rgba(143,92,255,.35); }
+    .compare-brand.zapier-brand h3 { color: #ffd9c7; text-shadow: 0 0 20px rgba(255,132,90,.25); }
+    .compare-brand-sub { font-size: 12px; color: #b9b3d4; text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+
+    .compare-rows { max-width: 900px; margin: 0 auto; display: grid; gap: 12px; }
+    .compare-row {
+      display: grid; grid-template-columns: 140px 1fr 1fr; gap: 0;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+    .compare-row:hover {
+      border-color: rgba(143,92,255,.3);
+      box-shadow: 0 6px 24px rgba(143,92,255,.1);
+      transform: translateY(-2px);
+    }
+    .compare-criteria {
+      padding: 16px 12px; font-size: 11px; font-weight: 800;
+      color: #ece9ff; text-transform: uppercase; letter-spacing: .05em;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 6px; text-align: center;
+      background: rgba(143,92,255,.06);
+      border-right: 1px solid rgba(255,255,255,.06);
+    }
+    .compare-criteria-icon { font-size: 20px; }
+    .compare-cell {
+      padding: 14px 16px; font-size: 13px; color: #d5d0ec;
+      display: flex; align-items: center; gap: 8px;
+      line-height: 1.45;
+    }
+    .compare-cell.make-cell {
+      background: rgba(143,92,255,.04);
+      border-right: 1px solid rgba(255,255,255,.06);
+    }
+    .compare-cell.zapier-cell {
+      background: rgba(255,132,90,.02);
+    }
+    .compare-check {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 900;
+    }
+    .compare-check.good {
+      background: rgba(72,229,169,.15); border: 1px solid rgba(72,229,169,.4);
+      color: #47e7aa;
+    }
+    .compare-check.ok {
+      background: rgba(255,209,102,.12); border: 1px solid rgba(255,209,102,.35);
+      color: #ffd166;
+    }
+    .compare-cell strong { color: #fff; }
+    .compare-note {
+      margin-top: 24px; font-size: 13px; color: #b9b3d4;
+      text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
+      line-height: 1.55; padding: 14px 18px;
+      border: 1px solid rgba(143,92,255,.2); border-radius: 12px;
+      background: rgba(143,92,255,.04);
+    }
+    .compare-note strong { color: #c9b8ff; }
+
+    /* ===== PRICING ===== */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px; margin-top: 18px;
+    }
+    .plan {
+      border: 1px solid var(--border); border-radius: 16px;
+      background: rgba(255,255,255,.03); padding: 18px 14px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative; overflow: hidden;
+    }
+    .plan::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.06), transparent);
+      transform: translateX(-120%); animation: shimmer 3s infinite; pointer-events: none;
+    }
+    .plan-name { font-size: 16px; font-weight: 900; text-transform: uppercase; color: #efe9ff; }
+    .plan-price { font-size: 34px; font-weight: 900; line-height: 1; color: #fff; letter-spacing: -0.02em; }
+    .plan-sub { font-size: 12px; color: #c9c3e4; text-transform: uppercase; letter-spacing: .04em; }
+    .plan ul {
+      list-style: none; display: grid; gap: 8px; margin-top: 2px;
+      font-size: 13px; color: #dfdaf3;
+    }
+    .plan ul li {
+      border: 1px solid rgba(255,255,255,.11); border-radius: 9px;
+      padding: 7px 8px; background: rgba(255,255,255,.03);
+    }
+    .plan-free {
+      border: 2px solid rgba(255, 209, 102, .86);
+      background: linear-gradient(165deg, rgba(255,209,102,.20), rgba(143,92,255,.14), rgba(92,226,255,.10));
+      transform: translateY(-4px); box-shadow: 0 16px 40px rgba(255,209,102,.20);
+    }
+    .plan-tag {
+      align-self: flex-start; font-size: 11px; font-weight: 800;
+      text-transform: uppercase; padding: 5px 9px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.08); letter-spacing: .04em;
+    }
+    .pricing-note {
+      margin-top: 14px; color: #cfc9eb; font-size: 13px; text-align: center;
+    }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonial {
+      width: min(920px, 100%); margin: 0 auto;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: rgba(255,255,255,.04); padding: 30px 24px;
+      box-shadow: var(--shadow); position: relative;
+    }
+    .testimonial::before {
+      content: "“"; position: absolute; top: -10px; left: 20px;
+      font-size: 72px; color: rgba(143,92,255,.55);
+      line-height: 1; font-family: Georgia, serif;
+    }
+    .testimonial blockquote {
+      font-size: 20px; line-height: 1.65; color: #f3f1ff;
+      margin-bottom: 12px; padding-left: 12px;
+    }
+    .testimonial cite {
+      color: #c9c3e3; font-style: normal; font-size: 14px;
+      padding-left: 12px; text-transform: uppercase; letter-spacing: .03em;
+    }
+
+    /* ===== AUDIENCE ===== */
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px; width: min(1080px, 100%); margin: 0 auto;
+    }
+    .audience-card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(143,92,255,.06));
+      padding: 20px 18px; display: flex; flex-direction: column; gap: 8px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .audience-card:hover {
+      transform: translateY(-4px); box-shadow: 0 10px 30px rgba(143,92,255,.12);
+      border-color: rgba(143,92,255,.4);
+    }
+    .audience-card-icon { font-size: 24px; margin-bottom: 4px; }
+    .audience-card h4 {
+      font-size: 13.5px; font-weight: 800; color: #f0ecff;
+      text-transform: uppercase; letter-spacing: .02em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      display: block; width: 100%;
+    }
+    .audience-card p { color: var(--text-soft); font-size: 13.5px; line-height: 1.5; }
+    .audience-card-data {
+      margin-top: auto; font-size: 12px; color: #78e9ff;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-wrap {
+      width: min(900px, 100%); margin: 0 auto; display: grid; gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--border); background: rgba(255,255,255,.03);
+      border-radius: 12px; padding: 16px;
+    }
+    .faq-item summary {
+      list-style: none; cursor: pointer; font-weight: 800;
+      color: #f1efff; display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; font-size: 15px;
+      text-transform: uppercase; letter-spacing: .02em;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+"; font-size: 23px; color: #b9b1dd; line-height: 1;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { margin-top: 10px; color: var(--text-soft); font-size: 15px; }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      text-align: center;
+      background: radial-gradient(500px 220px at 50% 0%, rgba(143,92,255,.2), transparent 70%), rgba(255,255,255,.02);
+    }
+    .final-cta h2 { font-size: clamp(30px, 4.5vw, 50px); margin-bottom: 14px; }
+    .final-cta p { color: #d5d0ec; width: min(760px, 94%); margin: 0 auto 22px; font-size: 18px; }
+
+    /* Footer */
+    .footer { text-align: center; color: #9e97c1; font-size: 13px; padding: 26px 16px 32px; }
+    .footer a { color: #c9bcff; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 980px) {
-      .hero-grid, .cta-box { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr 1fr; }
-      .flow-row { grid-template-columns: 1fr; }
-      .arrow { display: none; }
+      section { padding: 68px 0; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { max-width: 14ch; font-size: clamp(34px, 6.5vw, 52px); }
+      .comparison-two-col, .features-grid, .audience-grid, .proof-grid,
+      .templates-grid, .audience-grid { grid-template-columns: 1fr; }
+      .trust-list { grid-template-columns: 1fr 1fr; }
+      .hero-copy { padding: 24px 20px; }
+      .hero-card { min-height: auto; padding: 22px; }
+      .flow-item { min-height: 64px; font-size: 14px; }
+      .proof-card { min-height: 170px; }
+      .proof-demo { height: 130px; }
+      .hero p { font-size: 18px; }
+      .interactive-demo-section { padding: 56px 0; }
+      .drag-drop-section { padding: 56px 0; }
+      .drag-drop-card-full { min-height: 360px; }
+      .hero-stats-bar { grid-template-columns: repeat(3, 1fr); }
+      .compare-table { font-size: 12px; }
+      .compare-table thead th, .compare-table tbody td { padding: 10px 8px; }
+      .compare-row { grid-template-columns: 100px 1fr 1fr; }
+      .compare-criteria { padding: 12px 8px; font-size: 10px; }
+      .compare-criteria-icon { font-size: 16px; }
+      .compare-cell { padding: 10px 12px; font-size: 12px; }
     }
-
-    @media (max-width: 640px) {
-      .hero { padding-top: 42px; }
-      .cards { grid-template-columns: 1fr; }
-      .kpi-grid { grid-template-columns: 1fr; }
+    @media (max-width: 680px) {
+      .container { width: min(1140px, 94%); }
+      .hero { padding-top: 36px; }
+      .hero p { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
+      .trust-list { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .plan-free { transform: none; }
+      .feature, .hero-card, .hero-copy, .testimonial, .faq-item, .compare-card, .audience-card { border-radius: 14px; }
+      .testimonial blockquote { font-size: 18px; }
+      .final-cta p { font-size: 16px; }
+      .templates-grid { grid-template-columns: 1fr; }
+      .drag-palette { width: 44px; }
+      .drag-node { width: 36px; height: 36px; font-size: 14px; }
+      .proof-demo { height: 120px; }
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand"><span class="brand-dot"></span>Make Automation Hub</div>
-      <a class="btn btn-ghost" href="#demo">Xem demo workflow</a>
+  <!-- Disclosure -->
+  <div class="container disclosure-wrap">
+    <div class="disclosure slide-up">
+      Minh bạch affiliate: Trang này có chứa liên kết tiếp thị liên kết. Nếu anh em đăng ký qua link này, mình có thể nhận một khoản hoa hồng nhỏ và anh em không mất thêm chi phí nào. Mình chỉ giới thiệu công cụ thật sự hữu ích.
     </div>
-  </nav>
+  </div>
 
-  <header class="hero">
+  <!-- ===== HERO ===== -->
+  <section class="hero">
     <div class="container hero-grid">
-      <div>
-        <div class="badge">⚡ Giao diện mới tối ưu chuyển đổi</div>
-        <h1>Tự động hóa công việc với Make<br />nhanh, gọn, dễ scale</h1>
-        <p class="lead">Thiết kế landing page tập trung vào giá trị cốt lõi: tiết kiệm thời gian, giảm lỗi tay, và giúp team chạy quy trình mượt hơn. Phù hợp cho freelancer, agency và doanh nghiệp nhỏ.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="https://www.make.com/en/register" target="_blank" rel="noopener">Bắt đầu với Make</a>
-          <a class="btn btn-ghost" href="#benefits">Xem lợi ích chính</a>
+      <div class="hero-copy">
+        <span class="badge">Bắt đầu chỉ với tài khoản Free — chưa cần trả phí</span>
+        <h1>LÀM VIỆC THÔNG MINH HƠN VỚI <span class="gradient-text">MAKE FREE</span></h1>
+        <p>
+          Không cần biết code. Chỉ kéo thả vài bước là có luồng tự động chạy — tiết kiệm hàng giờ mỗi tuần, từ ngày đầu tiên.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">Đăng ký Free → Chạy flow đầu tiên</a>
+          <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
-        <div class="proof">✅ Không cần code chuyên sâu • ✅ Tạo automation theo module • ✅ Mở rộng theo nhu cầu</div>
+        <p class="mini-note">Vào Free trước, test luồng thật, chưa cần bỏ tiền vẫn thấy kết quả.</p>
+        <p class="hero-social-proof"><strong>3000+</strong> integrations &bull; <strong>10M+</strong> users worldwide</p>
       </div>
 
-      <aside class="hero-card" id="demo">
-        <h3 style="margin:0 0 6px;">Hiệu quả thường thấy sau khi setup</h3>
-        <p style="margin:0; color:var(--muted);">Số liệu minh họa cho landing demo, có thể thay bằng data thực tế của team.</p>
-        <div class="kpi-grid">
-          <div class="kpi"><b>35-60%</b><span>Giảm thao tác lặp</span></div>
-          <div class="kpi"><b>2-4h/ngày</b><span>Thời gian tiết kiệm</span></div>
-          <div class="kpi"><b>24/7</b><span>Workflow chạy tự động</span></div>
-          <div class="kpi"><b>-70%</b><span>Lỗi do nhập tay</span></div>
+      <div class="hero-card" aria-label="Giá trị chính">
+        <div class="flow">
+          <div class="flow-item" data-flow="time">
+            <div class="flow-head">TIẾT KIỆM 5 GIỜ/TUẦN CHO VIỆC QUAN TRỌNG</div>
+            <div class="flow-meta">Thay vì copy paste thủ công</div>
+            <div class="flow-detail">Ví dụ thực tế: 1 lead mới sẽ tự đi qua Form → Sheet → thông báo team. Mỗi ngày tiết kiệm hàng chục thao tác tay lặp lại.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
+          </div>
+          <div class="flow-item" data-flow="error">
+            <div class="flow-head">GIẢM 90% SAI SÓT KHI XỬ LÝ DỮ LIỆU</div>
+            <div class="flow-meta">Tự động hóa giúp loại bỏ lỗi do tay</div>
+            <div class="flow-detail">Dữ liệu được map theo rule cố định nên giảm lỗi nhập nhầm, quên cột hoặc gửi sai người nhận.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
+          </div>
+          <div class="flow-item" data-flow="clarity">
+            <div class="flow-head">CHỈ CẦN NHÌN LÀ HIỂU LUỒNG CHẠY</div>
+            <div class="flow-meta">Giao diện trực quan, không cần tài liệu</div>
+            <div class="flow-detail">Mỗi bước chạy được hiển thị rõ trên canvas. Thành viên mới vào team vẫn hiểu luồng chỉ sau vài phút.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
+          </div>
+          <div class="flow-item" data-flow="scale">
+            <div class="flow-head">TĂNG GẤP 3 LẦN KHỐI LƯỢNG CÔNG VIỆC</div>
+            <div class="flow-meta">Mà không cần tăng nhân sự</div>
+            <div class="flow-detail">Khi flow ổn định, anh em có thể nhân bản và tái sử dụng cho nhiều campaign cùng lúc.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
+          </div>
+          <div class="flow-item" data-flow="nocode">
+            <div class="flow-head">KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</div>
+            <div class="flow-meta">Không cần đội kỹ thuật riêng</div>
+            <div class="flow-detail">Dựa trên thư viện module có sẵn, anh em thao tác kéo thả để build luồng. Không phải viết script từ đầu.</div>
+            <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
+          </div>
         </div>
-      </aside>
+        <div class="hero-stats-bar">
+          <div class="hero-stat">
+            <div class="hero-stat-value">10M+</div>
+            <div class="hero-stat-label">Users</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">3000+</div>
+            <div class="hero-stat-label">Apps</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">100M+</div>
+            <div class="hero-stat-label">Scenarios/ngày</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main>
-    <section class="section container" id="benefits">
-      <h2>Vì sao giao diện này dễ chuyển đổi hơn</h2>
-      <p class="desc">Bố cục được tối ưu để người xem hiểu nhanh, thấy lợi ích ngay, và bấm CTA ở đúng thời điểm thay vì bị nhiễu bởi quá nhiều thông tin kỹ thuật.</p>
-
-      <div class="cards">
-        <article class="card">
-          <div class="icon">🎯</div>
-          <h3>Message rõ trong 5 giây</h3>
-          <p>Headline đi thẳng vào nỗi đau và kết quả. Người dùng mới vào là hiểu bạn đang bán giá trị gì.</p>
-        </article>
-        <article class="card">
-          <div class="icon">🧠</div>
-          <h3>Luồng nội dung có chủ đích</h3>
-          <p>Từ lợi ích đến bằng chứng rồi mới tới CTA. Đọc tự nhiên, không ép bán, giảm cảm giác quảng cáo.</p>
-        </article>
-        <article class="card">
-          <div class="icon">📱</div>
-          <h3>Tối ưu mobile trước</h3>
-          <p>Khoảng trắng thoáng, nút to vừa tay, font dễ đọc giúp tăng tỷ lệ click trên điện thoại.</p>
-        </article>
+    <div class="trust">
+      <div class="container trust-list">
+        <div class="trust-item"><span>⭐ ĐƯỢC ANH EM TIN DÙNG TOÀN CẦU</span></div>
+        <div class="trust-item"><span>🔌 KẾT NỐI <strong class="counter" data-target="3000">0</strong>+ ỨNG DỤNG</span></div>
+        <div class="trust-item"><span>🧩 GIAO DIỆN KÉO THẢ DỄ HIỂU</span></div>
+        <div class="trust-item"><span>💸 GÓI FREE DỄ BẮT ĐẦU</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section container">
-      <h2>Workflow mẫu với Make</h2>
-      <p class="desc">Bạn có thể bắt đầu bằng quy trình cơ bản rồi scale dần theo dữ liệu thực tế.</p>
-
-      <div class="workflow">
-        <div class="flow-row">
-          <div class="pill">📥 Nhận lead từ form</div>
-          <div class="arrow">→</div>
-          <div class="pill">🗂️ Chuẩn hóa dữ liệu</div>
-          <div class="arrow">→</div>
-          <div class="pill">📨 Gửi CRM + thông báo</div>
+  <!-- ===== INTERACTIVE DEMO ===== -->
+  <section class="interactive-demo-section">
+    <div class="container">
+      <div class="section-head demo-section-head">
+        <h2>TRẢI NGHIỆM THỰC TẾ</h2>
+        <p>Thử kéo thả module, xem cách Make kết nối hàng nghìn app, và hình dung luồng tự động chạy 24/7.</p>
+      </div>
+      <div class="proof-grid">
+        <!-- App Grid -->
+        <div class="proof-card">
+          <div class="proof-demo">
+            <div class="app-demo">
+              <div class="app-grid" id="appGrid">
+                <div class="app-cell connected"><span class="app-icon">📧</span></div>
+                <div class="app-cell connected"><span class="app-icon">📊</span></div>
+                <div class="app-cell connected"><span class="app-icon">💬</span></div>
+                <div class="app-cell connected"><span class="app-icon">📅</span></div>
+                <div class="app-cell"><span class="app-icon">🔔</span></div>
+                <div class="app-cell"><span class="app-icon">📁</span></div>
+                <div class="app-cell"><span class="app-icon">🎨</span></div>
+                <div class="app-cell"><span class="app-icon">🛒</span></div>
+                <div class="app-cell"><span class="app-icon">📈</span></div>
+                <div class="app-cell"><span class="app-icon">🔗</span></div>
+                <div class="app-cell"><span class="app-icon">💼</span></div>
+                <div class="app-cell"><span class="app-icon">🗂</span></div>
+                <div class="app-cell"><span class="app-icon">⚡</span></div>
+                <div class="app-cell"><span class="app-icon">📱</span></div>
+                <div class="app-cell"><span class="app-icon">🔐</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="proof-label">Kết nối 3000+ app</div>
+          <div class="proof-title">Hover vào icon xem tương tác</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-demo">
+            <div class="flow-demo">
+              <div class="flow-module">📥</div><div class="flow-connector"></div>
+              <div class="flow-module">⚙️</div><div class="flow-connector"></div>
+              <div class="flow-module">🔄</div><div class="flow-connector"></div>
+              <div class="flow-module">📤</div>
+            </div>
+            <div class="flow-label-mini">24/7 Tự động</div>
+          </div>
+          <div class="proof-label">Chạy tự động</div>
+          <div class="proof-title">Luồng chạy liên tục, không cần can thiệp</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="hero-cta" style="margin-top:16px;">
-        <a class="btn btn-primary" href="https://www.make.com/en/register" target="_blank" rel="noopener">Tạo workflow đầu tiên</a>
-        <a class="btn btn-ghost" href="#final">Xem gói triển khai</a>
+  <!-- ===== DRAG & DROP DEMO (standalone) ===== -->
+  <section class="drag-drop-section">
+    <div class="drag-drop-container">
+      <div class="section-head">
+        <h2>KÉO THẢ LÀ XONG, KHÔNG CẦN CODE</h2>
+        <p>Thử kéo module vào canvas — kéo đủ 3+ module để xem flow sẵn sàng chạy. Mỗi module có nút × để xóa.</p>
       </div>
-    </section>
-
-    <section class="container" id="final">
-      <div class="cta-box">
-        <div>
-          <h3>Bạn muốn tui chỉnh luôn bản này theo brand của bạn không</h3>
-          <p>Tui có thể cá nhân hóa màu, font, section, USP, case study và CTA theo đúng tệp khách hàng để dùng chạy ads hoặc gắn bio link liền.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-          <a class="btn btn-primary" href="https://www.make.com/en/register" target="_blank" rel="noopener">Bắt đầu ngay</a>
-          <a class="btn btn-ghost" href="mailto:hello@example.com">Nhận tư vấn setup</a>
+      <div class="drag-drop-card-full">
+        <div class="drag-demo">
+          <div class="drag-toolbar">
+            <div class="drag-toolbar-logo">make</div>
+            <div class="drag-toolbar-sep"></div>
+            <div class="drag-toolbar-title">My First Flow</div>
+            <div class="drag-toolbar-status" id="flowStatus">
+              <div class="drag-toolbar-dot"></div>
+              <span>Idle</span>
+            </div>
+            <div class="drag-toolbar-btn play-btn" id="playBtn" style="opacity:.4;pointer-events:none">▶</div>
+          </div>
+          <div class="drag-palette-row">
+            <div class="drag-palette-label">MODULES — kéo vào canvas</div>
+            <div class="drag-node" draggable="true" data-app="webhook"><span class="node-emoji">🪝</span><span class="node-label">Webhook</span></div>
+            <div class="drag-node" draggable="true" data-app="sheets"><span class="node-emoji">📊</span><span class="node-label">Sheets</span></div>
+            <div class="drag-node" draggable="true" data-app="slack"><span class="node-emoji">💬</span><span class="node-label">Slack</span></div>
+            <div class="drag-node" draggable="true" data-app="openai"><span class="node-emoji">🤖</span><span class="node-label">OpenAI</span></div>
+            <div class="drag-node" draggable="true" data-app="gmail"><span class="node-emoji">📧</span><span class="node-label">Gmail</span></div>
+            <div class="drag-node" draggable="true" data-app="timer"><span class="node-emoji">⏰</span><span class="node-label">Timer</span></div>
+          </div>
+          <div class="drag-canvas" id="dragCanvas">
+            <svg class="canvas-svg" id="canvasSvg">
+              <defs>
+                <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#8f5cff"/>
+                  <stop offset="100%" stop-color="#5ce2ff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="canvas-hint" id="canvasHint">↕ Kéo module vào đây</div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer>
-    <div class="container">Landing demo for Make automation • Giao diện đã tối ưu readability, hierarchy và CTA placement.</div>
-  </footer>
+  <!-- ===== TEMPLATES (6 items) ===== -->
+  <section class="templates-section">
+    <div class="container">
+      <div class="section-head templates">
+        <h2>BẮT ĐẦU NHANH VỚI TEMPLATE</h2>
+        <p>Không cần nghĩ từ đầu. Chọn mẫu có sẵn, sửa nhẹ theo nhu cầu, bật chạy là có kết quả.</p>
+      </div>
+      <div class="templates-grid">
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">📊</div><h3 class="tmpl-title">SHEETS → OPENAI</h3></div>
+          <div class="template-desc">Tạo nội dung tự động từ Sheet bằng ChatGPT. Phù hợp anh em cần scale content.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 Rất phổ biến</span>
+            <span class="template-stat">⚡ Setup nhanh</span>
+            <span class="template-stat">🆓 Free tier OK</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10570-create-new-completions-with-openai-chatgpt-from-new-rows-in-google-sheets" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">🤖</div><h3 class="tmpl-title">WHATSAPP CHATBOT</h3></div>
+          <div class="template-desc">Triển khai chatbot CSKH trên WhatsApp mà không cần viết code.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">💡 Dễ viral</span>
+            <span class="template-stat">🚀 Dùng ngay</span>
+            <span class="template-stat">🔧 Không cần code</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10260-create-a-basic-chatbot-for-whatsapp" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">🗓️</div><h3 class="tmpl-title">NOTION → CALENDAR</h3></div>
+          <div class="template-desc">Đồng bộ lịch từ Notion vào Google Calendar theo thời gian thực.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">✅ Dễ áp dụng</span>
+            <span class="template-stat">⏱ Tiết kiệm giờ</span>
+            <span class="template-stat">📈 ROI cao</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/6407-create-new-google-calendar-events-from-notion-database-items" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">💬</div><h3 class="tmpl-title">FORM → SLACK</h3></div>
+          <div class="template-desc">Nhận thông báo Slack mỗi khi có form submit mới. Không bỏ sót lead.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 Team yêu thích</span>
+            <span class="template-stat">⚡ 5 phút setup</span>
+            <span class="template-stat">🆓 Free tier OK</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/10203-send-a-slack-message-for-each-new-typeform-entry" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">📧</div><h3 class="tmpl-title">GMAIL → DRIVE</h3></div>
+          <div class="template-desc">Tự động lưu đính kèm Gmail vào Google Drive. Sắp xếp file gọn gàng.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">✅ Thiết thực</span>
+            <span class="template-stat">⏱ Tiết kiệm giờ</span>
+            <span class="template-stat">🔧 Không cần code</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/452-save-gmail-attachments-to-google-drive" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+        <article class="template-card">
+          <div class="template-card-head"><div class="tmpl-icon">🛒</div><h3 class="tmpl-title">SHOPIFY → SHEETS</h3></div>
+          <div class="template-desc">Tự động ghi đơn Shopify mới vào Sheet để theo dõi và báo cáo.</div>
+          <div class="template-stats">
+            <span class="template-stat template-used">🔥 E-com cần có</span>
+            <span class="template-stat">📈 ROI cao</span>
+            <span class="template-stat">🆓 Free tier OK</span>
+          </div>
+          <a class="template-link-pill" href="https://www.make.com/en/templates/534-add-new-shopify-orders-to-a-google-sheets-spreadsheet" target="_blank" rel="noopener">Xem mẫu thật</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES (6 items) ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>SỰ KHÁC BIỆT CỦA MAKE.COM</h2>
+        <p>Không chỉ là công cụ automation, Make còn là cách anh em giải phóng thời gian khỏi việc lặp lại.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature">
+          <div class="feature-head"><div class="icon">🎯</div><h3>NHÌN TOÀN CẢNH LUỒNG XỬ LÝ</h3></div>
+          <p>Canvas trực quan — 1 màn hình thấy hết flow. Dễ debug, dễ bàn giao.</p>
+          <div class="feature-data">92% người mới hiểu trong 10 phút</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">🧠</div><h3>LOGIC SÂU NHƯNG VẪN DỄ DÙNG</h3></div>
+          <p>Router, filter, iterator, array — tất cả kéo thả. Xử lý flow 20+ bước nhẹ nhàng.</p>
+          <div class="feature-data">Flow 20+ bước không cần code</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">🔗</div><h3>KẾT NỐI THỰC SỰ RỘNG</h3></div>
+          <p>3000+ apps: CRM, marketing, CSKH — không cần API tự viết.</p>
+          <div class="feature-data">3000+ tích hợp sẵn có</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">🔐</div><h3>KIỂM SOÁT VÀ MINH BẠCH</h3></div>
+          <p>Log từng bước, biết chính xác flow nào lỗi, ở đâu. Giảm thời gian debug.</p>
+          <div class="feature-data">Giảm 80% thời gian debug</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">💰</div><h3>GIÁ PHẢI CHĂNG HƠN</h3></div>
+          <p>Cùng tính năng như đối thủ, chi phí thấp hơn 30-40%. Free dùng thật được.</p>
+          <div class="feature-data">Rẻ hơn 30-40% đối thủ</div>
+        </article>
+        <article class="feature">
+          <div class="feature-head"><div class="icon">📚</div><h3>CỘNG ĐỒNG & TEMPLATE PHONG PHÚ</h3></div>
+          <p>Hàng trăm template sẵn. Học từ community 500K+ thành viên.</p>
+          <div class="feature-data">500K+ thành viên community</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPARISON TABLE ===== -->
+  <section id="comparison" class="comparison-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>MAKE.COM VÀ ZAPIER: VÌ SAO NÊN CHỌN MAKE</h2>
+        <p>So sánh chi tiết 7 tiêu chí quan trọng nhất.</p>
+      </div>
+      <div class="compare-header">
+        <div class="compare-brand make-brand">
+          <h3>🔮 MAKE.COM</h3>
+          <div class="compare-brand-sub">Visual-first Automation</div>
+        </div>
+        <div class="compare-brand zapier-brand">
+          <h3>⚡ ZAPIER</h3>
+          <div class="compare-brand-sub">Easy Integration Leader</div>
+        </div>
+      </div>
+      <div class="compare-rows">
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">🎨</span>Giao diện</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>Visual canvas kéo thả, thấy toàn bộ flow</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>Step tuyến tính dạng danh sách</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">💰</span>Giá khởi điểm</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span><strong>Free</strong> ($0) — 1,000 credits/tháng</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>Free giới hạn, Core từ $19.99/tháng</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">🧠</span>Logic phức tạp</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>Router, filter, iterator built-in</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>Làm được nhưng tốn task nhanh</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">🔍</span>Debug</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>Log từng bước trực tiếp trên canvas</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>Phải vào history từng zap</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">⚡</span>Tốc độ</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>15p (Free), 1p (Core), 30s (Pro)</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>15p (Free), 2p (Core)</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">📚</span>Học & làm quen</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>Community 500K+ hỗ trợ</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">✓</span><span>Dễ nhất cho người mới</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-criteria"><span class="compare-criteria-icon">🎯</span>Phù hợp</div>
+          <div class="compare-cell make-cell"><span class="compare-check good">✓</span><span>Cá nhân → Team → Scale</span></div>
+          <div class="compare-cell zapier-cell"><span class="compare-check ok">~</span><span>Người mới → Enterprise</span></div>
+        </div>
+      </div>
+      <p class="compare-note"><strong>Cả hai đều tốt.</strong> Make phù hợp hơn nếu anh em muốn kiểm soát visual, giá mềm và làm logic phức tạp.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>BẢNG GIÁ MINH BẠCH THEO GÓI</h2>
+        <p>Thông tin tham chiếu. Giá và credit có thể thay đổi theo make.com/pricing.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="plan plan-free">
+          <span class="plan-tag">ƯU TIÊN CHO NGƯỜI MỚI</span>
+          <div class="plan-name">FREE</div>
+          <div class="plan-price">$0</div>
+          <div class="plan-sub">MỖI THÁNG</div>
+          <ul>
+            <li>1,000 credits/tháng</li>
+            <li>15 phút interval</li>
+            <li>Unlimited active scenarios</li>
+            <li>Core features: router, filter</li>
+          </ul>
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">DÙNG THỬ FREE</a>
+        </article>
+        <article class="plan">
+          <span class="plan-tag">PHỔ BIẾN</span>
+          <div class="plan-name">CORE</div>
+          <div class="plan-price">TỪ $9</div>
+          <div class="plan-sub">MỖI THÁNG</div>
+          <ul>
+            <li>10,000 credits/tháng</li>
+            <li>1 phút interval</li>
+            <li>Priority queue</li>
+            <li>Thêm Data Stores</li>
+          </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
+        </article>
+        <article class="plan">
+          <span class="plan-tag">NÂNG CAO</span>
+          <div class="plan-name">PRO</div>
+          <div class="plan-price">TỪ $16</div>
+          <div class="plan-sub">MỖI THÁNG</div>
+          <ul>
+            <li>50,000 credits/tháng</li>
+            <li>30 giây interval</li>
+            <li>Advanced Data Stores</li>
+            <li>Team sharing</li>
+          </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
+        </article>
+        <article class="plan">
+          <span class="plan-tag">DOANH NGHIỆP</span>
+          <div class="plan-name">TEAMS</div>
+          <div class="plan-price">TỪ $29</div>
+          <div class="plan-sub">MỖI THÁNG</div>
+          <ul>
+            <li>200,000 credits/tháng</li>
+            <li>SSO & Admin Console</li>
+            <li>Audit Logs</li>
+            <li>Hỗ trợ ưu tiên</li>
+          </ul>
+          <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
+        </article>
+      </div>
+      <p class="pricing-note">Mẹo: bắt đầu Free để test luồng thật, khi thấy hiệu quả thì nâng lên Core hoặc Pro. Giá tham khảo — kiểm tra <a href="https://www.make.com/en/pricing" target="_blank" rel="noopener">make.com/pricing</a> để cập nhật.</p>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIAL ===== -->
+  <section>
+    <div class="container">
+      <div class="testimonial">
+        <blockquote>Trước đây mình mất 3-4 tiếng mỗi tuần để copy dữ liệu từ form về sheet rồi nhắn team. Sau khi chuyển sang Make, toàn bộ chạy tự động — phản hồi nhanh hơn và ít sót việc hơn.</blockquote>
+        <cite>FOUNDER HỆ NO-CODE AUTOMATION</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUDIENCE ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>NHÓM NÀO NÊN BẮT ĐẦU VỚI MAKE NGAY?</h2>
+        <p>Nếu anh em muốn tự động hóa mà không phụ thuộc kỹ thuật — Make sinh ra để dành cho anh em.</p>
+      </div>
+      <div class="audience-grid">
+        <article class="audience-card">
+          <div class="audience-card-icon">🛒</div><h4>Chủ shop online</h4>
+          <p>Tự động nhận đơn, cập nhật kho, thông báo team. Không bỏ sót đơn nào.</p>
+          <div class="audience-card-data">Tiết kiệm 5-8 giờ/tuần</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">💼</div><h4>Freelancer & Agency</h4>
+          <p>Gom data khách từ nhiều nguồn về 1 chỗ. Không còn cảnh mở 10 tab.</p>
+          <div class="audience-card-data">Giảm 90% lỗi nhập tay</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">📈</div><h4>Marketer</h4>
+          <p>Pipeline lead tự động: Form → CRM → Email. Follow-up nhanh hơn.</p>
+          <div class="audience-card-data">Tăng 3x tốc độ follow-up</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">🏢</div><h4>Founder team nhỏ</h4>
+          <p>Chuẩn hóa vận hành trước khi scale. 1 flow tự động thay 2 người làm tay.</p>
+          <div class="audience-card-data">1 flow = 2 FTE tiết kiệm</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">📱</div><h4>Content Creator</h4>
+          <p>Auto đăng bài, backup content, gửi báo cáo. Tập trung sáng tạo.</p>
+          <div class="audience-card-data">Tiết kiệm 3 giờ/ngày</div>
+        </article>
+        <article class="audience-card">
+          <div class="audience-card-icon">🎓</div><h4>Người mới học automation</h4>
+          <p>Bắt đầu Free, học từ template có sẵn. Không cần kiến thức code.</p>
+          <div class="audience-card-data">Flow đầu tiên trong 30 phút</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>CÂU HỎI THƯỜNG GẶP</h2>
+        <p>Các câu hỏi thực tế của anh em mới làm no-code automation.</p>
+      </div>
+      <div class="faq-wrap">
+        <details class="faq-item"><summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG</summary><p>Có. Anh em xây workflow bằng giao diện visual kéo thả.</p></details>
+        <details class="faq-item"><summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG</summary><p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case.</p></details>
+        <details class="faq-item"><summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG</summary><p>Không hẳn khó hơn, mà chi tiết hơn. Make cho nhìn toàn cảnh workflow rõ.</p></details>
+        <details class="faq-item"><summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM</summary><p>Bắt đầu từ quy trình lặp mỗi ngày: Form → Sheet/CRM → thông báo team.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>GIỮ NĂNG LƯỢNG CHO VIỆC TẠO GIÁ TRỊ, ĐỂ MAKE LO PHẦN VIỆC LẶP LẠI</h2>
+      <p>Không cần chờ hoàn hảo. Một luồng tự động đầu tiên thành công sẽ mở ra cả hệ thống sau này.</p>
+      <a class="btn btn-primary" href="https://www.make.com/en/register?pc=makeitwithmiasan" target="_blank" rel="noopener">BẮT ĐẦU VỚI MAKE NGAY</a>
+      <p class="mini-note">Mất vài phút để tạo tài khoản và chạy flow đầu tiên. Bắt đầu nhỏ, scale dần.</p>
+    </div>
+  </section>
+
+  <footer class="footer">Built with <a href="https://list.affitor.com" target="_blank" rel="noopener">Affiliate Skills by Affitor</a></footer>
+
+  <!-- JS: Counter -->
+  <script>
+    (function () {
+      const counters = document.querySelectorAll('.counter');
+      if (!counters.length) return;
+      const animateCounter = (el) => {
+        const target = Number(el.getAttribute('data-target')) || 0;
+        const duration = 1700;
+        const start = performance.now();
+        const update = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(target * ease).toLocaleString('en-US');
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+      };
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); } });
+      }, { threshold: 0.5 });
+      counters.forEach((counter) => observer.observe(counter));
+    })();
+  </script>
+
+  <!-- JS: Flow item expand -->
+  <script>
+    (function() {
+      const items = document.querySelectorAll('.flow-item');
+      items.forEach(item => { item.addEventListener('click', (e) => { if (e.target.tagName === 'A') return; item.classList.toggle('expanded'); }); });
+    })();
+  </script>
+
+  <!-- JS: Scroll reveal -->
+  <script>
+    (function () {
+      const slideItems = document.querySelectorAll('.slide-up, .hero-copy, .hero-card, .template-card, .feature, .compare-card, .plan, .testimonial, .faq-item, .audience-card');
+      if (!slideItems.length) return;
+      const reveal = (entries, observer) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      };
+      const io = new IntersectionObserver(reveal, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+      slideItems.forEach((el, i) => { el.classList.add('slide-up'); el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`; io.observe(el); });
+    })();
+  </script>
+
+  <!-- JS: Drag & Drop (Make.com style) -->
+<script>
+(function(){
+var canvas=document.getElementById("dragCanvas");
+if(!canvas)return;
+var hint=document.getElementById("canvasHint");
+var svg=document.getElementById("canvasSvg");
+var statusEl=document.getElementById("flowStatus");
+var playBtn=document.getElementById("playBtn");
+var CELL_W=96,CELL_H=96,GAP=32,PAD_X=16,PAD_Y=20,COLS=3,ROWS=1;
+var slots=[];
+var totalW=COLS*CELL_W+(COLS-1)*GAP;
+var startX=PAD_X+Math.max(0,(1100-2*96-totalW)/6);
+for(var r=0;r<ROWS;r++)for(var cc=0;cc<COLS;cc++)slots.push({x:startX+cc*(CELL_W+GAP),y:PAD_Y+r*(CELL_H+GAP)});
+var appInfo={
+  webhook:{emoji:"\ud83e\ude9d",name:"Webhook",type:"Trigger",desc:"Nh\u1eadn d\u1eef li\u1ec7u t\u1eeb b\u1ea5t k\u1ef3 \u0111\u00e2u",isTrigger:true},
+  sheets:{emoji:"\ud83d\udcca",name:"Google Sheets",type:"Action",desc:"\u0110\u1ecdc/ghi b\u1ea3ng t\u00ednh",isTrigger:false},
+  slack:{emoji:"\ud83d\udcac",name:"Slack",type:"Action",desc:"G\u1eedi th\u00f4ng b\u00e1o team",isTrigger:false},
+  openai:{emoji:"\ud83e\udd16",name:"OpenAI",type:"AI",desc:"X\u1eed l\u00fd ng\u00f4n ng\u1eef th\u00f4ng minh",isTrigger:false},
+  gmail:{emoji:"\ud83d\udce7",name:"Gmail",type:"Action",desc:"G\u1eedi/nh\u1eadn email t\u1ef1 \u0111\u1ed9ng",isTrigger:false},
+  timer:{emoji:"\u23f0",name:"Timer",type:"Trigger",desc:"Ch\u1ea1y theo l\u1ecbch \u0111\u1ecbnh s\u1eb5n",isTrigger:true}
+};
+var placed=[];
+var flexWrap=null;
+
+function buildLayout(){
+  // Create flex wrapper
+  flexWrap=document.createElement("div");
+  flexWrap.className="canvas-flex";
+  canvas.appendChild(flexWrap);
+  // Draw slots and connectors
+  for(var i=0;i<slots.length;i++){
+    var el=document.createElement("div");
+    el.className="canvas-slot";
+    el.dataset.slotIndex=i;
+    flexWrap.appendChild(el);
+    // Add connector after each slot (except last)
+    if(i<slots.length-1){
+      var conn=document.createElement("div");
+      conn.className="slot-connector";
+      conn.innerHTML='<svg viewBox="0 0 28 14"><path class="conn-path" d="M0 7 C8 2,20 12,28 7"/><circle class="conn-dot" cx="14" cy="7" r="2.5"/></svg>';
+      flexWrap.appendChild(conn);
+    }
+  }
+}
+buildLayout();
+
+function getSlotEl(i){
+  return canvas.querySelector('.canvas-slot[data-slot-index="'+i+'"]');
+}
+
+var flowDescs=[
+  "Webhook \u2192 ghi Sheets \u2192 b\u00e1o Slack",
+  "Timer \u2192 \u0111\u1ecdc Sheets \u2192 g\u1eedi Gmail",
+  "Webhook \u2192 OpenAI x\u1eed l\u00fd \u2192 b\u00e1o Slack",
+  "Timer \u2192 t\u1ea1o n\u1ed9i dung OpenAI \u2192 g\u1eedi Gmail",
+  "Webhook \u2192 l\u01b0u Sheets \u2192 g\u1eedi Gmail"
+];
+
+function updateStatus(){
+  if(placed.length===0){
+    statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Idle</span>';
+    statusEl.style.color="#8a82a8";
+    if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+    hint.style.opacity="1";
+  }else if(placed.length<3){
+    statusEl.innerHTML='<div class="drag-toolbar-dot" style="background:#f7971e;box-shadow:0 0 6px rgba(247,151,30,.5)"></div><span>Building... ('+placed.length+'/3)</span>';
+    statusEl.style.color="#f7971e";
+    if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+    hint.style.opacity="0";
+  }else{
+    // Check logic: slot 0 must be a Trigger
+    // Sort placed by slotIndex to ensure placed[0] is actually the first slot
+    placed.sort(function(a,b){return a.slotIndex-b.slotIndex;});
+    var firstApp=placed[0].app;
+    var firstIsTrigger=appInfo[firstApp]&&appInfo[firstApp].isTrigger;
+    if(firstIsTrigger){
+      statusEl.innerHTML='<div class="drag-toolbar-dot"></div><span>Ready</span>';
+      statusEl.style.color="#47e7aa";
+      if(playBtn){playBtn.style.opacity="1";playBtn.style.pointerEvents="";}
+      hint.style.opacity="0";
+    }else{
+      statusEl.innerHTML='<div class="drag-toolbar-dot" style="background:#e74c3c;box-shadow:0 0 6px rgba(231,76,60,.5)"></div><span>Sai logic</span>';
+      statusEl.style.color="#e74c3c";
+      if(playBtn){playBtn.style.opacity=".4";playBtn.style.pointerEvents="none";}
+      hint.style.opacity="0";
+    }
+  }
+}
+
+function renderCanvas(){
+  var m=flexWrap.querySelectorAll(".canvas-module");for(var i=0;i<m.length;i++)m[i].remove();
+  // Clear SVG paths (keep defs)
+  while(svg.childNodes.length>1){if(svg.lastChild)svg.removeChild(svg.lastChild);else break;}
+  var s=flexWrap.querySelectorAll(".canvas-slot");for(var i=0;i<s.length;i++)s[i].classList.remove("occupied","highlight");
+  var f=canvas.querySelectorAll(".flow-status");for(var i=0;i<f.length;i++)f[i].remove();
+  for(var i=0;i<placed.length;i++){
+    var item=placed[i],info=appInfo[item.app];
+    var se=getSlotEl(item.slotIndex);if(se)se.classList.add("occupied");
+    // Get the slot element to append module inside it
+    var slotEl=getSlotEl(item.slotIndex);
+    var mod=document.createElement("div");
+    mod.className="canvas-module";
+    var wrap=document.createElement("div");
+    wrap.className="canvas-mod-wrapper";
+    var icon=document.createElement("div");
+    icon.className="canvas-mod-icon";
+    icon.setAttribute("data-app",item.app);
+    icon.textContent=info.emoji;
+    var delBtn=document.createElement("div");
+    delBtn.className="canvas-mod-btn-del";
+    delBtn.innerHTML="\u00d7";
+    (function(idx){
+      delBtn.addEventListener("click",function(e){
+        e.stopPropagation();
+        var rm=placed.splice(idx,1)[0];
+        var pn=document.querySelector('.drag-node[data-app="'+rm.app+'"]');
+        if(pn)pn.classList.remove("placed");
+        renderCanvas();updateStatus();
+      });
+    })(i);
+    wrap.appendChild(icon);wrap.appendChild(delBtn);
+    var nm=document.createElement("div");
+    nm.className="canvas-mod-name";nm.textContent=info.name;
+    var tp=document.createElement("div");
+    tp.className="canvas-mod-type";tp.textContent=info.type;
+    mod.appendChild(wrap);mod.appendChild(nm);mod.appendChild(tp);
+    slotEl.appendChild(mod);
+    if(i===placed.length-1&&placed.length>=3)icon.classList.add("pulse-once");
+  }
+  if(placed.length>=3){
+    placed.sort(function(a,b){return a.slotIndex-b.slotIndex;});
+    var firstIsTrigger=appInfo[placed[0].app]&&appInfo[placed[0].app].isTrigger;
+    var fp=document.createElement("div");
+    fp.className="flow-status";
+    if(firstIsTrigger){
+      var fi=placed.length%flowDescs.length;
+      var apps=placed.map(function(p){return appInfo[p.app].name;}).join(" \u2192 ");
+      fp.innerHTML='<div class="flow-status-inner"><div class="flow-status-icon">\ud83d\ude80</div><div><div class="flow-status-text">Flow h\u1ee3p l\u1ec7 \u2014 s\u1eb5n s\u00e0ng ch\u1ea1y</div><div class="flow-status-sub">'+apps+'</div><div class="flow-status-sub">'+flowDescs[fi]+'</div></div></div>';
+    }else{
+      var apps=placed.map(function(p){return appInfo[p.app].name;}).join(" \u2192 ");
+      fp.innerHTML='<div class="flow-status-inner" style="border-color:rgba(231,76,60,.5)"><div class="flow-status-icon">\u26a0\ufe0f</div><div><div class="flow-status-text" style="color:#ff6b6b">B\u01b0\u1edbc 1 kh\u00f4ng ph\u1ea3i Trigger</div><div class="flow-status-sub">'+apps+' \u2014 thay \u00f4 \u0111\u1ea7u b\u1eb1ng Webhook ho\u1eb7c Timer.</div></div></div>';
+    }
+    canvas.appendChild(fp);
+  }
+}
+
+// Play button -> opens Make.com with affiliate link
+if(playBtn){
+  playBtn.addEventListener("click",function(){
+    var firstApp=placed[0].app;
+    var firstIsTrigger=appInfo[firstApp]&&appInfo[firstApp].isTrigger;
+    if(firstIsTrigger&&placed.length>=3){
+      // Animate play button
+      playBtn.style.transform="scale(1.2)";
+      setTimeout(function(){playBtn.style.transform="";},300);
+      window.open("https://www.make.com/en/register?pc=makeitwithmiasan","_blank");
+    }
+  });
+  playBtn.title="Mở Make.com để bắt đầu automation";
+}
+
+var nodes=document.querySelectorAll(".drag-node");
+for(var i=0;i<nodes.length;i++){
+  (function(node){
+    node.addEventListener("dragstart",function(e){e.dataTransfer.setData("text/plain",node.dataset.app);node.style.opacity=".3";});
+    node.addEventListener("dragend",function(e){node.style.opacity="1";});
+  })(nodes[i]);
+}
+
+canvas.addEventListener("dragover",function(e){
+  e.preventDefault();
+  canvas.classList.add("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+  for(var i=0;i<slots.length;i++){
+    if(!placed.some(function(p){return p.slotIndex===i;})){
+      var el=getSlotEl(i);if(el)el.classList.add("highlight");
+      break;
+    }
+  }
+});
+
+canvas.addEventListener("dragleave",function(){
+  canvas.classList.remove("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+});
+
+canvas.addEventListener("drop",function(e){
+  e.preventDefault();
+  canvas.classList.remove("drag-over");
+  var h=canvas.querySelectorAll(".canvas-slot.highlight");for(var i=0;i<h.length;i++)h[i].classList.remove("highlight");
+  var app=e.dataTransfer.getData("text/plain");
+  if(!app||placed.length>=15||placed.some(function(p){return p.app===app;}))return;
+  var si=-1;
+  for(var i=0;i<slots.length;i++){if(!placed.some(function(p){return p.slotIndex===i;})){si=i;break;}}
+  if(si===-1)return;
+  placed.push({app:app,slotIndex:si});
+  var pn=document.querySelector('.drag-node[data-app="'+app+'"]');
+  if(pn)pn.classList.add("placed");
+  renderCanvas();updateStatus();
+});
+
+updateStatus();
+})();
+</script>
+<!-- JS: App connection animation -->
+  <script>
+    (function () {
+      const cells = document.querySelectorAll('.app-cell');
+      if (!cells.length) return;
+      let idx = 0;
+      setInterval(() => {
+        cells.forEach(c => c.classList.remove('connected'));
+        for (let i = 0; i < Math.min(idx + 5, cells.length); i++) { cells[i].classList.add('connected'); }
+        idx = (idx + 1) % (cells.length + 3);
+      }, 800);
+    })();
+  </script>
 </body>
 </html>
