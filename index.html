@@ -17,6 +17,7 @@
   <meta name="twitter:title" content="Make.com — Tự Động Hóa Kéo Thả, Không Cần Code" />
   <meta name="twitter:description" content="Tiết kiệm 5 giờ/tuần với automation no-code. Kết nối 3000+ app, kéo thả là chạy. Bắt đầu Free." />
   <meta name="twitter:image" content="https://miaslokov.github.io/make-landing/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%238f5cff'/%3E%3Cpath d='M7 14.5L11 8h2.5L9 17v5H6.5v-5L4 14.5H7l1 1z' fill='white'/%3E%3Cpath d='M16 17v5h-2.5V8h3c1.6 0 2.6.85 2.6 2.18 0 .96-.53 1.7-1.43 2.05l1.9 5.77h-2.5L15 17h-.2z' fill='white' opacity='.9'/%3E%3C/svg%3E" />
   <style>
     :root {
       --bg: #07060d;
@@ -173,30 +174,18 @@
       background: linear-gradient(180deg, transparent 0%, rgba(7,6,13,.95) 100%);
     }
     .hero-grid {
-      display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
       align-items: stretch; position: relative; z-index: 1;
     }
     .hero-copy {
       border: 1px solid rgba(255,255,255,.18); border-radius: 24px;
       background: linear-gradient(150deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
-      padding: 32px 28px; display: flex; flex-direction: column;
-      justify-content: center; gap: 4px; box-shadow: var(--shadow);
+      padding: 40px 32px; display: flex; flex-direction: column;
+      justify-content: center; gap: 16px; box-shadow: var(--shadow);
       position: relative; overflow: hidden; isolation: isolate;
       animation: heroCopyIn .8s cubic-bezier(.22,1,.36,1) both;
     }
     @keyframes heroCopyIn { from { opacity: 0; transform: translateX(-30px) translateY(16px); } to { opacity: 1; transform: translateX(0) translateY(0); } }
-    .hero-copy::before {
-      content: ""; position: absolute; top: -40%; right: -30%;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(92,226,255,.28), transparent 60%);
-      filter: blur(24px); z-index: -1;
-    }
-    .hero-copy::after {
-      content: ""; position: absolute; inset: 0; border-radius: inherit;
-      background: linear-gradient(135deg, rgba(143,92,255,.12), transparent 40%, rgba(92,226,255,.08));
-      z-index: -1; pointer-events: none;
-    }
-    /* Gradient border glow on hero copy */
     .hero-copy .glow-border {
       position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
       border: 1px solid transparent;
@@ -207,15 +196,15 @@
       opacity: .6;
     }
     .hero h1 {
-      font-size: clamp(40px, 5.4vw, 68px); margin: 14px 0 14px;
-      max-width: 11.8ch; line-height: 1.12; text-wrap: balance;
+      font-size: clamp(42px, 5.6vw, 72px); margin: 0;
+      max-width: 12ch; line-height: 1.1; text-wrap: balance;
       text-shadow: 0 0 60px rgba(143,92,255,.18);
       animation: headingIn .9s .15s cubic-bezier(.22,1,.36,1) both;
     }
     @keyframes headingIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     .hero p {
-      color: #e3def5; max-width: 54ch; font-size: 19.5px;
-      margin-bottom: 18px; line-height: 1.55; font-weight: 500;
+      color: #e3def5; max-width: 56ch; font-size: 20px;
+      margin: 0; line-height: 1.6; font-weight: 500;
       animation: heroFadeIn .8s .3s cubic-bezier(.22,1,.36,1) both;
     }
     @keyframes heroFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -236,28 +225,10 @@
     }
     .hero .btn-ghost { font-size: 15px; padding: 14px 18px; border-color: rgba(255,255,255,.22); }
     .mini-note {
-      margin-top: 10px; color: #e8e1ff; font-size: 14.5px; font-weight: 700;
+      margin-top: 0; color: #e8e1ff; font-size: 14.5px; font-weight: 700;
       border-left: 3px solid rgba(126,240,255,.65); padding-left: 10px; max-width: 52ch;
       animation: heroFadeIn .8s .6s cubic-bezier(.22,1,.36,1) both;
     }
-    .hero-social-proof {
-      margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px;
-      animation: heroFadeIn .8s .7s cubic-bezier(.22,1,.36,1) both;
-    }
-    .hero-social-proof .proof-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 700; color: #c9b8ff;
-      background: rgba(143,92,255,.10); border: 1px solid rgba(143,92,255,.20);
-      border-radius: 999px; padding: 6px 12px;
-      letter-spacing: .02em;
-    }
-    .hero-social-proof .proof-pill strong { color: #78e9ff; }
-    .hero-social-proof .proof-pill .pill-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #47e7aa; box-shadow: 0 0 6px rgba(72,229,169,.5);
-    }
-    .hero-social-proof strong { color: #c9b8ff; }
-
     /* Hero card */
     .hero-card {
       border: 1px solid rgba(143,92,255,.42);
@@ -286,9 +257,9 @@
     .flow-item {
       border: 1px solid rgba(143,92,255,.46); border-radius: 14px;
       background: linear-gradient(120deg, rgba(16,14,30,.94), rgba(24,20,45,.84));
-      padding: 16px 16px; display: block; font-size: 15px; font-weight: 700;
+      padding: 18px 18px; display: block; font-size: 15px; font-weight: 700;
       color: #f8f5ff; position: relative; overflow: hidden;
-      min-height: 78px; cursor: pointer;
+      min-height: 82px; cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
       opacity: 0; transform: translateY(14px);
       animation: flowItemIn .6s cubic-bezier(.22,1,.36,1) forwards;
@@ -338,36 +309,7 @@
     }
     @keyframes shimmerFlow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-    /* Hero stats bar */
-    .hero-stats-bar {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-      margin-top: 18px;
-      animation: heroFadeIn .8s .9s cubic-bezier(.22,1,.36,1) both;
-    }
-    .hero-stat {
-      border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
-      background: rgba(255,255,255,.04); padding: 10px 8px; text-align: center;
-      transition: border-color .2s ease, background .2s ease, transform .25s ease;
-      position: relative; overflow: hidden;
-    }
-    .hero-stat::before {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(143,92,255,.08), rgba(92,226,255,.06));
-      opacity: 0; transition: opacity .3s ease;
-    }
-    .hero-stat:hover::before { opacity: 1; }
-    .hero-stat:hover {
-      border-color: rgba(126,240,255,.35);
-      background: rgba(92,226,255,.06);
-    }
-    .hero-stat-value {
-      font-size: 22px; font-weight: 900; color: #fff;
-      background: linear-gradient(135deg, #b697ff, #5ce2ff);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      position: relative; z-index: 1;
-    }
-    .hero-stat-label { font-size: 10.5px; color: #b9b3d4; text-transform: uppercase; letter-spacing: .05em; margin-top: 3px; font-weight: 700; position: relative; z-index: 1; }
-
+    /* Trust bar */
     /* Trust bar */
     .trust {
       margin-top: 38px;
@@ -972,14 +914,9 @@
       .proof-card { min-height: 170px; }
       .proof-demo { height: 130px; }
       .hero p { font-size: 18px; }
-      .hero-social-proof { flex-direction: column; gap: 6px; }
-      .hero-social-proof .proof-pill { font-size: 11px; padding: 5px 10px; }
-      .interactive-demo-section { padding: 56px 0; }
       .drag-drop-section { padding: 56px 0; }
       .drag-drop-card-full { min-height: 360px; }
-      .hero-stats-bar { grid-template-columns: repeat(3, 1fr); }
       .compare-table { font-size: 12px; }
-      .compare-table thead th, .compare-table tbody td { padding: 10px 8px; }
       .compare-row { grid-template-columns: 100px 1fr 1fr; }
       .compare-criteria { padding: 12px 8px; font-size: 10px; }
       .compare-criteria-icon { font-size: 16px; }
@@ -1000,14 +937,9 @@
       .hero-card { padding: 16px 12px; }
       .badge { font-size: 12px; padding: 10px 14px; }
       .mini-note { font-size: 13px; }
-      .hero-social-proof { font-size: 12px; }
       .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
       .btn-primary, .btn-ghost { font-size: 14px !important; padding: 12px 14px !important; }
-      .hero-stats-bar { grid-template-columns: 1fr; gap: 8px; }
-      .hero-stat-value { font-size: 20px; }
-      .hero-social-proof { flex-direction: row; flex-wrap: wrap; }
-      .hero-social-proof .proof-pill { font-size: 10px; padding: 4px 8px; }
 
       .section-head { margin-bottom: 28px; }
       .section-head h2 {
@@ -1149,10 +1081,6 @@
           <a class="btn btn-ghost" href="#comparison">Xem so sánh Make và Zapier</a>
         </div>
         <p class="mini-note">Vào Free trước, test luồng thật, chưa cần bỏ tiền vẫn thấy kết quả.</p>
-        <div class="hero-social-proof">
-          <span class="proof-pill"><span class="pill-dot"></span><strong>3000+</strong> integrations</span>
-          <span class="proof-pill"><span class="pill-dot"></span><strong>10M+</strong> users worldwide</span>
-        </div>
       </div>
 
       <div class="hero-card" aria-label="Giá trị chính">
@@ -1186,20 +1114,6 @@
             <div class="flow-meta">Không cần đội kỹ thuật riêng</div>
             <div class="flow-detail">Dựa trên thư viện module có sẵn, anh em thao tác kéo thả để build luồng. Không phải viết script từ đầu.</div>
             <span class="flow-expand-trigger">Nhấn để xem chi tiết</span>
-          </div>
-        </div>
-        <div class="hero-stats-bar">
-          <div class="hero-stat">
-            <div class="hero-stat-value">10M+</div>
-            <div class="hero-stat-label">Users</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">3000+</div>
-            <div class="hero-stat-label">Apps</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">100M+</div>
-            <div class="hero-stat-label">Scenarios/ngày</div>
           </div>
         </div>
       </div>
