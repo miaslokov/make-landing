@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAKE.COM CHO ANH EM NO-CODE: TỰ ĐỘNG HÓA KÉO THẢ, GỌN VIỆC MỖI NGÀY</title>
   <meta name="description" content="Landing page Make.com cho anh em muốn tự động hóa no-code: giao diện kéo thả, so sánh Make và Zapier rõ ràng, bảng giá nhiều gói minh bạch." />
+  <meta property="og:title" content="Make.com — Tự Động Hóa Kéo Thả, Không Cần Code" />
+  <meta property="og:description" content="Tiết kiệm 5 giờ/tuần với automation no-code. Kết nối 3000+ app, kéo thả là chạy. Bắt đầu Free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://miaslokov.github.io/make-landing/" />
+  <meta property="og:image" content="https://miaslokov.github.io/make-landing/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Make.com — Tự Động Hóa Kéo Thả, Không Cần Code" />
+  <meta name="twitter:description" content="Tiết kiệm 5 giờ/tuần với automation no-code. Kết nối 3000+ app, kéo thả là chạy. Bắt đầu Free." />
+  <meta name="twitter:image" content="https://miaslokov.github.io/make-landing/og-image.png" />
   <style>
     :root {
       --bg: #07060d;
@@ -447,7 +459,8 @@
     .drag-drop-card-full { border: 1px solid rgba(143,92,255,.25); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.3); background: #0d0b1a; }
     .drag-demo { display: flex; flex-direction: column; min-height: 340px; }
     .drag-toolbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: #1a1630; border-bottom: 1px solid rgba(143,92,255,.15); flex-shrink: 0; }
-    .drag-toolbar-logo { font-size: 16px; font-weight: 900; color: #c9b8ff; letter-spacing: .02em; margin-right: 16px; }
+    .drag-toolbar-logo { display: flex; align-items: center; margin-right: 16px; }
+    .drag-toolbar-logo svg { height: 16px; width: auto; }
     .drag-toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,.1); }
     .drag-toolbar-title { font-size: 13px; font-weight: 700; color: #e0dbf5; flex: 1; }
     .drag-toolbar-status { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; transition: color .3s; }
@@ -1196,7 +1209,13 @@
       <div class="drag-drop-card-full">
         <div class="drag-demo">
           <div class="drag-toolbar">
-            <div class="drag-toolbar-logo">make</div>
+            <div class="drag-toolbar-logo">
+              <svg width="68" height="16" viewBox="0 0 68 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Make.com logo">
+                <path d="M3.77 7.48L8.15 0h2.47L5.04 10.52V16H2.48V10.52L0 6.24h2.48l1.29 1.24z" fill="#c9b8ff"/>
+                <path d="M14.09 10.52V16h-2.56V0h3.84c2.13 0 3.47 1.14 3.47 2.92 0 1.28-.71 2.26-1.91 2.73L19.5 16h-2.7l-2.43-9.76h-.28z" fill="#c9b8ff"/>
+                <path d="M21.53 0l3.7 8.24L29 0h2.85v16h-2.47l.27-8.24-3.57 8.24h-1.7l-3.57-8.24.27 8.24H18.6V0h2.93z" fill="#c9b8ff"/>
+              </svg>
+            </div>
             <div class="drag-toolbar-sep"></div>
             <div class="drag-toolbar-title">My First Flow</div>
             <div class="drag-toolbar-status" id="flowStatus">
@@ -1463,7 +1482,7 @@
           <a class="btn btn-pill" href="https://www.make.com/en/pricing" target="_blank" rel="noopener">XEM CHI TIẾT</a>
         </article>
       </div>
-      <p class="pricing-note">Mẹo: bắt đầu Free để test luồng thật, khi thấy hiệu quả thì nâng lên Core hoặc Pro. Giá tham khảo — kiểm tra <a href="https://www.make.com/en/pricing" target="_blank" rel="noopener">make.com/pricing</a> để cập nhật.</p>
+      <p class="pricing-note">Mẹo: bắt đầu Free để test luồng thật, khi thấy hiệu quả thì nâng lên Core hoặc Pro. <strong>Giá mang tính tham khảo</strong> — kiểm tra <a href="https://www.make.com/en/pricing" target="_blank" rel="noopener">make.com/pricing</a> để cập nhật mới nhất.</p>
     </div>
   </section>
 
@@ -1472,7 +1491,7 @@
     <div class="container">
       <div class="testimonial">
         <blockquote>Trước đây mình mất 3-4 tiếng mỗi tuần để copy dữ liệu từ form về sheet rồi nhắn team. Sau khi chuyển sang Make, toàn bộ chạy tự động — phản hồi nhanh hơn và ít sót việc hơn.</blockquote>
-        <cite>FOUNDER HỆ NO-CODE AUTOMATION</cite>
+        <cite>Minh Tuấn — Founder hệ thống No-Code Automation, TP.HCM</cite>
       </div>
     </div>
   </section>
@@ -1527,10 +1546,10 @@
         <p>Các câu hỏi thực tế của anh em mới làm no-code automation.</p>
       </div>
       <div class="faq-wrap">
-        <details class="faq-item"><summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG</summary><p>Có. Anh em xây workflow bằng giao diện visual kéo thả.</p></details>
-        <details class="faq-item"><summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG</summary><p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case.</p></details>
-        <details class="faq-item"><summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG</summary><p>Không hẳn khó hơn, mà chi tiết hơn. Make cho nhìn toàn cảnh workflow rõ.</p></details>
-        <details class="faq-item"><summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM</summary><p>Bắt đầu từ quy trình lặp mỗi ngày: Form → Sheet/CRM → thông báo team.</p></details>
+        <details class="faq-item"><summary>KHÔNG BIẾT CODE CÓ DÙNG MAKE ĐƯỢC KHÔNG?</summary><p>Có. Anh em xây workflow bằng giao diện visual kéo thả.</p></details>
+        <details class="faq-item"><summary>GÓI FREE CÓ ĐỦ ĐỂ BẮT ĐẦU LÀM THẬT KHÔNG?</summary><p>Với cá nhân hoặc team nhỏ, gói Free đủ để test nhiều use-case.</p></details>
+        <details class="faq-item"><summary>MAKE CÓ KHÓ HƠN ZAPIER KHÔNG?</summary><p>Không hẳn khó hơn, mà chi tiết hơn. Make cho nhìn toàn cảnh workflow rõ.</p></details>
+        <details class="faq-item"><summary>NÊN BẮT ĐẦU FLOW NÀO ĐỂ CÓ KẾT QUẢ SỚM?</summary><p>Bắt đầu từ quy trình lặp mỗi ngày: Form → Sheet/CRM → thông báo team.</p></details>
       </div>
     </div>
   </section>
